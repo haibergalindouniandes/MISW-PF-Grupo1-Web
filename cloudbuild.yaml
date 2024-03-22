@@ -24,16 +24,16 @@ phases:
       - echo "Building Angular application..."
       - ng build --prod
 
-      - echo "Authenticating to Google Cloud Storage..."
-        # Configure authentication using a service account key
-        secret_env: # Define secrets from Secret Manager
-          GOOGLE_APPLICATION_CREDENTIALS: 'ci-cd-builder-key'
-        entrypoint: 'gcloud auth activate-service-account --key-file=/tmp/credentials.json'
-      - run: |
-          echo ${GOOGLE_APPLICATION_CREDENTIALS} | base64 -d > /tmp/credentials.json
+      # - echo "Authenticating to Google Cloud Storage..."
+      #   # Configure authentication using a service account key
+      #   secret_env: # Define secrets from Secret Manager
+      #     GOOGLE_APPLICATION_CREDENTIALS: 'ci-cd-builder-key'
+      #   entrypoint: 'gcloud auth activate-service-account --key-file=/tmp/credentials.json'
+      # - run: |
+      #     echo ${GOOGLE_APPLICATION_CREDENTIALS} | base64 -d > /tmp/credentials.json
 
-      - echo "Deploying to App Engine..."
-      - gcloud app deploy --quiet --promote
+      # - echo "Deploying to App Engine..."
+      # - gcloud app deploy --quiet --promote
 
 artifacts:
   paths:

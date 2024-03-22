@@ -1,24 +1,13 @@
 steps:
-  - name: "Instalar dependencias de Node"
-    image: "node:lts-alpine"
-    command: ["npm", "install"]
 
-  - name: "Construir aplicación Angular"
-    image: "node:lts-alpine"
-    command: ["ng", "build", "--prod"]
+# Build the Docker image
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build',  -t', 'gcr.io/$PROJECT_ID/sport-app-angular$SHORT_SHA', '–build-arg', 'GENERATE_SOURCE_MAP=${_GENERATE_SOURCE_MAP}', '–build-arg', 'REACT_APP_MODULE_NAME=${_REACT_APP_MODULE_NAME}', '–build-arg', 'REACT_APP_API_URL=${_REACT_APP_API_URL}', '–build-arg', 'SKIP_PREFLIGHT_CHECK=${_SKIP_PREFLIGHT_CHECK}', '.']
 
-  - name: "Copiar archivos a la imagen de Docker"
-    image: "gcr.io/cloudbuilders/docker"
-    command: ["docker", "cp", "-a", "dist", "/app"]
+# Push the Docker image to Google Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'push', 'gcr.io/$PROJECT_ID/sport-app-angular:$SHORT_SHA' ]
 
-  - name: "Construir imagen de Docker"
-    image: "gcr.io/cloudbuilders/docker"
-    command: ["docker", "build", "-t", "gcr.io/proyecto2-grupo1/sport-app-angular", "."]
-
-  - name: "Empujar imagen de Docker al Registro de Google Cloud"
-    image: "gcr.io/cloudbuilders/docker"
-    command: ["docker", "push", "gcr.io/proyecto2-grupo1/sport-app-angular"]
-
-  - name: "Desplegar la aplicación en Google App Engine"
-    image: "gcr.io/google-appengine/standard-python37"
-    command: ["gcloud", "app", "deploy", "app.yaml", "--project", "proyecto2-grupo1"]
+# Deploy to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: [ 'run', 'deploy', 'sport-app-angular', '–image', 'gcr.io/$PROJECT_ID/sport-app-angular:$SHORT_SHA', '–platform', 'managed', '–region', 'us-central1', '–allow-unauthenticated', '–port', '8080', '–timeout' , '900']

@@ -1,40 +1,24 @@
-version: 0.2
+steps:
+  - name: "Instalar dependencias de Node"
+    image: "node:lts-alpine"
+    command: ["npm", "install"]
 
-phases:
-  install:
-    commands:
-      - echo "Installing dependencies..."
-      - npm install
+  - name: "Construir aplicación Angular"
+    image: "node:lts-alpine"
+    command: ["ng", "build", "--prod"]
 
-  pre_build:
-    commands:
-      - echo "Running unit tests..."
-      - ng test
+  - name: "Copiar archivos a la imagen de Docker"
+    image: "gcr.io/cloudbuilders/docker"
+    command: ["docker", "cp", "-a", "dist", "/app"]
 
-  build:
-    commands:
-      - echo "Starting Angular application (optional)"
-      - ng serve --port 4200 &
+  - name: "Construir imagen de Docker"
+    image: "gcr.io/cloudbuilders/docker"
+    command: ["docker", "build", "-t", "gcr.io/proyecto2-grupo1/sport-app-angular", "."]
 
-  post_build:
-    commands:
-      - echo "Running e2e tests..."
-      - npx cypress run
+  - name: "Empujar imagen de Docker al Registro de Google Cloud"
+    image: "gcr.io/cloudbuilders/docker"
+    command: ["docker", "push", "gcr.io/proyecto2-grupo1/sport-app-angular"]
 
-      - echo "Building Angular application..."
-      - ng build --prod
-
-      # - echo "Authenticating to Google Cloud Storage..."
-      #   # Configure authentication using a service account key
-      #   secret_env: # Define secrets from Secret Manager
-      #     GOOGLE_APPLICATION_CREDENTIALS: 'ci-cd-builder-key'
-      #   entrypoint: 'gcloud auth activate-service-account --key-file=/tmp/credentials.json'
-      # - run: |
-      #     echo ${GOOGLE_APPLICATION_CREDENTIALS} | base64 -d > /tmp/credentials.json
-
-      # - echo "Deploying to App Engine..."
-      # - gcloud app deploy --quiet --promote
-
-artifacts:
-  paths:
-    - dist/**
+  - name: "Desplegar la aplicación en Google App Engine"
+    image: "gcr.io/google-appengine/standard-python37"
+    command: ["gcloud", "app", "deploy", "app.yaml", "--project", "proyecto2-grupo1"]

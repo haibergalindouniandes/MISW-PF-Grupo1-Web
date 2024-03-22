@@ -1,0 +1,7 @@
+runtime: python37
+env: flex
+service: sport-app-angular
+handlers:
+- url: /
+  static_files: dist/index.html
+  application_readable: true

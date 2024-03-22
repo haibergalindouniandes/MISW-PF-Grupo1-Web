@@ -1,0 +1,25 @@
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title i18n>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="signInForm">
+      <mat-form-field appearance="fill">
+        <mat-label i18n>Email</mat-label>
+        <input matInput formControlName="email" type="email" id="inpt-email" placeholder="email@ejemplo.com" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label i18n>Password</mat-label>
+        <input matInput formControlName="password" type="password" id="inpt-password" placeholder="***************" required>
+        <mat-icon matSuffix>visibility</mat-icon>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button i18n mat-raised-button color="primary" (click)="signIn(signInForm.value)" id="btn-login">Login</button>
+  </mat-card-actions>
+  <div class="links">
+    <a i18n routerLink="/recover-password">Recover Password</a>
+    <a i18n routerLink="/register">Register</a>
+  </div>
+</mat-card>

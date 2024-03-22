@@ -1,0 +1,57 @@
+Creación de proyecto Angular:
+ng new sport-app
+
+Instalación Material:
+ng add @angular/material
+
+Instalación Bootstrap:
+ng add @ng-bootstrap/ng-bootstrap --project sport-app
+
+Instalación Cypress:
+ng add @cypress/schematic
+
+Creación environments:
+ng generate environments
+
+ng generate component shared/components/footer
+ng generate component shared/components/header
+
+ng generate component shared/components/footer
+ng generate component shared/components/headers
+
+ng generate component features/home/components/card
+ng generate component features/home/pages/init
+
+ng generate component features/auth/components/signin-form
+ng generate component features/auth/pages/signin
+
+Creación interceptor:
+ng generate interceptor core/interceptors/http-error
+
+ng generate service core/services/auth/login
+
+ng generate class core/models/auth/signin
+ng generate class core/models/auth/login
+
+Creación guarda:
+ng generate guard core/guards/auth
+
+--------------------------------
+Generación de archivo xlf:
+ng extract-i18n --output-path src/locale
+
+Generación de aplicación en español:
+ng s --configuration=es
+
+Ejecución de pruebas unitarias:
+ng test --watch=false --code-coverage true
+
+Ejecución de pruebas e2e desde el navegador:
+ng e2e
+
+Ejecución de pruebas e2e desde la terminal, tener en cuenta que debe estar la aplicación arriba para que se puedan lanzar las pruebas:
+npx cypress run
+
+ng serve --port 4200 & cypress run --headless --config cypress.config.ts
+
+

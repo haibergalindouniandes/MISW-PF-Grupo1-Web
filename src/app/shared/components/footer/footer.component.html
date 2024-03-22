@@ -1,0 +1,16 @@
+<footer class="footer">
+  <div class="container">
+    <p>&copy; {{ year }} SportApp. All rights reserved.</p>
+    <ul class="contact">
+      <li><a href="mailto:{{ contactInfo.email }}">{{ contactInfo.email }}</a></li>
+      <li><a href="tel:{{ contactInfo.phone }}">{{ contactInfo.phone }}</a></li>
+    </ul>
+    <ul class="social">
+      <li *ngFor="let link of socialLinks">
+        <a [href]="link.url" target="_blank" rel="noopener noreferrer">
+          <i class="{{ link.icon }}"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>

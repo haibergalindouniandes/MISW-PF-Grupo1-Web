@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <span class="logo">SportApp</span>
+  <span class="spacer"></span>
+  <nav *ngIf="isLoggedIn()">
+    <a mat-button routerLink="/">Home</a>
+    <a mat-button routerLink="/about">About</a>
+  </nav>
+  <a mat-button *ngIf="!isLoggedIn()" [routerLink]="['/auth', 'signin']">Sign In</a>
+  <button mat-button *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+</mat-toolbar>

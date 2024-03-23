@@ -40,6 +40,12 @@ ng generate guard core/guards/auth
 Generación de archivo xlf:
 ng extract-i18n --output-path src/locale
 
+Correr Angular en segundo plano:
+nohup ng serve &
+
+Cerrar Angular en segundo plano:
+pkill -f 'ng serve'
+
 Generación de aplicación en español:
 ng s --configuration=es
 
@@ -55,3 +61,23 @@ npx cypress run
 ng serve --port 4200 & cypress run --headless --config cypress.config.ts
 
 
+----------------------------------
+
+docker build -t sport-app-angular .
+
+docker run --name=sport-app-angular -p=80:80 sport-app-angular
+
+docker run -p 8080:80 sport-app-angular
+
+docker pull node:lts-alpine
+
+docker run -d --name my_node_container -p 8080:8080 node:lts-alpine sh -c "while true; do sleep 3600; done"
+
+docker pull ubuntu
+
+docker pull ubuntu:22.04-slim
+
+docker run -d --name my_ubuntu_container -p 8080:8080 ubuntu sh -c "while true; do sleep 3600; done"
+
+
+echo node -v && echo npm -v

@@ -3,13 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-headers',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule, MatToolbarModule, MatButtonModule],
+  imports: [CommonModule, RouterLink, FormsModule],
   templateUrl: './headers.component.html',
   styleUrl: './headers.component.scss'
 })

@@ -81,3 +81,5 @@ docker run -d --name my_ubuntu_container -p 8080:8080 ubuntu sh -c "while true; 
 
 
 echo node -v && echo npm -v
+
+

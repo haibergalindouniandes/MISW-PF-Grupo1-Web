@@ -9,15 +9,15 @@
           <form>
             <div class="mb-3">
               <label for="email" class="form-label" i18n>email</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+              <input type="email" class="form-control" id="inpt-email" aria-describedby="emailHelp"
                 placeholder="prueba20224@gmail.com">
             </div>
             <div class="mb-3">
               <label for="password" class="form-label" i18n>Password</label>
-              <input type="password" class="form-control" id="password" placeholder="***************">
+              <input type="password" class="form-control" id="inpt-password" placeholder="***************">
             </div>
             <div class="d-grid gap-2">
-              <button class="btn btn-primary" type="submit" i18n>Login</button>
+              <button class="btn btn-primary" type="submit" (click)="signIn(signInForm.value)" id="btn-login" i18n>Login</button>
             </div>
           </form>
         </div>

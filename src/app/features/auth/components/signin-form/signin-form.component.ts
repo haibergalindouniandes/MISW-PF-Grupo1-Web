@@ -32,6 +32,7 @@ export class SigninFormComponent {
     this.signingService.signIn(userLogin)
       .subscribe(signInSucess => {
         sessionStorage.setItem('username', signInSucess.name);
+        sessionStorage.setItem('user_id', signInSucess.id.toString());
         this.toastr.success('Confirmation', '¡¡¡ Bienvenido ' + sessionStorage.getItem('username') + ' !!!', { closeButton: true });
         this.signInForm.reset();
         this.router.navigate(['/'])

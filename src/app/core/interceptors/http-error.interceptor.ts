@@ -19,7 +19,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           this.toastr.error(errorMesagge, errorType, { closeButton: true });
         } else {
           errorType = "Server side error"
-          errorMesagge = `${err.status}: ${err.error.error}`;
+          errorMesagge = `${err.status}: ${err.error.msg}`;
           this.toastr.error(errorMesagge, errorType, { closeButton: true });
         }
         return throwError(() => err);

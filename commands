@@ -36,6 +36,9 @@ ng generate class core/models/auth/login
 Creación guarda:
 ng generate guard core/guards/auth
 
+ng generate component features/services/components/register-form
+ng generate component features/services/pages/register
+
 --------------------------------
 Generación de archivo xlf:
 ng extract-i18n --output-path src/locale

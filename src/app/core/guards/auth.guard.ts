@@ -1,14 +1,21 @@
-import { CanActivateFn } from '@angular/router';
-import { Injector } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
-export const authGuard: CanActivateFn = (route, state) => {
-  const injector = Injector.create({providers: [{provide: ToastrService, deps: []}]});
-  const toastr: ToastrService = injector.get(ToastrService);
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
 
-  if (sessionStorage.getItem('username') !== null) {
-    return true;
+  constructor(private toastr: ToastrService, private router: Router) {}
+
+  canActivate(): boolean {
+    if (sessionStorage.getItem('username') !== null) {
+      return true;
+    } else {
+      this.toastr.error('Para acceder a este recurso debe iniciar sesión', 'No autorizado', { closeButton: true });
+      this.router.navigate(['/']);
+      return false;
+    }
   }
-  toastr.error('Para acceder a este recurso debe loggearse', 'No autorizado', { closeButton: true });
-  return false;
-};
+}

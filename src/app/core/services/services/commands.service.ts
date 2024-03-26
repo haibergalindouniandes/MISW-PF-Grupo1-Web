@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Signin } from '../../models/auth/signin';
-import { Login } from '../../models/auth/login';
 import { environment } from '../../../../environments/environment';
+import { Register } from '../../models/services/register';
+import { Service } from '../../models/services/service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class CommandsService {
 
-  private apiUrl: string = environment.baseUrlUsers + 'users';
+  private apiUrl: string = environment.baseUrlServices + 'servicios';
   private headers = new HttpHeaders({ 'X-API-Key': 'a033d2c0' });
 
   constructor(private http: HttpClient) { }
 
-  signIn(credentials: Signin): Observable<Login> {
-    return this.http.post<Login>(this.apiUrl, credentials, { headers: this.headers });
+  registerService(register: Register): Observable<Service> {
+    return this.http.post<Service>(this.apiUrl, register, { headers: this.headers });
   }
 }

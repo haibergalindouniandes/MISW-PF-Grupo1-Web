@@ -15,5 +15,4 @@ export const routes: Routes = [
     loadChildren: () => import('./features/services/services.routing').then(m => m.SERVICES_ROUTES),
     canActivate: [AuthGuard]
   }
-
 ];

@@ -1,21 +1,16 @@
 export class Login {
   id: number;
-  name: string;
-  email: string;
-  rol: string;
+  nombres: string;
   token: string;
+  
 
   constructor(
     id: number,
-    name: string,
-    email: string,
-    rol: string,
+    nombres: string,
     token: string
   ) {
     this.id = id;
-    this.name = name;
-    this.email = email;
-    this.rol = rol;
+    this.nombres = nombres;
     this.token = token;
   }
 }

@@ -31,7 +31,7 @@ export class SigninFormComponent {
     let userLogin = new Signin(signIn.email, signIn.password);
     this.signingService.signIn(userLogin)
       .subscribe(signInSuccess => {
-        sessionStorage.setItem('username', signInSuccess.name);
+        sessionStorage.setItem('nombres', signInSuccess.nombres);
         sessionStorage.setItem('user_id', signInSuccess.id.toString());
         sessionStorage.setItem('token', signInSuccess.token);
         this.toastr.success('Confirmation', '¡¡¡ Bienvenido ' + sessionStorage.getItem('username') + ' !!!', { closeButton: true });

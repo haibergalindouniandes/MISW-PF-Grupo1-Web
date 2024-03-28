@@ -1,35 +1,14 @@
 .footer {
-  background-color: #070707;
-  padding: 20px 0;
-  text-align: center;
+  height: 6vh;
 }
 
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  max-width: 1000px;
-  margin: 0 auto;
+  height: 100%;
 }
 
-.contact,
-.social {
-  list-style: none;
-  padding: 0;
+.container p {
   margin: 0;
-}
-
-.contact li,
-.social li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-.social li a {
-  color: #333;
-}
-
-.social li a i {
-  font-size: 20px;
 }

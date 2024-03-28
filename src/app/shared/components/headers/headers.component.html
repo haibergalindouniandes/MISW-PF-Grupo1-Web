@@ -1,13 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">SportApp</a>
+  <!-- <a class="navbar-brand" href="#">SportApp</a> -->
+  <a class="navbar-brand ml-3" href="#">
+    <img src="../../../../assets/images/home/logo.jpg" class="img-fluid" alt="SportApp Logo">
+  </a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav">
       <li class="nav-item dropdown" *ngIf="isLoggedIn()">
-        <a i18n class="nav-link dropdown-toggle" href="#" id="menuMuseums"
+        <a i18n class="nav-link dropdown-toggle" href="#" id="menuServices"
           role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Services
         </a>
-        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuMuseums" id="dropdown-services">
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuServices" id="dropdown-services">
           <li><a i18n class="dropdown-item" [routerLink]="['/services']">List</a></li>
           <li><a i18n class="dropdown-item" [routerLink]="['/services', 'register']">Register</a></li>
         </ul>
@@ -16,12 +19,12 @@
         <a class="nav-link" routerLink="/about">About</a>
       </li>
     </ul>
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav">
       <li class="nav-item" *ngIf="!isLoggedIn()">
         <a class="nav-link" [routerLink]="['/auth', 'signin']">Sign In</a>
       </li>
       <li class="nav-item" *ngIf="isLoggedIn()">
-        <button class="btn btn-light" (click)="logout()">Logout</button>
+        <button class="btn btn-dark" (click)="logout()">Logout</button>
       </li>
     </ul>
   </div>

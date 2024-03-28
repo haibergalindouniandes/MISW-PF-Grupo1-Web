@@ -11,7 +11,7 @@ import { Service } from '../../models/services/service';
 export class CommandsService {
 
   private apiUrl: string = environment.baseUrlServices + 'servicios';
-  private headers = new HttpHeaders({ 'X-API-Key': 'a033d2c0' });
+  private headers = new HttpHeaders({ 'Authorization': `Bearer ${sessionStorage.getItem('token')}` });
 
   constructor(private http: HttpClient) { }
 

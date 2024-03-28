@@ -30,9 +30,10 @@ export class SigninFormComponent {
   signIn(signIn: Signin) {
     let userLogin = new Signin(signIn.email, signIn.password);
     this.signingService.signIn(userLogin)
-      .subscribe(signInSucess => {
-        sessionStorage.setItem('username', signInSucess.name);
-        sessionStorage.setItem('user_id', signInSucess.id.toString());
+      .subscribe(signInSuccess => {
+        sessionStorage.setItem('username', signInSuccess.name);
+        sessionStorage.setItem('user_id', signInSuccess.id.toString());
+        sessionStorage.setItem('token', signInSuccess.token);
         this.toastr.success('Confirmation', '¡¡¡ Bienvenido ' + sessionStorage.getItem('username') + ' !!!', { closeButton: true });
         this.signInForm.reset();
         this.router.navigate(['/'])

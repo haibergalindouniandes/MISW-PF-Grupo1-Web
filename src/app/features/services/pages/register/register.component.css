@@ -1,3 +1,5 @@
-.main-container {
-  height: 86%;
+.container {
+  height: 88vh;
+  display: grid;
+  align-items: center;
 }

@@ -1,27 +1,33 @@
 export class Register {
-  rut: string;
-  service: string;
-  description: string;
-  license: string;
-  experience: number;
-  recommendation: string;
-  user_id: string;
+  nombre: string;
+  descripcion: string;
+  frecuencia: string;
+  costo: string;
+  numero_minimo_participantes: number;
+  numero_maximo_participantes: number;
+  lugar: string;
+  fecha: string;
+  id_usuario: string;
 
   constructor(
-    rut: string,
-    service: string,
-    description: string,
-    license: string,
-    experience: number,
-    recommendation: string,
-    user_id: string
+    nombre: string,
+    descripcion: string,
+    frecuencia: string,
+    costo: string,
+    numero_minimo_participantes: number,
+    numero_maximo_participantes: number,
+    lugar: string,
+    fecha: string,
+    id_usuario: string
   ) {
-    this.rut = rut;
-    this.service = service;
-    this.description = description;
-    this.license = license;
-    this.experience = experience;
-    this.recommendation = recommendation;
-    this.user_id = user_id;
+    this.nombre = nombre;
+    this.descripcion = descripcion;
+    this.frecuencia = frecuencia;
+    this.costo = costo;
+    this.numero_minimo_participantes = numero_minimo_participantes;
+    this.numero_maximo_participantes = numero_maximo_participantes;
+    this.lugar = lugar;
+    this.fecha = fecha;
+    this.id_usuario = id_usuario;
   }
 }

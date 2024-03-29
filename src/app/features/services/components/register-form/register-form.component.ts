@@ -10,7 +10,7 @@ import { CommandsService } from "../../../../core/services/services/commands.ser
   standalone: true,
   imports: [CommonModule, RegisterFormComponent, ReactiveFormsModule, FormsModule],
   templateUrl: './register-form.component.html',
-  styleUrl: './register-form.component.css'
+  styleUrl: './register-form.component.scss'
 })
 export class RegisterFormComponent implements OnInit {
 

@@ -30,6 +30,14 @@ export class HeadersComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
+  changeLanguage(language: string): void {
+    const currentPath = this.router.url;
+    if (!currentPath.includes(`/${language}/`)) {
+      const  newPath = `/${language}${currentPath}`;
+      window.location.href = newPath
+    }
+  }
+
   ngOnInit(): void { }
 
 }

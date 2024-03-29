@@ -8,7 +8,7 @@ import { FooterComponent } from '../../../../shared/components/footer/footer.com
   standalone: true,
   imports: [HeadersComponent, FooterComponent, RegisterFormComponent],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
 

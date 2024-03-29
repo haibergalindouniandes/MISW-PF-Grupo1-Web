@@ -10,45 +10,45 @@
         <label for="name" i18n>Service name</label>
         <input type="text" id="name" class="form-control" formControlName="name">
         <div *ngIf="serviceRegistrationForm.controls['name'].invalid && (serviceRegistrationForm.controls['name'].dirty || serviceRegistrationForm.controls['name'].touched)" class="text-danger">
-          <small *ngIf="serviceRegistrationForm.controls['name'].errors?.['minlength']">
+          <small *ngIf="serviceRegistrationForm.controls['name'].errors?.['minlength']" i18n>
             Value you entered is
                 {{ serviceRegistrationForm.controls['name'].errors?.['minlength'].actualLength }} characters, but you must enter
                 {{ serviceRegistrationForm.controls['name'].errors?.['minlength'].requiredLength}} characters.
           </small>
-          <small *ngIf="serviceRegistrationForm.controls['name']?.errors?.['required']">Service name is required!</small>
+          <small *ngIf="serviceRegistrationForm.controls['name']?.errors?.['required']" i18n>Service name is required!</small>
         </div>
         <!-- Service description input-->
         <label for="description" i18n>Service description</label>
         <input type="text" id="description" class="form-control" formControlName="description">
         <div *ngIf="serviceRegistrationForm.controls['description'].invalid && (serviceRegistrationForm.controls['description'].dirty || serviceRegistrationForm.controls['description'].touched)" class="text-danger">
-          <small *ngIf="serviceRegistrationForm.controls['description'].errors?.['minlength']">
+          <small *ngIf="serviceRegistrationForm.controls['description'].errors?.['minlength']" i18n>
             Value you entered is
                 {{ serviceRegistrationForm.controls['description'].errors?.['minlength'].actualLength }} characters, but you must enter
                 {{ serviceRegistrationForm.controls['description'].errors?.['minlength'].requiredLength}} characters.
           </small>
-          <small *ngIf="serviceRegistrationForm.controls['description']?.errors?.['required']">Service description is required!</small>
+          <small *ngIf="serviceRegistrationForm.controls['description']?.errors?.['required']" i18n>Service description is required!</small>
         </div>
         <!-- Cost of service input-->
         <label for="cost" i18n>Cost of service</label>
         <input type="text" id="cost" class="form-control" formControlName="cost">
         <div *ngIf="serviceRegistrationForm.controls['cost'].invalid && (serviceRegistrationForm.controls['cost'].dirty || serviceRegistrationForm.controls['cost'].touched)" class="text-danger">
-          <small *ngIf="serviceRegistrationForm.controls['cost'].errors?.['minlength']">
+          <small *ngIf="serviceRegistrationForm.controls['cost'].errors?.['minlength']" i18n>
             Value you entered is
                 {{ serviceRegistrationForm.controls['cost'].errors?.['minlength'].actualLength }} characters, but you must enter
                 {{ serviceRegistrationForm.controls['cost'].errors?.['minlength'].requiredLength}} characters.
           </small>
-          <small *ngIf="serviceRegistrationForm.controls['cost']?.errors?.['required']">Cost of service is required!</small>
+          <small *ngIf="serviceRegistrationForm.controls['cost']?.errors?.['required']" i18n>Cost of service is required!</small>
         </div>
         <!-- Place input-->
         <label for="place" i18n>Place</label>
         <input type="text" id="place" class="form-control" formControlName="place">
         <div *ngIf="serviceRegistrationForm.controls['place'].invalid && (serviceRegistrationForm.controls['place'].dirty || serviceRegistrationForm.controls['place'].touched)" class="text-danger">
-          <small *ngIf="serviceRegistrationForm.controls['place'].errors?.['minlength']">
+          <small *ngIf="serviceRegistrationForm.controls['place'].errors?.['minlength']" i18n>
             Value you entered is
                 {{ serviceRegistrationForm.controls['place'].errors?.['minlength'].actualLength }} characters, but you must enter
                 {{ serviceRegistrationForm.controls['place'].errors?.['minlength'].requiredLength}} characters.
           </small>
-          <small *ngIf="serviceRegistrationForm.controls['place']?.errors?.['required']">Place is required!</small>
+          <small *ngIf="serviceRegistrationForm.controls['place']?.errors?.['required']" i18n>Place is required!</small>
         </div>
       </div>
       <div class="col">
@@ -64,43 +64,43 @@
           </div>
         </div>
         <div *ngIf="serviceRegistrationForm.controls['date'].invalid && (serviceRegistrationForm.controls['date'].dirty || serviceRegistrationForm.controls['date'].touched)" class="text-danger">
-          <small *ngIf="serviceRegistrationForm.controls['date']?.errors?.['required']">Date of service is required!</small>
+          <small *ngIf="serviceRegistrationForm.controls['date']?.errors?.['required']" i18n>Date of service is required!</small>
         </div>
         <div *ngIf="serviceRegistrationForm.controls['time'].invalid && (serviceRegistrationForm.controls['time'].dirty || serviceRegistrationForm.controls['time'].touched)" class="text-danger">
-          <small *ngIf="serviceRegistrationForm.controls['time']?.errors?.['required']">Time of service is required!</small>
+          <small *ngIf="serviceRegistrationForm.controls['time']?.errors?.['required']" i18n>Time of service is required!</small>
         </div>
         <!-- Minimum number of participants input-->
         <label for="minimum_number_participants" i18n>Minimum number of participants</label>
         <input type="number" id="minimum_number_participants" class="form-control" formControlName="minimum_number_participants">
         <div *ngIf="serviceRegistrationForm.controls['minimum_number_participants'].invalid && (serviceRegistrationForm.controls['minimum_number_participants'].dirty || serviceRegistrationForm.controls['minimum_number_participants'].touched)" class="text-danger">
-          <small *ngIf="serviceRegistrationForm.controls['minimum_number_participants'].errors?.['minlength']">
+          <small *ngIf="serviceRegistrationForm.controls['minimum_number_participants'].errors?.['minlength']" i18n>
             Value you entered is
                 {{ serviceRegistrationForm.controls['minimum_number_participants'].errors?.['minlength'].actualLength }} characters, but you must enter
                 {{ serviceRegistrationForm.controls['minimum_number_participants'].errors?.['minlength'].requiredLength}} characters.
           </small>
-          <small *ngIf="serviceRegistrationForm.controls['minimum_number_participants']?.errors?.['required']">Minimum number of participants is required!</small>
+          <small *ngIf="serviceRegistrationForm.controls['minimum_number_participants']?.errors?.['required']" i18n>Minimum number of participants is required!</small>
         </div>
         <!-- Maximum number of participants input-->
         <label for="maximum_number_participants" i18n>Maximum number of participants</label>
         <input type="number" id="maximum_number_participants" class="form-control" formControlName="maximum_number_participants">
         <div *ngIf="serviceRegistrationForm.controls['maximum_number_participants'].invalid && (serviceRegistrationForm.controls['maximum_number_participants'].dirty || serviceRegistrationForm.controls['maximum_number_participants'].touched)" class="text-danger">
-          <small *ngIf="serviceRegistrationForm.controls['minimum_number_participants'].errors?.['minlength']">
+          <small *ngIf="serviceRegistrationForm.controls['minimum_number_participants'].errors?.['minlength']" i18n>
             Value you entered is
                 {{ serviceRegistrationForm.controls['maximum_number_participants'].errors?.['minlength'].actualLength }} characters, but you must enter
                 {{ serviceRegistrationForm.controls['maximum_number_participants'].errors?.['minlength'].requiredLength}} characters.
           </small>
-          <small *ngIf="serviceRegistrationForm.controls['maximum_number_participants']?.errors?.['required']">Maximum number of participants is required!</small>
+          <small *ngIf="serviceRegistrationForm.controls['maximum_number_participants']?.errors?.['required']" i18n>Maximum number of participants is required!</small>
         </div>
         <!-- Service frequency input-->
         <label for="frequency" i18n>Service frequency</label>
         <input type="text" id="frequency" class="form-control" formControlName="frequency">
         <div *ngIf="serviceRegistrationForm.controls['frequency'].invalid && (serviceRegistrationForm.controls['frequency'].dirty || serviceRegistrationForm.controls['frequency'].touched)" class="text-danger">
-          <small *ngIf="serviceRegistrationForm.controls['minimum_number_participants'].errors?.['minlength']">
+          <small *ngIf="serviceRegistrationForm.controls['minimum_number_participants'].errors?.['minlength']" i18n>
             Value you entered is
                 {{ serviceRegistrationForm.controls['frequency'].errors?.['minlength'].actualLength }} characters, but you must enter
                 {{ serviceRegistrationForm.controls['frequency'].errors?.['minlength'].requiredLength}} characters.
           </small>
-          <small *ngIf="serviceRegistrationForm.controls['frequency']?.errors?.['required']">Service frequency is required!</small>
+          <small *ngIf="serviceRegistrationForm.controls['frequency']?.errors?.['required']" i18n>Service frequency is required!</small>
         </div>
       </div>
     </div>

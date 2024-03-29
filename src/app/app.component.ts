@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -11,5 +12,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'sport-app';
+  title = 'Sport APP';
+
+  constructor(private titleService: Title){
+    this.titleService.setTitle($localize`${this.title}`);
+  }
 }

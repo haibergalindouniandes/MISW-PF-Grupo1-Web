@@ -1,6 +1,10 @@
 Creación de proyecto Angular:
 ng new sport-app
 
+Instalación Fontawesome:
+npm install @fortawesome/fontawesome-svg-core
+npm install @fortawesome/free-solid-svg-icons
+
 Instalación Material:
 ng add @angular/material
 
@@ -18,6 +22,7 @@ ng generate component shared/components/header
 
 ng generate component shared/components/footer
 ng generate component shared/components/headers
+ng generate component shared/components/notfound
 
 ng generate component features/home/components/card
 ng generate component features/home/pages/init
@@ -49,8 +54,20 @@ nohup ng serve &
 Cerrar Angular en segundo plano:
 pkill -f 'ng serve'
 
+Construir la aplicación:
+ng build
+
+Construir la aplicación incorporando internacionalización:
+ng build --localize
+
 Generación de aplicación en español:
 ng s --configuration=es
+
+Iniciar servidor y lanzar aplicación:
+- Se debe instalar:
+  npm install --global serve
+- Despues ejecutar el comando:
+  serve dist/sport-app/
 
 Ejecución de pruebas unitarias:
 ng test --watch=false --code-coverage true
@@ -81,7 +98,6 @@ docker pull ubuntu
 docker pull ubuntu:22.04-slim
 
 docker run -d --name my_ubuntu_container -p 8080:8080 ubuntu sh -c "while true; do sleep 3600; done"
-
 
 echo node -v && echo npm -v
 

@@ -3,7 +3,7 @@ import { Signin } from "../page-objects/auth/signin";
 import { faker } from "@faker-js/faker";
 import { addDays, format } from 'date-fns';
 
-describe('e2e test of registration service', () => {
+describe('Registration service e2e test', () => {
   // it('Should validate the form fields so that they are not left empty', () => {
   //   // Asignacion de credenciales
   //   let email = 'administrador@sportapp.com'

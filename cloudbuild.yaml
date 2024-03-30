@@ -19,6 +19,7 @@ steps:
         npm install
         ng test --watch=false --browsers=ChromeHeadlessNoSandbox
         nohup ng serve &
+        sleep 20
         npx cypress run --headless
 
   - id: 'Build Docker image'

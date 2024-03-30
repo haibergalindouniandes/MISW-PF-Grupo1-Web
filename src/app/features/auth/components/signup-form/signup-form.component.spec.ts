@@ -1,8 +1,5 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
 import { SignupFormComponent } from './signup-form.component';
 
 describe('SignupFormComponent', () => {
@@ -11,7 +8,7 @@ describe('SignupFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignupFormComponent ]
+      imports: [ SignupFormComponent ]
     })
     .compileComponents();
   }));

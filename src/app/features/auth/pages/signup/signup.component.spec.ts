@@ -1,9 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
 import { SignupComponent } from './signup.component';
+import { RouterModule } from '@angular/router';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
@@ -11,7 +10,7 @@ describe('SignupComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignupComponent ]
+      imports: [ SignupComponent, ToastrModule.forRoot(), RouterModule.forRoot([]) ]
     })
     .compileComponents();
   }));

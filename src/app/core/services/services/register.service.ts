@@ -8,7 +8,7 @@ import { Service } from '../../models/services/service';
 @Injectable({
   providedIn: 'root'
 })
-export class CommandsService {
+export class RegisterService {
 
   private apiUrl: string = environment.baseUrlServices + 'servicios';
   private headers = new HttpHeaders({ 'Authorization': `Bearer ${sessionStorage.getItem('token')}` });

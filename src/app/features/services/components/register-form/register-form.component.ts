@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Register } from '../../../../core/models/services/register';
-import { CommandsService } from "../../../../core/services/services/commands.service";
+import { RegisterService } from "../../../../core/services/services/register.service";
 
 @Component({
   selector: 'app-register-form',
@@ -21,7 +21,7 @@ export class RegisterFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private commandsService: CommandsService,
+    private RegisterService: RegisterService,
   ) { }
 
   ngOnInit() {
@@ -54,7 +54,7 @@ export class RegisterFormComponent implements OnInit {
         sessionStorage.getItem('user_id')!
       );
 
-      this.commandsService.registerService(registerService)
+      this.RegisterService.registerService(registerService)
       .subscribe(registerSucess => {
         this.toastr.success('Confirmation', 'Se registro servicio exitosamente!', { closeButton: true });
         this.serviceRegistrationForm.reset();

@@ -95,7 +95,7 @@
         <label for="frequency" i18n>Service frequency</label>
         <input type="text" id="frequency" class="form-control" formControlName="frequency">
         <div *ngIf="serviceRegistrationForm.controls['frequency'].invalid && (serviceRegistrationForm.controls['frequency'].dirty || serviceRegistrationForm.controls['frequency'].touched)" class="text-danger">
-          <small *ngIf="serviceRegistrationForm.controls['minimum_number_participants'].errors?.['minlength']" i18n>
+          <small *ngIf="serviceRegistrationForm.controls['frequency'].errors?.['minlength']" i18n>
             Value you entered is
                 {{ serviceRegistrationForm.controls['frequency'].errors?.['minlength'].actualLength }} characters, but you must enter
                 {{ serviceRegistrationForm.controls['frequency'].errors?.['minlength'].requiredLength}} characters.

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Signup } from '../../../../core/models/auth/signup';
+import { SignupService } from '../../../../core/services/auth/signup.service';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -14,15 +16,26 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SignupFormComponent implements OnInit {
 
-  SignUpForm!: FormGroup;
+  serviceSignUpForm!: FormGroup;
+  tipo_documento: string = 'CC'
+  pais_nacimiento: string = 'Colombia'
+  ciudad_nacimiento: string = 'Bogota'
+  genero: string = 'M'
+  pais_residencia: string = 'Colombia'
+  ciudad_residencia: string = 'Bogota'
+  ciclismo: Boolean = false
+  atletismo: Boolean = false
+  otros: Boolean = false
+  deportes: Array<string> = []
+
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
-
+    private SignupService: SignupService
   ) { }
 
   ngOnInit() {
-    this.SignUpForm = this.fb.group({
+    this.serviceSignUpForm = this.fb.group({
       inputUsuario: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-_\.]+@([a-zA-Z0-9-_]+\.)+[a-zA-Z0-9-_]{2,4}$')]],
       inputContrasena: ['', [Validators.required, Validators.pattern('^([a-zA-Z0-9-_]{8,})$')]],
       inputNombres: ['', [Validators.required, Validators.minLength(4)]],
@@ -36,10 +49,91 @@ export class SignupFormComponent implements OnInit {
 
   }
 
+  checkboxCiclismoCambio(event:Event):void {
+    this.ciclismo = (event.target as HTMLInputElement).checked;
+  }
 
+  checkboxAtletismoCambio(event:Event):void {
+    this.atletismo = (event.target as HTMLInputElement).checked;
+  }
+
+  checkboxOtrosCambio(event:Event):void {
+    this.otros = (event.target as HTMLInputElement).checked;
+  }
+
+  get_tipo_documento(event:Event):void {
+    this.tipo_documento = (event.target as HTMLInputElement).value
+  }
+
+  get_pais_nacimiento(event:Event):void {
+    this.pais_nacimiento = (event.target as HTMLInputElement).value
+  }
+
+  get_ciudad_nacimiento(event:Event):void {
+    this.ciudad_nacimiento = (event.target as HTMLInputElement).value
+  }
+
+  get_genero(event:Event):void {
+    this.genero = (event.target as HTMLInputElement).value
+  }
+
+  get_pais_residencia(event:Event):void {
+    this.pais_residencia = (event.target as HTMLInputElement).value
+  }
+
+  get_ciudad_residencia(event:Event):void {
+    this.ciudad_residencia = (event.target as HTMLInputElement).value
+  }
+
+  get_deportes():Array<string> {
+    if (this.ciclismo == true) {
+      this.deportes.push('Ciclismo')
+    }
+    if (this.atletismo == true) {
+      this.deportes.push('Atletismo')
+    }
+    if (this.otros == true) {
+      this.deportes.push('Otros')
+    }
+    return this.deportes
+  }
+
+  createUser() {
+    if (this.serviceSignUpForm.valid) {
+      let data = this.serviceSignUpForm.value;
+      let deportes = this.get_deportes()
+      let signupService = new Signup(
+        data.inputUsuario,
+        data.inputContrasena,
+        data.inputNombres,
+        parseInt(data.inputPeso),
+        data.inputApellidos,
+        parseInt(data.inputEdad),
+        this.tipo_documento,
+        parseInt(data.inputAltura),
+        data.inputNumDoc,
+        this.pais_nacimiento,
+        this.ciudad_nacimiento,
+        this.genero,
+        this.pais_residencia,
+        this.ciudad_residencia,
+        deportes,
+        parseInt(data.inputAntiguedad)
+      );
+      console.log(signupService)
+      this.SignupService.signUp(signupService)
+      .subscribe(createUserSucess => {
+        this.toastr.success('Confirmation', 'Se creo usuario exitosamente!', { closeButton: true });
+        this.serviceSignUpForm.reset();
+        console.log(createUserSucess);
+        this.deportes = []
+      })
+    }
+  }
 
   cancel() {
-    this.SignUpForm.reset();
+    this.serviceSignUpForm.reset();
+    this.deportes = []
   }
 
 

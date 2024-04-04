@@ -28,6 +28,8 @@ export class SigninFormComponent {
   ) { }
 
   signIn(signIn: Signin) {
+    console.log(new Date() + ": " + this.email);
+    console.log(new Date() + ": " + this.password);
     let userLogin = new Signin(signIn.email, signIn.password);
     this.signingService.signIn(userLogin)
       .subscribe(signInSuccess => {

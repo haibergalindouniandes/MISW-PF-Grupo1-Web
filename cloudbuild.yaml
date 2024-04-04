@@ -22,6 +22,16 @@ steps:
         sleep 20
         npx cypress run --headless
 
+  - id: 'Upload coverage to GCS'
+    name: 'gcr.io/cloud-builders/gsutil'
+    args: [
+      '-m',
+      'cp',
+      '-r',
+      'coverage',
+      'gs://sportapp-angular-coverage-reports/$SHORT_SHA'
+    ]
+
   - id: 'Build Docker image'
     name: 'gcr.io/cloud-builders/docker'
     args: [

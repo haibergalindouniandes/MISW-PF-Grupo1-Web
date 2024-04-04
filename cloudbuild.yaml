@@ -17,7 +17,7 @@ steps:
         export CHROME_BIN='/usr/bin/google-chrome'
         npm i -g @angular/cli
         npm install
-        ng test --watch=false --browsers=ChromeHeadlessNoSandbox
+        ng test --watch=false --browsers=ChromeHeadlessNoSandbox --code-coverage true
         nohup ng serve &
         sleep 20
         npx cypress run --headless

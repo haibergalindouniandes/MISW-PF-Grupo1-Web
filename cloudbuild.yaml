@@ -20,7 +20,7 @@ steps:
         ng test --watch=false --browsers=ChromeHeadlessNoSandbox --code-coverage true
         date
         nohup ng serve &
-        sleep 20
+        sleep 30
         date
         if ! lsof -i :4200; then
           echo "Error: ng serve no está escuchando en localhost:4200"

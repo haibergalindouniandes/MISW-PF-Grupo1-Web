@@ -26,6 +26,8 @@ export class HeadersComponent implements OnInit {
 
   logout() {
     sessionStorage.removeItem('username');
+    sessionStorage.removeItem('user_id');
+    sessionStorage.removeItem('rol');
     this.toastr.success('Confirmation', 'Se cerró sesión correctamente', { closeButton: true });
     this.router.navigate(['/'])
   }

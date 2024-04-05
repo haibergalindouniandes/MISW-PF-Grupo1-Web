@@ -21,11 +21,11 @@ steps:
         date
         nohup ng serve &
         sleep 30
-        date
-        if ! lsof -i :4200; then
+        if ! curl -s localhost:4200; then
           echo "Error: ng serve no está escuchando en localhost:4200"
           exit 1
         fi
+        date
         npx cypress run --headless
 
   - id: 'Upload coverage to GCS'

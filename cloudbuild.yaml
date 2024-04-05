@@ -18,8 +18,14 @@ steps:
         npm i -g @angular/cli
         npm install
         ng test --watch=false --browsers=ChromeHeadlessNoSandbox --code-coverage true
+        date
         nohup ng serve &
         sleep 20
+        date
+        if ! lsof -i :4200; then
+          echo "Error: ng serve no está escuchando en localhost:4200"
+          exit 1
+        fi
         npx cypress run --headless
 
   - id: 'Upload coverage to GCS'

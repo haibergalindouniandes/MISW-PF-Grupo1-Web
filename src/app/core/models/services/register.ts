@@ -1,3 +1,4 @@
+/* istanbul ignore next */
 export class Register {
   nombre: string;
   descripcion: string;

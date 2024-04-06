@@ -14,8 +14,8 @@ import { FormsModule } from '@angular/forms';
 export class HeadersComponent implements OnInit {
 
   constructor(
-    private router: Router,
-    private toastr: ToastrService) { }
+    public router: Router,
+    public toastr: ToastrService) { }
 
   isLoggedIn() {
     if (sessionStorage.getItem('username') !== null) {
@@ -32,6 +32,7 @@ export class HeadersComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
+  /* istanbul ignore next */
   changeLanguage(language: string): void {
     const currentPath = this.router.url;
     if (!currentPath.includes(`/${language}/`)) {

@@ -5,7 +5,7 @@ echo "<================== [Inicio] Configuración ==================>"
 TEST_PATH=tests-results
 mkdir -p $TEST_PATH
 echo "Se realiza la creación del directorio [$TEST_PATH]"
-MIN_COVERAGE=40
+MIN_COVERAGE=80
 echo "La cobertura minima establecida para pasar las pruebas es [$MIN_COVERAGE]"
 COVERAGE_FILE=coverage-results.txt
 echo "El archivo con los resultados de las pruebas de cobertura es [$COVERAGE_FILE]"
@@ -52,7 +52,7 @@ fi
 echo "<================== [Fin][Exitoso] Ejecución de pruebas e2e  ==================>"
 ####################################################################################################################################
 echo "<================== [Inicio] Resumen pruebas ==================>"
-echo "<================== Resumen pruebas unitarias y de covertura ==================>"
+echo "<================== Resumen pruebas unitarias y de cobertura ==================>"
 cat $TEST_PATH/$COVERAGE_FILE
 echo "<================== Resumen pruebas e2e ==================>"
 cat $TEST_PATH/$E2E_FILE

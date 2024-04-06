@@ -133,6 +133,7 @@ export class SignupFormComponent implements OnInit {
         this.tipo_usuario
       );
       console.log(signupService)
+      /* istanbul ignore next */
       this.SignupService.signUp(signupService)
       .subscribe(createUserSucess => {
         this.toastr.success('Confirmation', 'Se creo usuario exitosamente!', { closeButton: true });

@@ -10,8 +10,8 @@ import { environment } from '../../../../environments/environment';
 })
 export class LoginService {
 
-  private apiUrl: string = environment.baseUrlUsers + 'users';
-  private headers = new HttpHeaders({ 'X-API-Key': 'a033d2c0' });
+  public apiUrl: string = environment.baseUrlUsers + 'users';
+  public headers = new HttpHeaders({ 'X-API-Key': 'a033d2c0' });
 
   constructor(private http: HttpClient) { }
 

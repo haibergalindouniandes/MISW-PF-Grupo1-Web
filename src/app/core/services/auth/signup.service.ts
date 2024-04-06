@@ -9,13 +9,13 @@ import { environment } from '../../../../environments/environment';
 })
 export class SignupService {
 
-  private apiUrl: string = environment.baseUrlUsers + 'crear-usuario';
-  private headers = new HttpHeaders({ 'X-API-Key': 'a033d2c0' });
+  public apiUrl: string = environment.baseUrlUsers + 'crear-usuario';
+  public headers = new HttpHeaders({ 'X-API-Key': 'a033d2c0' });
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-signUp(new_user: Signup): Observable<Signup> {
-  return this.http.post<Signup>(this.apiUrl, new_user, { headers: this.headers });
-}
+  signUp(new_user: Signup): Observable<Signup> {
+    return this.http.post<Signup>(this.apiUrl, new_user, { headers: this.headers });
+  }
 
 }

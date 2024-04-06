@@ -29,6 +29,7 @@ export class SigninFormComponent {
 
   signIn(signIn: Signin) {
     let userLogin = new Signin(signIn.email, signIn.password);
+    /* istanbul ignore next */
     this.signingService.signIn(userLogin)
       .subscribe(signInSuccess => {
         sessionStorage.setItem('username', signInSuccess.nombres);

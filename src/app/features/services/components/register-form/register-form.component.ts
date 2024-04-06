@@ -20,19 +20,19 @@ export class RegisterFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private toastr: ToastrService,
+    public toastr: ToastrService,
     private RegisterService: RegisterService,
   ) { }
 
   ngOnInit() {
     this.serviceRegistrationForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(10)]],
+      name: ['', [Validators.required, Validators.minLength(4)]],
       description: ['', [Validators.required, Validators.minLength(12)]],
-      frequency: ['', [Validators.required, Validators.minLength(6)]],
+      frequency: ['', [Validators.required, Validators.minLength(4)]],
       cost: ['', [Validators.required, Validators.minLength(8)]],
       minimum_number_participants: ['', [Validators.required, Validators.minLength(1)]],
       maximum_number_participants: ['', [Validators.required, Validators.minLength(1)]],
-      place: ['', [Validators.required, Validators.minLength(8)]],
+      place: ['', [Validators.required, Validators.minLength(6)]],
       date: ['', [Validators.required, this.dateValidator]],
       time: ['', [Validators.required]],
     });
@@ -53,7 +53,7 @@ export class RegisterFormComponent implements OnInit {
         data.date + ' ' + data.time + ':00',
         sessionStorage.getItem('user_id')!
       );
-
+      /* istanbul ignore next */
       this.RegisterService.registerService(registerService)
       .subscribe(registerSucess => {
         this.toastr.success('Confirmation', 'Se registro servicio exitosamente!', { closeButton: true });

@@ -1,4 +1,4 @@
-import { Service } from "../page-objects/auth/service";
+import { Service } from "../page-objects/services/service";
 import { Signin } from "../page-objects/auth/signin";
 import { faker } from "@faker-js/faker";
 import { addDays, format } from 'date-fns';

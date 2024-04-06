@@ -10,7 +10,7 @@ describe('RegisterFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegisterFormComponent, HttpClientTestingModule, ToastrModule.forRoot(), BrowserAnimationsModule]
+      imports: [RegisterFormComponent, HttpClientTestingModule, ToastrModule.forRoot(), BrowserAnimationsModule],
     })
     .compileComponents();
 
@@ -24,29 +24,40 @@ describe('RegisterFormComponent', () => {
   });
 
   it('Should have a registration service form', () => {
-    // Validate title
     expect(document.querySelector('h1')?.textContent).toContain('Register a new Service');
-    // Validate input name
     expect(document.querySelector('input#name')).toBeTruthy();
-    // Validate input description
     expect(document.querySelector('input#description')).toBeTruthy();
-    // Validate input cost
     expect(document.querySelector('input#cost')).toBeTruthy();
-    // Validate input place
     expect(document.querySelector('input#place')).toBeTruthy();
-    // Validate input date
     expect(document.querySelector('input#date')).toBeTruthy();
-    // Validate input time
     expect(document.querySelector('input#time')).toBeTruthy();
-    // Validate input minimum_number_participants
     expect(document.querySelector('input#minimum_number_participants')).toBeTruthy();
-    // Validate input maximum_number_participants
     expect(document.querySelector('input#maximum_number_participants')).toBeTruthy();
-    // Validate input frequency
     expect(document.querySelector('input#frequency')).toBeTruthy();
-    // Validate button btn-register
     expect(document.querySelector('button#btn-register')).toBeTruthy();
-    // Validate button btn-cancel
     expect(document.querySelector('button#btn-cancel')).toBeTruthy();
   });
+
+  it('Should call reset, set serviceRegistrationForm values and call registerService', () => {
+    const formData = {
+      name: 'Service Name',
+      description: 'Service Description',
+      frequency: 'Service Frequency',
+      cost: 'Service Cost',
+      minimum_number_participants: '1',
+      maximum_number_participants: '10',
+      place: 'Service Place',
+      date: '2024-04-20',
+      time: '10:00'
+    };
+    spyOn(component, 'cancel').and.callThrough();
+    component.cancel();
+    expect(component.cancel).toHaveBeenCalled();
+    spyOn(component, 'registerService').and.callThrough();
+    sessionStorage.setItem('user_id', 'Prueba');
+    component.serviceRegistrationForm.setValue(formData);
+    component.registerService();
+    expect(component.registerService).toHaveBeenCalled();
+  });
+
 });

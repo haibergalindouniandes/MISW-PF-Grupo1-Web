@@ -160,6 +160,7 @@ export class Service {
   shouldValidateMessagesErrorInForm(count: number) {
     this.shouldHaveADropdownServices();
     this.shouldHaveARegisterServiceForm();
+    this.clickInObject(this.getButtonCancel());
     this.clickInObject(this.getInputName());
     this.clickInObject(this.getInputDescription());
     this.clickInObject(this.getInputCost());

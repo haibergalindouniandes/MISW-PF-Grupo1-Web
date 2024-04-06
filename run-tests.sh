@@ -17,6 +17,7 @@ echo "<================== [Fin] Configuración ==================>"
 ####################################################################################################################################
 echo "<================== [Inicio] Ejecución de pruebas unitarias y cobertura ==================>"
 ng test --watch=false --browsers=ChromeHeadlessNoSandbox --code-coverage=true > $TEST_PATH/$COVERAGE_FILE
+cat $TEST_PATH/$COVERAGE_FILE
 COVERAGE=$(grep -oP 'Statements\s+:\s+\K\d+\.\d+' $TEST_PATH/$COVERAGE_FILE)
 echo "La cobertura total de las pruebas fue [$COVERAGE]"
 decimal=$(awk "BEGIN {print $COVERAGE}")
@@ -49,4 +50,11 @@ if grep -q "AssertionError" $TEST_PATH/$E2E_FILE; then
   exit 1
 fi
 echo "<================== [Fin][Exitoso] Ejecución de pruebas e2e  ==================>"
+####################################################################################################################################
+echo "<================== [Inicio] Resumen pruebas ==================>"
+echo "<================== Resumen pruebas unitarias y de covertura ==================>"
+cat $TEST_PATH/$COVERAGE_FILE
+echo "<================== Resumen pruebas e2e ==================>"
+cat $TEST_PATH/$E2E_FILE
+echo "<================== [Fin] Resumen pruebas ==================>"
 ####################################################################################################################################

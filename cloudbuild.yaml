@@ -6,7 +6,7 @@ steps:
       - '-c'
       - |
         apt-get update
-        apt-get install -y curl gnupg unzip xvfb libxi6 libgconf-2-4 wget bc
+        apt-get install -y curl gnupg unzip xvfb libxi6 libgconf-2-4 wget bc cat
         curl -sL https://deb.nodesource.com/setup_18.x | bash -
         apt-get install -y nodejs
         npm install -g npm@9

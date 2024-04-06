@@ -1,5 +1,6 @@
 #!/bin/bash
 
+####################################################################################################################################
 echo "<================== [Inicio] Configuración ==================>"
 TEST_PATH=tests-results
 mkdir -p $TEST_PATH
@@ -9,11 +10,11 @@ echo "La cobertura minima establecida para pasar las pruebas es [$MIN_COVERAGE]"
 COVERAGE_FILE=coverage-results.txt
 echo "El archivo con los resultados de las pruebas de cobertura es [$COVERAGE_FILE]"
 E2E_FILE=e2e-results.txt
-echo "El archivo con los resultados de las pruebas E2E es [$COVERAGE_FILE]"
+echo "El archivo con los resultados de las pruebas E2E es [$E2E_FILE]"
 COVERAGE_PATH=coverage
 echo "El directorio con los resultados de las pruebas de cobertura es [$COVERAGE_PATH]"
 echo "<================== [Fin] Configuración ==================>"
-
+####################################################################################################################################
 echo "<================== [Inicio] Ejecución de pruebas unitarias y cobertura ==================>"
 ng test --watch=false --browsers=ChromeHeadlessNoSandbox --code-coverage=true > $TEST_PATH/$COVERAGE_FILE
 COVERAGE=$(grep -oP 'Statements\s+:\s+\K\d+\.\d+' $TEST_PATH/$COVERAGE_FILE)
@@ -28,7 +29,7 @@ echo "La cobertura obtenida [$COVERAGE] CUMPLE con los criterios para pasar las 
 mv $COVERAGE_PATH $TEST_PATH/
 echo "Se mueve directorio [$COVERAGE_PATH] a [$TEST_PATH/$COVERAGE_PATH]"
 echo "<================== [Fin][Exitoso] Ejecución de pruebas unitarias y cobertura ==================>"
-
+####################################################################################################################################
 echo "<================== [Inicio] Levantamiento del proyecto Angular ==================>"
 nohup ng serve &
 sleep 20
@@ -38,12 +39,14 @@ if ! curl -s localhost:4200; then
   exit 1
 fi
 echo "<================== [Fin][Exitoso] Levantamiento del proyecto Angular ==================>"
-
+####################################################################################################################################
 echo "<================== [Inicio] Ejecución de pruebas e2e ==================>"
 npx cypress run --headless > $TEST_PATH/$E2E_FILE
+cat $TEST_PATH/$E2E_FILE
 if grep -q "AssertionError" $TEST_PATH/$E2E_FILE; then
   echo "Error: Se presetaron fallas en la ejecución de las pruebas e2e"
   echo "<================== [Fin][Error] Ejecución de pruebas e2e  ==================>"
   exit 1
 fi
 echo "<================== [Fin][Exitoso] Ejecución de pruebas e2e  ==================>"
+####################################################################################################################################

@@ -26,8 +26,8 @@ steps:
       '-m',
       'cp',
       '-r',
-      'coverage',
-      'gs://sportapp-angular-coverage-reports/$SHORT_SHA'
+      'tests-results',
+      "gs://sportapp-angular-coverage-reports/$(date +%Y-%m-%dT%H:%M:%S)"
     ]
 
   - id: 'Build Docker image'

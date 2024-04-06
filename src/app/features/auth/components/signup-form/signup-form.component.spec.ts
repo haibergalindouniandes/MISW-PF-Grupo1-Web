@@ -28,7 +28,7 @@ describe('SignupFormComponent', () => {
 
   it('Should return correct deportes array when get_deportes is called', () => {
     component.ciclismo = true;
-    component.atletismo = true;component.otros = true;
+    component.atletismo = true;component.otros_deportes = true;
     expect(component.get_deportes()).toContain('Ciclismo');
     expect(component.get_deportes()).toContain('Atletismo');
     expect(component.get_deportes()).toContain('Otros');
@@ -103,7 +103,7 @@ describe('SignupFormComponent', () => {
   it('Should update otros when checkboxOtrosCambio is called', () => {
     const event: any = { target: { checked: true } };
     component.checkboxOtrosCambio(event as Event);
-    expect(component.otros).toBe(true);
+    expect(component.otros_deportes).toBe(true);
   });
 
   it('should call signupService.signUp and reset form when createUser is called with valid form', () => {

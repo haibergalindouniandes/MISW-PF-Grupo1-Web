@@ -135,6 +135,21 @@
           <small *ngIf="serviceSignUpForm.get('inputAntiguedad')!.hasError('min') && (serviceSignUpForm.get('inputAntiguedad')!.dirty || serviceSignUpForm.get('inputAntiguedad')!.touched)" class="text-danger">El valor minimo de este campo es 1 mes</small>
           <small *ngIf="serviceSignUpForm.get('inputAntiguedad')!.hasError('max') && (serviceSignUpForm.get('inputAntiguedad')!.dirty || serviceSignUpForm.get('inputAntiguedad')!.touched)" class="text-danger">El valor maximo de este campo es 900 meses</small>
         </div>
+        <div class="col-md-6">
+          <label for="inputTipoPlan" class="form-label">Tipo de Plan</label>
+          <select (change)="get_tipo_plan($event)" id="inputTipoPlan" class="form-select">
+            <option selected>Basico</option>
+            <option>Intermedio</option>
+            <option>Premium</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="inputTipoUsuario" class="form-label">Tipo de Usuario</label>
+          <select (change)="get_tipo_usuario($event)" id="inputTipoUsuario" class="form-select">
+            <option selected>Deportista</option>
+            <option>Proveedor</option>
+          </select>
+        </div>
         <div class="col-12">
           <button type="submit" class="btn btn-primary me-2" (click)="createUser()" [disabled]="!serviceSignUpForm.valid">Guardar</button>
           <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>

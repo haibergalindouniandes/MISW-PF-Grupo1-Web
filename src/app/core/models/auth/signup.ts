@@ -15,6 +15,8 @@ export class Signup {
   ciudad_residencia: string;
   deportes: Array<string>;
   antiguedad: number;
+  tipo_plan: string;
+  tipo_usuario: string;
 
 
   constructor(
@@ -34,6 +36,8 @@ export class Signup {
     ciudad_residencia: string,
     deportes: Array<string>,
     antiguedad: number,
+    tipo_plan: string,
+    tipo_usuario: string
 
   ) {
     this.usuario = usuario;
@@ -52,5 +56,7 @@ export class Signup {
     this.ciudad_residencia = ciudad_residencia;
     this.deportes = deportes;
     this.antiguedad = antiguedad
+    this.tipo_plan = tipo_plan
+    this.tipo_usuario = tipo_usuario
   }
 }

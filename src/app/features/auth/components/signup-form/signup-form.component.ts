@@ -27,6 +27,8 @@ export class SignupFormComponent implements OnInit {
   atletismo: Boolean = false
   otros: Boolean = false
   deportes: Array<string> = []
+  tipo_plan: string = 'Basico'
+  tipo_usuario: string = 'Deportista'
 
   constructor(
     private fb: FormBuilder,
@@ -85,6 +87,14 @@ export class SignupFormComponent implements OnInit {
     this.ciudad_residencia = (event.target as HTMLInputElement).value
   }
 
+  get_tipo_plan(event:Event):void {
+    this.tipo_plan = (event.target as HTMLInputElement).value
+  }
+
+  get_tipo_usuario(event:Event):void {
+    this.tipo_usuario = (event.target as HTMLInputElement).value
+  }
+
   get_deportes():Array<string> {
     if (this.ciclismo == true) {
       this.deportes.push('Ciclismo')
@@ -118,7 +128,9 @@ export class SignupFormComponent implements OnInit {
         this.pais_residencia,
         this.ciudad_residencia,
         deportes,
-        parseInt(data.inputAntiguedad)
+        parseInt(data.inputAntiguedad),
+        this.tipo_plan,
+        this.tipo_usuario
       );
       console.log(signupService)
       this.SignupService.signUp(signupService)

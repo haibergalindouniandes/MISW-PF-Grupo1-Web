@@ -116,43 +116,44 @@
             <label for="inputDeportes" class="form-label">Deportes</label>
           </div>
           <div class="form-check-inline col-md-4">
-            <input (change)="checkboxCiclismoCambio($event)" type="checkbox" class="btn-check" id="btn-ciclismo" autocomplete="off">
+            <input (change)="checkboxCiclismoCambio($event)" [checked]="ciclismo" type="checkbox" class="btn-check" id="btn-ciclismo" autocomplete="off">
             <label class="btn btn-outline-secondary" for="btn-ciclismo">Ciclismo</label><br>
           </div>
           <div class="form-check-inline col-md-4">
-            <input (change)="checkboxAtletismoCambio($event)" type="checkbox" class="btn-check" id="btn-atletismo" autocomplete="off">
+            <input (change)="checkboxAtletismoCambio($event)" [checked]="atletismo" type="checkbox" class="btn-check" id="btn-atletismo" autocomplete="off">
             <label class="btn btn-outline-secondary" for="btn-atletismo">Atletismo</label><br>
           </div>
           <div class="form-check-inline col-md-2">
-            <input (change)="checkboxOtrosCambio($event)" type="checkbox" class="btn-check" id="btn-otros" autocomplete="off">
+            <input (change)="checkboxOtrosCambio($event)" [checked]="otros_deportes" type="checkbox" class="btn-check" id="btn-otros" autocomplete="off">
             <label class="btn btn-outline-secondary" for="btn-otros">Otros</label><br>
           </div>
         </div>
         <div class="col-md-6">
           <label for="inputAntiguedad" class="form-label">Antiguedad</label>
-          <input type="text" class="form-control" id="inputAntiguedad" formControlName="inputAntiguedad">
+          <input type="text" class="form-control" id="inputAntiguedad" placeholder="valor en meses" formControlName="inputAntiguedad">
           <small *ngIf="serviceSignUpForm.get('inputAntiguedad')!.hasError('required') && (serviceSignUpForm.get('inputAntiguedad')!.dirty || serviceSignUpForm.get('inputAntiguedad')!.touched)" class="text-danger">Este campo es requerido!</small>
           <small *ngIf="serviceSignUpForm.get('inputAntiguedad')!.hasError('min') && (serviceSignUpForm.get('inputAntiguedad')!.dirty || serviceSignUpForm.get('inputAntiguedad')!.touched)" class="text-danger">El valor minimo de este campo es 1 mes</small>
           <small *ngIf="serviceSignUpForm.get('inputAntiguedad')!.hasError('max') && (serviceSignUpForm.get('inputAntiguedad')!.dirty || serviceSignUpForm.get('inputAntiguedad')!.touched)" class="text-danger">El valor maximo de este campo es 900 meses</small>
         </div>
         <div class="col-md-6">
           <label for="inputTipoPlan" class="form-label">Tipo de Plan</label>
-          <select (change)="get_tipo_plan($event)" id="inputTipoPlan" class="form-select">
+          <select (change)="get_tipo_plan($event)" [(value)]="tipo_plan" id="inputTipoPlan" class="form-select">
             <option selected>Basico</option>
             <option>Intermedio</option>
             <option>Premium</option>
+            <option>No Aplica</option>
           </select>
         </div>
         <div class="col-md-6">
           <label for="inputTipoUsuario" class="form-label">Tipo de Usuario</label>
-          <select (change)="get_tipo_usuario($event)" id="inputTipoUsuario" class="form-select">
+          <select (change)="get_tipo_usuario($event)" [(value)]="tipo_usuario" id="inputTipoUsuario" class="form-select">
             <option selected>Deportista</option>
             <option>Proveedor</option>
           </select>
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-primary me-2" (click)="createUser()" [disabled]="!serviceSignUpForm.valid">Guardar</button>
-          <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+          <button type="submit" class="btn btn-primary me-2" (click)="createUser()" [disabled]="!serviceSignUpForm.valid || (ciclismo==false && atletismo==false && otros_deportes==false)">Guardar</button>
+          <button type="button" class="btn btn-danger" (click)="cancel();reset_checkboxes(false,false,false)">Cancel</button>
         </div>
       </form>
     </div>

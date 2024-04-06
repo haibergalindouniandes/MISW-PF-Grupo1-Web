@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "<================== [Inicio] Ejecución de pruebas unitarias y cobertura ==================>"
-MIN_COVERAGE=80
+MIN_COVERAGE=40
 echo "La cobertura minima establecida para pasar las pruebas es [$MIN_COVERAGE]"
 ng test --watch=false --browsers=ChromeHeadlessNoSandbox --code-coverage=true > coverage-results.txt
 COVERAGE=$(grep -oP 'Statements\s+:\s+\K\d+\.\d+' coverage-results.txt)

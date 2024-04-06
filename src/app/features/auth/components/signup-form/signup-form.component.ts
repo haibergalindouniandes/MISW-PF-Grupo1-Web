@@ -25,7 +25,7 @@ export class SignupFormComponent implements OnInit {
   ciudad_residencia: string = 'Bogota'
   ciclismo: Boolean = false
   atletismo: Boolean = false
-  otros: Boolean = false
+  otros_deportes: Boolean = false
   deportes: Array<string> = []
   tipo_plan: string = 'Basico'
   tipo_usuario: string = 'Deportista'
@@ -60,7 +60,7 @@ export class SignupFormComponent implements OnInit {
   }
 
   checkboxOtrosCambio(event:Event):void {
-    this.otros = (event.target as HTMLInputElement).checked;
+    this.otros_deportes = (event.target as HTMLInputElement).checked;
   }
 
   get_tipo_documento(event:Event):void {
@@ -89,20 +89,33 @@ export class SignupFormComponent implements OnInit {
 
   get_tipo_plan(event:Event):void {
     this.tipo_plan = (event.target as HTMLInputElement).value
+    if (this.tipo_plan=='No Aplica'){
+      this.tipo_usuario = 'Proveedor'
+    }
+    else {
+      this.tipo_usuario = 'Deportista'
+    }
   }
 
   get_tipo_usuario(event:Event):void {
     this.tipo_usuario = (event.target as HTMLInputElement).value
+    if (this.tipo_usuario=='Proveedor'){
+      this.tipo_plan = 'No Aplica'
+    }
+    else {
+      this.tipo_plan = 'Basico'
+    }
   }
 
   get_deportes():Array<string> {
+    this.deportes = []
     if (this.ciclismo == true) {
       this.deportes.push('Ciclismo')
     }
     if (this.atletismo == true) {
       this.deportes.push('Atletismo')
     }
-    if (this.otros == true) {
+    if (this.otros_deportes == true) {
       this.deportes.push('Otros')
     }
     return this.deportes
@@ -139,15 +152,18 @@ export class SignupFormComponent implements OnInit {
         this.toastr.success('Confirmation', 'Se creo usuario exitosamente!', { closeButton: true });
         this.serviceSignUpForm.reset();
         console.log(createUserSucess);
-        this.deportes = []
       })
     }
   }
 
   cancel() {
     this.serviceSignUpForm.reset();
-    this.deportes = []
   }
 
+  reset_checkboxes(ciclismo:boolean, atletismo:boolean, otros_deportes:boolean){
+    this.ciclismo = ciclismo;
+    this.atletismo = atletismo;
+    this.otros_deportes = otros_deportes
+  }
 
 }

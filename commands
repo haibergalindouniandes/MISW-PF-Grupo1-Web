@@ -73,6 +73,7 @@ Ejecución de pruebas unitarias:
 ng test --watch=false --code-coverage true
 ng test --watch=false --browsers=ChromeHeadlessNoSandbox
 ng test --watch=false --browsers=ChromeHeadlessNoSandbox --code-coverage true
+ng test --watch=false --browsers=ChromeHeadlessNoSandbox --code-coverage true --thresholds coverage:80
 
 Ejecución de pruebas e2e desde el navegador:
 ng e2e

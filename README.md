@@ -38,33 +38,23 @@ A continuación se describen los diferentes pasos que hacen parte de este flujo:
 En el siguiente Diagrama se puede observar el flujo descrito anteriormente:
  ![Flujo CI/CD Web](https://github.com/shiomar-salazar/MISW-PF-Grupo1-Web/assets/110913673/23d3c99d-83a4-46cd-a2ca-78e93f881417)
 
-# SportApp
+## Lanzar servidor de forma local
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+Ejecutar comando `ng serve`
 
-## Development server
+## Construir la aplicacion incluyendo internacionalizacion
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Ejecutar comando `ng build --localize`
 
-## Code scaffolding
+## Ejecutar pruebas unitarias y cobertura
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Ejecutar comando `ng test --watch=false --browsers=ChromeHeadlessNoSandbox --code-coverage=true`
 
-## Build
+## Ejecutar pruebas E2E
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Ejecutar comando `ng e2e`
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Estructura del Proyecto
 
 ```
 MISW-PF-Grupo1-Web

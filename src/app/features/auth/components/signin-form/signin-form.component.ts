@@ -34,7 +34,8 @@ export class SigninFormComponent {
       .subscribe(signInSuccess => {
         sessionStorage.setItem('username', signInSuccess.nombres);
         sessionStorage.setItem('user_id', signInSuccess.id);
-        sessionStorage.setItem('rol', signInSuccess.rol);
+        sessionStorage.setItem('rol', signInSuccess.tipo_usuario);
+        sessionStorage.setItem('token', signInSuccess.token);
         this.toastr.success('Confirmation', '¡¡¡ Bienvenido ' + sessionStorage.getItem('username') + ' !!!', { closeButton: true });
         this.signInForm.reset();
         this.router.navigate(['/'])

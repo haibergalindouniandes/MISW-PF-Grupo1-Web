@@ -145,7 +145,6 @@ export class SignupFormComponent implements OnInit {
         this.tipo_plan,
         this.tipo_usuario
       );
-      console.log(signupService)
       /* istanbul ignore next */
       this.SignupService.signUp(signupService)
       .subscribe(createUserSucess => {

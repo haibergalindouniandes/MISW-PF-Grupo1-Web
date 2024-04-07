@@ -28,17 +28,17 @@ describe('LoginService', () => {
 
   it('should call signIn method', () => {
     const signin: Signin = {
-      email: 'test@example.com',
-      password: 'test'
+      email: 'prestador0001',
+      password: 'prestador0001'
     };
 
     service.signIn(signin).subscribe((response: Login) => {
       expect(response).toBeTruthy();
     });
 
-    const req = httpMock.expectOne(`${environment.baseUrlUsers}users`);
+    const req = httpMock.expectOne(`${environment.baseUrlUsers}usuarios/login`);
     expect(req.request.method).toBe('POST');
     expect(req.request.headers.get('X-API-Key')).toEqual('a033d2c0');
-    req.flush({ token: 'testToken', user: { id: 1, email: 'test@example.com', role: 'user' } });
+    req.flush({ token: 'testToken', user: { id: 1, email: 'prestador0001', role: 'user' } });
   });
 });

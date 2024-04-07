@@ -65,3 +65,166 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+```
+MISW-PF-Grupo1-Web
+├─ .angular
+├─ .editorconfig
+├─ .gitignore
+├─ angular.json
+├─ cloudbuild.yaml
+├─ commands
+├─ cypress
+│  ├─ e2e
+│  │  ├─ register-service.spec.cy.ts
+│  │  └─ signin-user.spec.cy.ts
+│  ├─ fixtures
+│  │  └─ example.json
+│  ├─ page-objects
+│  │  ├─ auth
+│  │  │  └─ signin.ts
+│  │  └─ services
+│  │     └─ service.ts
+│  ├─ support
+│  │  ├─ commands.ts
+│  │  ├─ component-index.html
+│  │  ├─ component.ts
+│  │  └─ e2e.ts
+│  └─ tsconfig.json
+├─ cypress.config.ts
+├─ Dockerfile
+├─ nginx.conf
+├─ package-lock.json
+├─ package.json
+├─ README.md
+├─ run-tests.sh
+├─ server.ts
+├─ src
+│  ├─ app
+│  │  ├─ app.component.html
+│  │  ├─ app.component.scss
+│  │  ├─ app.component.spec.ts
+│  │  ├─ app.component.ts
+│  │  ├─ app.config.server.ts
+│  │  ├─ app.config.ts
+│  │  ├─ app.routes.ts
+│  │  ├─ core
+│  │  │  ├─ guards
+│  │  │  │  ├─ auth.guard.ts
+│  │  │  │  └─ provider.guard.ts
+│  │  │  ├─ interceptors
+│  │  │  │  └─ http-error.interceptor.ts
+│  │  │  ├─ models
+│  │  │  │  ├─ auth
+│  │  │  │  │  ├─ login.ts
+│  │  │  │  │  ├─ signin.ts
+│  │  │  │  │  └─ signup.ts
+│  │  │  │  └─ services
+│  │  │  │     ├─ register.ts
+│  │  │  │     └─ service.ts
+│  │  │  └─ services
+│  │  │     ├─ auth
+│  │  │     │  ├─ login.service.spec.ts
+│  │  │     │  ├─ login.service.ts
+│  │  │     │  ├─ signup.service.spec.ts
+│  │  │     │  └─ signup.service.ts
+│  │  │     └─ services
+│  │  │        ├─ register.service.spec.ts
+│  │  │        └─ register.service.ts
+│  │  ├─ features
+│  │  │  ├─ auth
+│  │  │  │  ├─ auth.routing.ts
+│  │  │  │  ├─ components
+│  │  │  │  │  ├─ signin-form
+│  │  │  │  │  │  ├─ signin-form.component.html
+│  │  │  │  │  │  ├─ signin-form.component.scss
+│  │  │  │  │  │  ├─ signin-form.component.spec.ts
+│  │  │  │  │  │  └─ signin-form.component.ts
+│  │  │  │  │  └─ signup-form
+│  │  │  │  │     ├─ signup-form.component.css
+│  │  │  │  │     ├─ signup-form.component.html
+│  │  │  │  │     ├─ signup-form.component.spec.ts
+│  │  │  │  │     └─ signup-form.component.ts
+│  │  │  │  └─ pages
+│  │  │  │     ├─ signin
+│  │  │  │     │  ├─ signin.component.html
+│  │  │  │     │  ├─ signin.component.scss
+│  │  │  │     │  ├─ signin.component.spec.ts
+│  │  │  │     │  └─ signin.component.ts
+│  │  │  │     └─ signup
+│  │  │  │        ├─ signup.component.css
+│  │  │  │        ├─ signup.component.html
+│  │  │  │        ├─ signup.component.spec.ts
+│  │  │  │        └─ signup.component.ts
+│  │  │  ├─ home
+│  │  │  │  ├─ components
+│  │  │  │  │  └─ card
+│  │  │  │  │     ├─ card.component.html
+│  │  │  │  │     ├─ card.component.scss
+│  │  │  │  │     ├─ card.component.spec.ts
+│  │  │  │  │     └─ card.component.ts
+│  │  │  │  ├─ home.routing.ts
+│  │  │  │  └─ pages
+│  │  │  │     └─ init
+│  │  │  │        ├─ init.component.html
+│  │  │  │        ├─ init.component.scss
+│  │  │  │        ├─ init.component.spec.ts
+│  │  │  │        └─ init.component.ts
+│  │  │  └─ services
+│  │  │     ├─ components
+│  │  │     │  └─ register-form
+│  │  │     │     ├─ register-form.component.html
+│  │  │     │     ├─ register-form.component.scss
+│  │  │     │     ├─ register-form.component.spec.ts
+│  │  │     │     └─ register-form.component.ts
+│  │  │     ├─ pages
+│  │  │     │  └─ register
+│  │  │     │     ├─ register.component.html
+│  │  │     │     ├─ register.component.scss
+│  │  │     │     ├─ register.component.spec.ts
+│  │  │     │     └─ register.component.ts
+│  │  │     └─ services.routing.ts
+│  │  └─ shared
+│  │     └─ components
+│  │        ├─ footer
+│  │        │  ├─ footer.component.html
+│  │        │  ├─ footer.component.scss
+│  │        │  ├─ footer.component.spec.ts
+│  │        │  └─ footer.component.ts
+│  │        ├─ headers
+│  │        │  ├─ headers.component.html
+│  │        │  ├─ headers.component.scss
+│  │        │  ├─ headers.component.spec.ts
+│  │        │  └─ headers.component.ts
+│  │        └─ not-found
+│  │           ├─ not-found.component.html
+│  │           ├─ not-found.component.scss
+│  │           ├─ not-found.component.spec.ts
+│  │           └─ not-found.component.ts
+│  ├─ assets
+│  │  ├─ .gitkeep
+│  │  └─ images
+│  │     ├─ home
+│  │     │  ├─ background.jpg
+│  │     │  ├─ home_ciclysm.jpg
+│  │     │  ├─ logo.jpg
+│  │     │  └─ user-avatar.png
+│  │     └─ not-found
+│  │        ├─ astronaut.svg
+│  │        └─ planet.svg
+│  ├─ environments
+│  │  ├─ environment.development.ts
+│  │  └─ environment.ts
+│  ├─ favicon.ico
+│  ├─ index.html
+│  ├─ locale
+│  │  ├─ messages.es.xlf
+│  │  └─ messages.xlf
+│  ├─ main.server.ts
+│  ├─ main.ts
+│  └─ styles.scss
+├─ tsconfig.app.json
+├─ tsconfig.json
+└─ tsconfig.spec.json
+
+```

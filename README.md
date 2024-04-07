@@ -36,7 +36,8 @@ A continuación se describen los diferentes pasos que hacen parte de este flujo:
 * Se realiza el despliegue en Cloud Run sport-app-angular
 
 En el siguiente Diagrama se puede observar el flujo descrito anteriormente:
- ![Flujo CI/CD Web](https://github.com/shiomar-salazar/MISW-PF-Grupo1-Web/assets/110913673/23d3c99d-83a4-46cd-a2ca-78e93f881417)
+
+ ![lujo CI/CD Web](https://github.com/shiomar-salazar/MISW-PF-Grupo1-Web/assets/110913673/bf035e85-8d8a-4179-b561-1e8c3543e3ee)
 
 ## Lanzar servidor de forma local
 

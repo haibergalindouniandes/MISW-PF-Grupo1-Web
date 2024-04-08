@@ -35,7 +35,7 @@ A continuación se describen los diferentes pasos que hacen parte de este flujo:
 * Se obtiene la imagen de Artifact Registry
 * Se realiza el despliegue en Cloud Run sport-app-angular
 
-> El flujo de CI/CD se detiene si se presenta error en la ejecución de los pasos.
+> El flujo de CI/CD se detiene si se presenta error en la ejecución de alguno de los pasos.
 
 En el siguiente Diagrama se puede observar el flujo descrito anteriormente:
 

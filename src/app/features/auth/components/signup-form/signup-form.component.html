@@ -7,51 +7,54 @@
         <div class="form-group col-md-6">
           <label for="inputUsuario" class="form-label">Usuario</label>
           <input type="text" class="form-control" id="inputUsuario" placeholder="micorreo@dominio.com" formControlName="inputUsuario">
-          <small *ngIf="serviceSignUpForm.get('inputUsuario')!.hasError('required') && (serviceSignUpForm.get('inputUsuario')!.dirty || serviceSignUpForm.get('inputUsuario')!.touched)" class="text-danger">Este campo es requerido!</small>
-          <small *ngIf="serviceSignUpForm.get('inputUsuario')!.hasError('pattern') && (serviceSignUpForm.get('inputUsuario')!.dirty || serviceSignUpForm.get('inputUsuario')!.touched)" class="text-danger">Este campo debe tener formato de email valido</small>
+          <div *ngIf="serviceSignUpForm.controls['inputUsuario'].invalid && (serviceSignUpForm.controls['inputUsuario'].dirty || serviceSignUpForm.controls['inputUsuario'].touched)" class="text-danger">
+            <small *ngIf="serviceSignUpForm.get('inputUsuario')!.hasError('required')" class="text-danger">Este campo es requerido!</small>
+            <small *ngIf="serviceSignUpForm.get('inputUsuario')!.hasError('pattern')" class="text-danger">Este campo debe tener formato de email valido</small>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputContrasena" class="form-label">Contrasena</label>
           <input type="password" class="form-control" id="inputContrasena" formControlName="inputContrasena">
           <div *ngIf="serviceSignUpForm.controls['inputContrasena'].invalid && (serviceSignUpForm.controls['inputContrasena'].dirty || serviceSignUpForm.controls['inputContrasena'].touched)" class="text-danger">
-            <small *ngIf="serviceSignUpForm.get('inputContrasena')!.hasError('required') && (serviceSignUpForm.get('inputContrasena')!.dirty || serviceSignUpForm.get('inputContrasena')!.touched)" class="text-danger">Este campo es requerido!</small>
-            <small *ngIf="serviceSignUpForm.get('inputContrasena')!.hasError('pattern') && (serviceSignUpForm.get('inputContrasena')!.dirty || serviceSignUpForm.get('inputContrasena')!.touched)" class="text-danger">Este campo debe tener minimo 8 caracteres (letras, numeros, guion o guion bajo unicamente)</small>
+            <small *ngIf="serviceSignUpForm.get('inputContrasena')!.hasError('required')" class="text-danger">Este campo es requerido!</small>
+            <small *ngIf="serviceSignUpForm.get('inputContrasena')!.hasError('pattern')" class="text-danger">Este campo debe tener entre 8 y 64 caracteres (no espacios, al menos una minuscula, mayuscula, digito y un caracter especial)</small>
           </div>
-
         </div>
         <div class="col-md-6">
           <label for="inputNombres" class="form-label">Nombres</label>
           <input type="text" class="form-control" id="inputNombres" formControlName="inputNombres">
           <div *ngIf="serviceSignUpForm.controls['inputNombres'].invalid && (serviceSignUpForm.controls['inputNombres'].dirty || serviceSignUpForm.controls['inputNombres'].touched)" class="text-danger">
-            <small *ngIf="serviceSignUpForm.controls['inputNombres'].errors?.['required']">Este campo es requerido!</small>
-            <small *ngIf="serviceSignUpForm.controls['inputNombres'].errors?.['minlength']">Este campo requiere minimo {{ serviceSignUpForm.controls['inputNombres'].errors?.['minlength'].requiredLength}} caracteres</small>
+            <small *ngIf="serviceSignUpForm.get('inputNombres')!.hasError('required')" class="text-danger">Este campo es requerido!</small>
+            <small *ngIf="serviceSignUpForm.get('inputNombres')!.hasError('pattern')" class="text-danger">Este campo requiere entre 4 y 30 caracteres alfabeticos</small>
           </div>
         </div>
         <div class="col-md-6">
           <label for="inputPeso" class="form-label">Peso</label>
           <input type="text" class="form-control" id="inputPeso" placeholder="valor en kilogramos" formControlName="inputPeso">
-          <small *ngIf="serviceSignUpForm.get('inputPeso')!.hasError('required') && (serviceSignUpForm.get('inputPeso')!.dirty || serviceSignUpForm.get('inputPeso')!.touched)" class="text-danger">Este campo es requerido!</small>
-          <small *ngIf="serviceSignUpForm.get('inputPeso')!.hasError('pattern') && (serviceSignUpForm.get('inputPeso')!.dirty || serviceSignUpForm.get('inputPeso')!.touched)" class="text-danger">Este campo es numerico!</small>
-          <small *ngIf="serviceSignUpForm.get('inputPeso')!.hasError('min') && (serviceSignUpForm.get('inputPeso')!.dirty || serviceSignUpForm.get('inputPeso')!.touched)" class="text-danger">El valor minimo de este campo es 40 kilogramos</small>
-          <small *ngIf="serviceSignUpForm.get('inputPeso')!.hasError('max') && (serviceSignUpForm.get('inputPeso')!.dirty || serviceSignUpForm.get('inputPeso')!.touched)" class="text-danger">El valor maximo de este campo es 500 kilogramos</small>
+          <div *ngIf="serviceSignUpForm.controls['inputPeso'].invalid && (serviceSignUpForm.controls['inputPeso'].dirty || serviceSignUpForm.controls['inputPeso'].touched)" class="text-danger">
+            <small *ngIf="serviceSignUpForm.get('inputPeso')!.hasError('required')" class="text-danger">Este campo es requerido!</small>
+            <small *ngIf="serviceSignUpForm.get('inputPeso')!.hasError('pattern')" class="text-danger">Este campo es numerico (usar punto como separador decimal). </small>
+            <small *ngIf="serviceSignUpForm.get('inputPeso')!.hasError('min')" class="text-danger">El valor minimo de este campo es 40 kilogramos</small>
+            <small *ngIf="serviceSignUpForm.get('inputPeso')!.hasError('max')" class="text-danger">El valor maximo de este campo es 500 kilogramos</small>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputApellidos" class="form-label">Apellidos</label>
           <input type="text" class="form-control" id="inputApellidos" formControlName="inputApellidos">
           <div *ngIf="serviceSignUpForm.controls['inputApellidos'].invalid && (serviceSignUpForm.controls['inputApellidos'].dirty || serviceSignUpForm.controls['inputApellidos'].touched)" class="text-danger">
-            <small *ngIf="serviceSignUpForm.controls['inputApellidos'].errors?.['required']">Este campo es requerido!</small>
-            <small *ngIf="serviceSignUpForm.controls['inputApellidos'].errors?.['minlength']">
-              Este campo requiere minimo {{ serviceSignUpForm.controls['inputApellidos'].errors?.['minlength'].requiredLength}} caracteres
-            </small>
+            <small *ngIf="serviceSignUpForm.get('inputApellidos')!.hasError('required')" class="text-danger">Este campo es requerido!</small>
+            <small *ngIf="serviceSignUpForm.get('inputApellidos')!.hasError('pattern')" class="text-danger">Este campo requiere entre 4 y 30 caracteres alfabeticos</small>
           </div>
         </div>
         <div class="col-md-6">
           <label for="inputEdad" class="form-label">Edad</label>
           <input type="text" class="form-control" id="inputEdad" formControlName="inputEdad">
-          <small *ngIf="serviceSignUpForm.get('inputEdad')!.hasError('required') && (serviceSignUpForm.get('inputEdad')!.dirty || serviceSignUpForm.get('inputEdad')!.touched)" class="text-danger">Este campo es requerido!</small>
-          <small *ngIf="serviceSignUpForm.get('inputEdad')!.hasError('pattern') && (serviceSignUpForm.get('inputEdad')!.dirty || serviceSignUpForm.get('inputEdad')!.touched)" class="text-danger">Este campo es numerico!</small>
-          <small *ngIf="serviceSignUpForm.get('inputEdad')!.hasError('min') && (serviceSignUpForm.get('inputEdad')!.dirty || serviceSignUpForm.get('inputEdad')!.touched)" class="text-danger">El valor minimo de este campo es 18 años</small>
-          <small *ngIf="serviceSignUpForm.get('inputEdad')!.hasError('max') && (serviceSignUpForm.get('inputEdad')!.dirty || serviceSignUpForm.get('inputEdad')!.touched)" class="text-danger">El valor maximo de este campo es 90 años</small>
+          <div *ngIf="serviceSignUpForm.controls['inputEdad'].invalid && (serviceSignUpForm.controls['inputEdad'].dirty || serviceSignUpForm.controls['inputEdad'].touched)" class="text-danger">
+            <small *ngIf="serviceSignUpForm.get('inputEdad')!.hasError('required')" class="text-danger">Este campo es requerido!</small>
+            <small *ngIf="serviceSignUpForm.get('inputEdad')!.hasError('pattern')" class="text-danger">Este campo es numerico (entero)</small>
+            <small *ngIf="serviceSignUpForm.get('inputEdad')!.hasError('min')" class="text-danger">El valor minimo de este campo es 18 años</small>
+            <small *ngIf="serviceSignUpForm.get('inputEdad')!.hasError('max')" class="text-danger">El valor maximo de este campo es 90 años</small>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputTipoDoc" class="form-label">Tipo de Documento</label>
@@ -63,16 +66,20 @@
         <div class="col-md-6">
           <label for="inputAltura" class="form-label">Altura</label>
           <input type="text" class="form-control" id="inputAltura" placeholder="valor en centimetros" formControlName="inputAltura">
-          <small *ngIf="serviceSignUpForm.get('inputAltura')!.hasError('required') && (serviceSignUpForm.get('inputAltura')!.dirty || serviceSignUpForm.get('inputAltura')!.touched)" class="text-danger">Este campo es requerido!</small>
-          <small *ngIf="serviceSignUpForm.get('inputAltura')!.hasError('pattern') && (serviceSignUpForm.get('inputAltura')!.dirty || serviceSignUpForm.get('inputAltura')!.touched)" class="text-danger">Este campo es numerico!</small>
-          <small *ngIf="serviceSignUpForm.get('inputAltura')!.hasError('min') && (serviceSignUpForm.get('inputAltura')!.dirty || serviceSignUpForm.get('inputAltura')!.touched)" class="text-danger">El valor minimo de este campo es 130 centimetros</small>
-          <small *ngIf="serviceSignUpForm.get('inputAltura')!.hasError('max') && (serviceSignUpForm.get('inputAltura')!.dirty || serviceSignUpForm.get('inputAltura')!.touched)" class="text-danger">El valor maximo de este campo es 230 centimetros</small>
+          <div *ngIf="serviceSignUpForm.controls['inputAltura'].invalid && (serviceSignUpForm.controls['inputAltura'].dirty || serviceSignUpForm.controls['inputAltura'].touched)" class="text-danger">
+            <small *ngIf="serviceSignUpForm.get('inputAltura')!.hasError('required')" class="text-danger">Este campo es requerido!</small>
+            <small *ngIf="serviceSignUpForm.get('inputAltura')!.hasError('pattern')" class="text-danger">Este campo es numerico (usar punto como separador decimal). </small>
+            <small *ngIf="serviceSignUpForm.get('inputAltura')!.hasError('min')" class="text-danger">El valor minimo de este campo es 130 centimetros</small>
+            <small *ngIf="serviceSignUpForm.get('inputAltura')!.hasError('max')" class="text-danger">El valor maximo de este campo es 230 centimetros</small>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputNumDoc" class="form-label">Numero de Documento</label>
           <input type="text" class="form-control" id="inputNumDoc" formControlName="inputNumDoc">
-          <small *ngIf="serviceSignUpForm.get('inputNumDoc')!.hasError('required') && (serviceSignUpForm.get('inputNumDoc')!.dirty || serviceSignUpForm.get('inputNumDoc')!.touched)" class="text-danger">Este campo es requerido!</small>
-          <small *ngIf="serviceSignUpForm.get('inputNumDoc')!.hasError('pattern') && (serviceSignUpForm.get('inputNumDoc')!.dirty || serviceSignUpForm.get('inputNumDoc')!.touched)" class="text-danger">Este campo debe tener 8 caracteres alfanumericos</small>
+          <div *ngIf="serviceSignUpForm.controls['inputNumDoc'].invalid && (serviceSignUpForm.controls['inputNumDoc'].dirty || serviceSignUpForm.controls['inputNumDoc'].touched)" class="text-danger">
+            <small *ngIf="serviceSignUpForm.get('inputNumDoc')!.hasError('required')" class="text-danger">Este campo es requerido!</small>
+            <small *ngIf="serviceSignUpForm.get('inputNumDoc')!.hasError('pattern')" class="text-danger">Este campo debe tener 8 caracteres numericos</small>
+          </div>
         </div>
         <div class="col-md-3">
           <label for="inputPaisNac" class="form-label">Pais de Nacimiento</label>
@@ -131,9 +138,12 @@
         <div class="col-md-6">
           <label for="inputAntiguedad" class="form-label">Antiguedad</label>
           <input type="text" class="form-control" id="inputAntiguedad" placeholder="valor en meses" formControlName="inputAntiguedad">
-          <small *ngIf="serviceSignUpForm.get('inputAntiguedad')!.hasError('required') && (serviceSignUpForm.get('inputAntiguedad')!.dirty || serviceSignUpForm.get('inputAntiguedad')!.touched)" class="text-danger">Este campo es requerido!</small>
-          <small *ngIf="serviceSignUpForm.get('inputAntiguedad')!.hasError('min') && (serviceSignUpForm.get('inputAntiguedad')!.dirty || serviceSignUpForm.get('inputAntiguedad')!.touched)" class="text-danger">El valor minimo de este campo es 1 mes</small>
-          <small *ngIf="serviceSignUpForm.get('inputAntiguedad')!.hasError('max') && (serviceSignUpForm.get('inputAntiguedad')!.dirty || serviceSignUpForm.get('inputAntiguedad')!.touched)" class="text-danger">El valor maximo de este campo es 900 meses</small>
+          <div *ngIf="serviceSignUpForm.controls['inputAntiguedad'].invalid && (serviceSignUpForm.controls['inputAntiguedad'].dirty || serviceSignUpForm.controls['inputAntiguedad'].touched)" class="text-danger">
+            <small *ngIf="serviceSignUpForm.get('inputAntiguedad')!.hasError('required')" class="text-danger">Este campo es requerido!</small>
+            <small *ngIf="serviceSignUpForm.get('inputAntiguedad')!.hasError('pattern')" class="text-danger">Este campo es numerico (entero)</small>
+            <small *ngIf="serviceSignUpForm.get('inputAntiguedad')!.hasError('min')" class="text-danger">El valor minimo de este campo es 1 mes</small>
+            <small *ngIf="serviceSignUpForm.get('inputAntiguedad')!.hasError('max')" class="text-danger">El valor maximo de este campo es 900 meses</small>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="inputTipoPlan" class="form-label">Tipo de Plan</label>

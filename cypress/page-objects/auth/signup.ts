@@ -174,8 +174,6 @@ export class Signup {
     this.getInputAntiguedad().should('be.visible');
     this.getInputTipoPlan().should('be.visible');
     this.getInputTipoUsuario().should('be.visible');
-    // this.getButtonRegister().should('be.visible');
-    // this.getButtonCancel().should('be.visible');
   }
 
   private fillRegisterServiceForm(usuario: string, contrasena: string, nombres: string, peso: string, apellidos: string, edad: string, altura: string, num_doc: string, antiguedad: string) {
@@ -200,8 +198,8 @@ export class Signup {
   shouldSigninSuccess(usuario: string, contrasena: string, nombres: string, peso: string, apellidos: string, edad: string, altura: string, num_doc: string, antiguedad: string) {
     this.shouldHaveUserRegisterForm();
     this.fillRegisterServiceForm(usuario, contrasena, nombres, peso, apellidos, edad, altura, num_doc, antiguedad);
-    // cy.wait(1000);
-    // this.validateToastSuccessConfirmation('Se creo usuario exitosamente!')
+    cy.wait(1000);
+    this.validateToastSuccessConfirmation('Se creo usuario exitosamente!')
   }
 
   shouldValidateMessagesErrorInForm(count: number) {

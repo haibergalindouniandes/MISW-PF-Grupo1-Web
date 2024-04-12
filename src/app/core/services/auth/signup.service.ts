@@ -9,7 +9,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class SignupService {
 
-  public apiUrl: string = environment.baseUrlUsers + 'crear-usuario';
+  public apiUrl: string = environment.baseUrlUsers + 'usuarios';
   public headers = new HttpHeaders({ 'X-API-Key': 'a033d2c0' });
 
   constructor(private http: HttpClient) { }

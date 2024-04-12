@@ -3,3 +3,10 @@ h1 {
   padding-top: 5px;
   padding-bottom: 10px;
 }
+#user-registration-form {
+  max-height: 70%;
+  overflow-y: scroll;
+}
+#user-registration-form::-webkit-scrollbar {
+  width: 12px;
+}

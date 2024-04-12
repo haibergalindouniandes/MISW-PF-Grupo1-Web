@@ -39,13 +39,13 @@ export class SignupFormComponent implements OnInit {
   ngOnInit() {
     this.serviceSignUpForm = this.fb.group({
       inputUsuario: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-_\.]+@([a-zA-Z0-9-_]+\.)+[a-zA-Z0-9-_]{2,4}$')]],
-      inputContrasena: ['', [Validators.required, Validators.pattern('^([a-zA-Z0-9-_]{8,})$')]],
-      inputNombres: ['', [Validators.required, Validators.minLength(4)]],
-      inputPeso: ['', [Validators.required, Validators.min(40), Validators.max(500), Validators.pattern('^([0-9]+)$')]],
-      inputApellidos: ['', [Validators.required, Validators.minLength(4)]],
+      inputContrasena: ['', [Validators.required, Validators.pattern('^(?!.* )(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,64}$')]],
+      inputNombres: ['', [Validators.required, Validators.pattern('^[a-zA-Z]{4}([( )a-zA-Z]){0,26}$')]],
+      inputPeso: ['', [Validators.required, Validators.min(40), Validators.max(500), Validators.pattern('^(?=.*?[0-9])[0-9]*[.]?[0-9]*$')]],
+      inputApellidos: ['', [Validators.required, Validators.pattern('^[a-zA-Z]{4}([( )a-zA-Z]){0,26}$')]],
       inputEdad: ['', [Validators.required, Validators.min(18), Validators.max(90), Validators.pattern('^([0-9]+)$')]],
-      inputAltura: ['', [Validators.required, Validators.min(130), Validators.max(230), Validators.pattern('^([0-9]+)$')]],
-      inputNumDoc: ['', [Validators.required, Validators.pattern('^([a-zA-Z0-9]{8})$')]],
+      inputAltura: ['', [Validators.required, Validators.min(130), Validators.max(230), Validators.pattern('^(?=.*?[0-9])[0-9]*[.]?[0-9]*$')]],
+      inputNumDoc: ['', [Validators.required, Validators.pattern('^([0-9]{8})$')]],
       inputAntiguedad: ['', [Validators.required, Validators.min(1), Validators.max(900), Validators.pattern('^([0-9]+)$')]]
     });
 
@@ -129,11 +129,11 @@ export class SignupFormComponent implements OnInit {
         data.inputUsuario,
         data.inputContrasena,
         data.inputNombres,
-        parseInt(data.inputPeso),
+        parseFloat(data.inputPeso),
         data.inputApellidos,
         parseInt(data.inputEdad),
         this.tipo_documento,
-        parseInt(data.inputAltura),
+        parseFloat(data.inputAltura),
         data.inputNumDoc,
         this.pais_nacimiento,
         this.ciudad_nacimiento,
@@ -145,11 +145,12 @@ export class SignupFormComponent implements OnInit {
         this.tipo_plan,
         this.tipo_usuario
       );
-      /* istanbul ignore next */
+      console.log(signupService)
       this.SignupService.signUp(signupService)
       .subscribe(createUserSucess => {
         this.toastr.success('Confirmation', 'Se creo usuario exitosamente!', { closeButton: true });
         this.serviceSignUpForm.reset();
+        this.reset_checkboxes(false, false, false)
         console.log(createUserSucess);
       })
     }

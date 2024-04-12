@@ -9,6 +9,7 @@ export class Register {
   lugar: string;
   fecha: string;
   id_usuario: string;
+  horario: string[];
 
   constructor(
     nombre: string,
@@ -19,7 +20,8 @@ export class Register {
     numero_maximo_participantes: number,
     lugar: string,
     fecha: string,
-    id_usuario: string
+    id_usuario: string,
+    horario: string[]
   ) {
     this.nombre = nombre;
     this.descripcion = descripcion;
@@ -30,5 +32,6 @@ export class Register {
     this.lugar = lugar;
     this.fecha = fecha;
     this.id_usuario = id_usuario;
+    this.horario = horario;
   }
 }

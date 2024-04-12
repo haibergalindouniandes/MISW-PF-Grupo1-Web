@@ -32,8 +32,12 @@ export class Service {
     return cy.get('#date');
   }
 
-  private getInputTime() {
-    return cy.get('#time');
+  private getInputTimeStart() {
+    return cy.get('#timeStart');
+  }
+
+  private getInputTimeEnd() {
+    return cy.get('#timeEnd');
   }
 
   private getInputMinimumNumberParticipants() {
@@ -84,8 +88,12 @@ export class Service {
     this.getInputDate().clear().type(date);
   }
 
-  private setInputTime(time: string) {
-    this.getInputTime().clear().type(time);
+  private setInputTimeStart(time: string) {
+    this.getInputTimeStart().clear().type(time);
+  }
+
+  private setInputTimeEnd(time: string) {
+    this.getInputTimeEnd().clear().type(time);
   }
 
   private setInputMinimumNumberParticipants(participants: string) {
@@ -124,20 +132,22 @@ export class Service {
     this.getInputCost().should('be.visible');
     this.getInputPlace().should('be.visible');
     this.getInputDate().should('be.visible');
-    this.getInputTime().should('be.visible');
+    this.getInputTimeStart().should('be.visible');
+    this.getInputTimeEnd().should('be.visible');
     this.getInputMinimumNumberParticipants().should('be.visible');
     this.getInputMaximumNumberParticipants().should('be.visible');
     this.getInputFrequency().should('be.visible');
     this.getButtonCancel().should('be.visible');
   }
 
-  private fillRegisterServiceForm(name: string, description: string, cost: string, place: string, date: string, time: string, minParticipants: string, maxParticipants: string, frequency: string) {
+  private fillRegisterServiceForm(name: string, description: string, cost: string, place: string, date: string, timeStart: string, timeEnd: string,minParticipants: string, maxParticipants: string, frequency: string) {
     this.setInputName(name);
     this.setInputDescription(description);
     this.setInputCost(cost);
     this.setInputPlace(place);
     this.setInputDate(date),
-    this.setInputTime(time);
+    this.setInputTimeStart(timeStart);
+    this.setInputTimeEnd(timeEnd);
     this.setInputMinimumNumberParticipants(minParticipants);
     this.setInputMaximumNumberParticipants(maxParticipants);
     this.setInputFrequency(frequency);
@@ -149,10 +159,10 @@ export class Service {
     this.getToastSuccessConfirmation().contains(content);
   }
 
-  shouldSigninSuccess(name: string, description: string, cost: string, place: string, date: string, time: string, minParticipants: string, maxParticipants: string, frequency: string) {
+  shouldRegisterServiceSuccess(name: string, description: string, cost: string, place: string, date: string, timeStart: string, timeEnd: string,minParticipants: string, maxParticipants: string, frequency: string) {
     this.shouldHaveADropdownServices();
     this.shouldHaveARegisterServiceForm();
-    this.fillRegisterServiceForm(name, description, cost, place, date, time, minParticipants, maxParticipants, frequency);
+    this.fillRegisterServiceForm(name, description, cost, place, date, timeStart, timeEnd, minParticipants, maxParticipants, frequency);
     cy.wait(1000);
     this.validateToastSuccessConfirmation('Se registro servicio exitosamente')
   }

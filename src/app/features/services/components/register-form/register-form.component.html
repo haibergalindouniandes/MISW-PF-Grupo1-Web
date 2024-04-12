@@ -54,20 +54,30 @@
       <div class="col">
         <!-- Date of service and Time of service input-->
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <label for="date" i18n>Date of service</label>
             <input type="date" id="date" class="form-control" formControlName="date">
           </div>
-          <div class="col-md-6">
-              <label for="time" i18n>Time of service</label>
-              <input type="time" id="time" class="form-control" formControlName="time">
-          </div>
+          <div class="col-md-4">
+              <label for="timeStart">Hora Inicio</label>
+              <input type="time" id="timeStart" class="form-control" [(ngModel)]="timeStart" formControlName="timeStart">
+            </div>
+            <div class="col-md-4">
+              <label for="timeEnd">Hora Fin</label>
+              <input type="time" id="timeEnd" class="form-control" [(ngModel)]="timeEnd" formControlName="timeEnd">
+            </div>
         </div>
         <div *ngIf="serviceRegistrationForm.controls['date'].invalid && (serviceRegistrationForm.controls['date'].dirty || serviceRegistrationForm.controls['date'].touched)" class="text-danger">
           <small *ngIf="serviceRegistrationForm.controls['date']?.errors?.['required']" i18n>Date of service is required!</small>
         </div>
-        <div *ngIf="serviceRegistrationForm.controls['time'].invalid && (serviceRegistrationForm.controls['time'].dirty || serviceRegistrationForm.controls['time'].touched)" class="text-danger">
-          <small *ngIf="serviceRegistrationForm.controls['time']?.errors?.['required']" i18n>Time of service is required!</small>
+        <div *ngIf="serviceRegistrationForm.controls['timeStart'].invalid && (serviceRegistrationForm.controls['timeStart'].dirty || serviceRegistrationForm.controls['timeStart'].touched)" class="text-danger">
+          <small *ngIf="serviceRegistrationForm.controls['timeStart']?.errors?.['required']">La hora de inicio es requerida!</small>
+        </div>
+        <div *ngIf="serviceRegistrationForm.controls['timeEnd'].invalid && (serviceRegistrationForm.controls['timeEnd'].dirty || serviceRegistrationForm.controls['timeEnd'].touched)" class="text-danger">
+          <small *ngIf="serviceRegistrationForm.controls['timeEnd']?.errors?.['required']">La hora fin es requerida!</small>
+        </div>
+        <div *ngIf="serviceRegistrationForm.controls['timeEnd'].invalid && (serviceRegistrationForm.controls['timeEnd'].dirty || serviceRegistrationForm.controls['timeEnd'].touched)" class="text-danger">
+          <small *ngIf="serviceRegistrationForm.controls['timeEnd']?.errors?.['invalidRange']">El tiempo de finalización debe ser igual o mayor al tiempo de inicio!</small>
         </div>
         <!-- Minimum number of participants input-->
         <label for="minimum_number_participants" i18n>Minimum number of participants</label>

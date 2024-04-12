@@ -16,7 +16,9 @@ export class RegisterFormComponent implements OnInit {
 
   serviceRegistrationForm!: FormGroup;
   dateValue = this.getFormattedDate();
-  timeValue = '06:00';
+  timeStart: string = '06:00:00';
+  timeEnd: string = '06:00:00';
+  rangeHours: string[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -34,13 +36,15 @@ export class RegisterFormComponent implements OnInit {
       maximum_number_participants: ['', [Validators.required, Validators.minLength(1)]],
       place: ['', [Validators.required, Validators.minLength(6)]],
       date: ['', [Validators.required, this.dateValidator]],
-      time: ['', [Validators.required]],
-    });
+      timeStart: ['', [Validators.required]],
+      timeEnd: ['', [Validators.required, this.timeValidation]],
+    }, { validator: this.timeValidation });
     this.setDateTimeDefaultValues();
   }
 
   registerService() {
     if (this.serviceRegistrationForm.valid) {
+      this.generateRangeHours();
       let data = this.serviceRegistrationForm.value;
       let registerService = new Register(
         data.name,
@@ -50,17 +54,23 @@ export class RegisterFormComponent implements OnInit {
         parseInt(data.minimum_number_participants),
         parseInt(data.maximum_number_participants),
         data.place,
-        data.date + ' ' + data.time + ':00',
-        sessionStorage.getItem('user_id')!
+        data.date,
+        sessionStorage.getItem('user_id')!,
+        this.rangeHours
       );
       /* istanbul ignore next */
       this.RegisterService.registerService(registerService)
-      .subscribe(registerSucess => {
-        this.toastr.success('Confirmation', 'Se registro servicio exitosamente!', { closeButton: true });
-        this.serviceRegistrationForm.reset();
-        console.log(registerSucess);
-      })
+        .subscribe(registerSucess => {
+          this.toastr.success('Confirmation', 'Se registro servicio exitosamente!', { closeButton: true });
+          this.serviceRegistrationForm.reset();
+          console.log(registerSucess);
+        })
     }
+  }
+
+  cancel() {
+    this.serviceRegistrationForm.reset();
+    this.setDateTimeDefaultValues();
   }
 
   getFormattedDate(): string {
@@ -85,13 +95,33 @@ export class RegisterFormComponent implements OnInit {
 
   setDateTimeDefaultValues() {
     this.serviceRegistrationForm.get('date')?.setValue(this.getFormattedDate());
-    this.serviceRegistrationForm.get('time')?.setValue('06:00');
+    this.serviceRegistrationForm.get('timeStart')?.setValue('06:00:00');
+    this.serviceRegistrationForm.get('timeEnd')?.setValue('07:00:00');
   }
 
-  cancel() {
-    this.serviceRegistrationForm.reset();
-    this.setDateTimeDefaultValues();
+  generateRangeHours() {
+    this.rangeHours = [];
+    const timeStart = new Date();
+    timeStart.setHours(parseInt(this.timeStart.split(':')[0]), parseInt(this.timeStart.split(':')[1]), 0);
+    const timeEnd = new Date();
+    timeEnd.setHours(parseInt(this.timeEnd.split(':')[0]), parseInt(this.timeEnd.split(':')[1]), 0);
+    while (timeStart <= timeEnd) {
+      const formattedtime = timeStart.toLocaleTimeString('es-CO');
+      this.rangeHours.push(formattedtime);
+      timeStart.setMinutes(timeStart.getMinutes() + 60);
+    }
   }
 
+  timeValidation(group: FormGroup) {
+    const timeStart = group.get('timeStart')?.value;
+    const timeEnd = group.get('timeEnd')?.value;
+    if (timeStart && timeEnd) {
+      if (timeStart <= timeEnd) {
+        group.get('timeEnd')?.setErrors(null);
+      } else {
+        group.get('timeEnd')?.setErrors({ invalidRange: true });
+      }
+    }
+  }
 
 }

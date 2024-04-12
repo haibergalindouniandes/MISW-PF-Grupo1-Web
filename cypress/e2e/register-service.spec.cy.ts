@@ -6,8 +6,8 @@ import { addDays, format } from 'date-fns';
 describe('Registration service e2e test', () => {
   it('Should validate the form fields so that they are not left empty', () => {
     // Asignacion de credenciales
-    let email = 'prestador0001'
-    let password = 'prestador0001'
+    let email = 'prestador2024@uniandes.edu.co'
+    let password = 'Prestador2*24'
     // Ejecución de Login
     const poSignin = new Signin();
     poSignin.visit('/auth/signin')
@@ -21,8 +21,8 @@ describe('Registration service e2e test', () => {
 
   it('Should allow you to register a service successfully', () => {
     // Asignacion de credenciales
-    let email = 'prestador0001'
-    let password = 'prestador0001'
+    let email = 'prestador2024@uniandes.edu.co'
+    let password = 'Prestador2*24'
     // Ejecución de Login
     const poSignin = new Signin();
     poSignin.visit('/auth/signin')
@@ -39,13 +39,14 @@ describe('Registration service e2e test', () => {
     let serviceDescription = `Carrera benefica a favor de los niños de cancer, se iniciara en ${servicePlace} atravesando diversas calles ...`;
     let serviceCost = `${randomValueCost.toFixed(2)} COP`;
     let serviceDate = format(futureDate, 'yyyy-MM-dd');
-    let serviceTime = '08:00';
+    let serviceTimeStart = '06:00:00';
+    let serviceTimeEnd = '09:00:00';
     let serviceMinParticipants = 1;
     let serviceMaxParticipants = randomValueMaximumOfPaticipants.toFixed(0);
     let serviceFrecuency = frequency[randomFrecuencyIndex];
     // Ejecución del registro de servicio
     let poRegisterService = new Service();
     poRegisterService.visit('/services/register');
-    poRegisterService.shouldSigninSuccess(serviceName, serviceDescription, serviceCost, servicePlace, serviceDate, serviceTime, serviceMinParticipants.toString(), serviceMaxParticipants.toString(), serviceFrecuency)
+    poRegisterService.shouldRegisterServiceSuccess(serviceName, serviceDescription, serviceCost, servicePlace, serviceDate, serviceTimeStart, serviceTimeEnd, serviceMinParticipants.toString(), serviceMaxParticipants.toString(), serviceFrecuency);
   })
 });

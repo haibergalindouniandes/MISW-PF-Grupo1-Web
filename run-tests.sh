@@ -42,7 +42,8 @@ fi
 echo "<================== [Fin][Exitoso] Levantamiento del proyecto Angular ==================>"
 ####################################################################################################################################
 echo "<================== [Inicio] Ejecución de pruebas e2e ==================>"
-npx cypress run --headless > $TEST_PATH/$E2E_FILE
+# npx cypress run --headless > $TEST_PATH/$E2E_FILE
+npx cypress run --headless --config viewportWidth=1920,viewportHeight=1080 > $TEST_PATH/$E2E_FILE
 cat $TEST_PATH/$E2E_FILE
 if grep -q "AssertionError" $TEST_PATH/$E2E_FILE; then
   echo "Error: Se presetaron fallas en la ejecución de las pruebas e2e"

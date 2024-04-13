@@ -28,7 +28,7 @@ export class SignupFormComponent implements OnInit {
   otros_deportes: Boolean = false
   deportes: Array<string> = []
   tipo_plan: string = 'Basico'
-  tipo_usuario: string = 'Deportista'
+  tipo_usuario: string = 'Usuario'
 
   constructor(
     private fb: FormBuilder,
@@ -93,7 +93,7 @@ export class SignupFormComponent implements OnInit {
       this.tipo_usuario = 'Proveedor'
     }
     else {
-      this.tipo_usuario = 'Deportista'
+      this.tipo_usuario = 'Usuario'
     }
   }
 

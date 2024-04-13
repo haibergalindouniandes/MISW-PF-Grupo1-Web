@@ -10,12 +10,17 @@ import { environment } from '../../../../environments/environment';
 })
 export class LoginService {
 
-  public apiUrl: string = environment.baseUrlUsers + 'usuarios/login';
-  public headers = new HttpHeaders({ 'X-API-Key': 'a033d2c0' });
+  private apiUrl: string = environment.baseUrlUsers + 'usuarios/login';
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
 
   signIn(credentials: Signin): Observable<Login> {
+    console.log(new Date() + "::::::::: " + "llamado servicio Login");
+    console.log(new Date() + ": " + credentials);
+    console.log(new Date() + ": " + credentials.email);
+    console.log(new Date() + ": " + credentials.password);
+    console.log(new Date() + ": " + this.apiUrl);
     return this.http.post<Login>(this.apiUrl, credentials, { headers: this.headers });
   }
 }

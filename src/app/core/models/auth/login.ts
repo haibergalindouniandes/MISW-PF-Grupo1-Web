@@ -4,6 +4,7 @@ export class Login {
   tipo_plan: string;
   tipo_usuario: string;
   token: string;
+  
 
   constructor(
     id: string,

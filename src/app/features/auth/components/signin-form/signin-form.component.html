@@ -8,13 +8,24 @@
         <div class="card-body">
           <form [formGroup]="signInForm">
             <div class="mb-3">
-              <label for="email" class="form-label" i18n>Email</label>
-              <input type="email" class="form-control" formControlName="email" id="email" aria-describedby="emailHelp"
-                placeholder="prueba20224@gmail.com">
+              <label for="email" class="form-label" i18n>email</label>
+              <input type="email" class="form-control"  id="inpt-email" aria-describedby="emailHelp"
+                placeholder="email@mail.com" formControlName="email"/>
+                <div *ngIf="signInForm.controls['email'].invalid && signInForm.controls['email'].touched || signInForm.controls['email'].dirty">
+                  <small *ngIf="signInForm.get('email')!.hasError('required')" class="text-danger">Email es requerido</small>
+                  <!--question mark(?) is a safe navigation operator-->
+                  <small *ngIf="signInForm.get('email')!.hasError('pattern')" class="text-danger">Ingrese un email</small>
+                </div>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label" i18n>Password</label>
-              <input type="password" class="form-control" formControlName="password" id="password" placeholder="***************">
+              <input type="password" class="form-control" id="inpt-password" placeholder="***************" 
+              formControlName="password"/>
+              <div *ngIf="signInForm.controls['password'].invalid && signInForm.controls['password'].touched || signInForm.controls['password'].dirty">
+                <small *ngIf="signInForm.get('password')!.hasError('required')" class="text-danger">Contraseña es requerido</small>
+                <!--question mark(?) is a safe navigation operator-->
+                <small *ngIf="signInForm.get('password')!.hasError('pattern')" class="text-danger">Imgrese contraseñavalida</small>
+              </div>
             </div>
             <div class="d-grid gap-2">
               <button class="btn btn-primary" type="submit" (click)="signIn(signInForm.value)" id="btn-login" i18n>Login</button>

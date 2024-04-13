@@ -29,7 +29,7 @@ describe('SigninFormComponent', () => {
   });
 
   it('Should call signIn method with correct parameters', () => {
-    const signIn: Signin = { email: 'test@example.com', password: 'password' };
+    const signIn: Signin = { email: 'test@example.com', password: 'Password123,*' };
     const signInServiceSpy = spyOn(loginService, 'signIn').and.callThrough();
     component.signIn(signIn);
     expect(signInServiceSpy).toHaveBeenCalledWith(new Signin(signIn.email, signIn.password));

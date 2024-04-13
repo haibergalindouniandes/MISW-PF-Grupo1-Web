@@ -28,15 +28,17 @@ export class SigninFormComponent {
   ) { }
 
   signIn(signIn: Signin) {
+    console.log(new Date() + ": " + this.email);
+    console.log(new Date() + ": " + this.password);
     let userLogin = new Signin(signIn.email, signIn.password);
     /* istanbul ignore next */
     this.signingService.signIn(userLogin)
       .subscribe(signInSuccess => {
-        sessionStorage.setItem('username', signInSuccess.nombres);
-        sessionStorage.setItem('user_id', signInSuccess.id);
+        sessionStorage.setItem('nombres', signInSuccess.nombres);
+        sessionStorage.setItem('user_id', signInSuccess.id.toString());
         sessionStorage.setItem('rol', signInSuccess.tipo_usuario);
         sessionStorage.setItem('token', signInSuccess.token);
-        this.toastr.success('Confirmation', '¡¡¡ Bienvenido ' + sessionStorage.getItem('username') + ' !!!', { closeButton: true });
+        this.toastr.success('Confirmation', '¡¡¡ Bienvenido ' + sessionStorage.getItem('nombres') + ' !!!', { closeButton: true });
         this.signInForm.reset();
         this.router.navigate(['/'])
       })
@@ -44,8 +46,8 @@ export class SigninFormComponent {
 
   ngOnInit() {
     this.signInForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      email: ['', [Validators.required, Validators.email,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      password: ['', [Validators.required, Validators.minLength(8),Validators.pattern("^(?!.* )(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,64}$")]]
     });
   }
 }

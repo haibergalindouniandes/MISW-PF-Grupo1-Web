@@ -171,6 +171,7 @@ export class Signup {
     this.getCheckboxCiclismo().should('be.visible');
     this.getCheckboxAtletismo().should('be.visible');
     this.getCheckboxOtrosDeportes().should('be.visible');
+    this.getInputAntiguedad().scrollIntoView();
     this.getInputAntiguedad().should('be.visible');
     this.getInputTipoPlan().should('be.visible');
     this.getInputTipoUsuario().should('be.visible');

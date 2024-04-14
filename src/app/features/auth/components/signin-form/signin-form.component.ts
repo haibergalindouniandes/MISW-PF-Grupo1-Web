@@ -34,11 +34,11 @@ export class SigninFormComponent {
     /* istanbul ignore next */
     this.signingService.signIn(userLogin)
       .subscribe(signInSuccess => {
-        sessionStorage.setItem('nombres', signInSuccess.nombres);
+        sessionStorage.setItem('username', signInSuccess.nombres);
         sessionStorage.setItem('user_id', signInSuccess.id.toString());
         sessionStorage.setItem('rol', signInSuccess.tipo_usuario);
         sessionStorage.setItem('token', signInSuccess.token);
-        this.toastr.success('Confirmation', '¡¡¡ Bienvenido ' + sessionStorage.getItem('nombres') + ' !!!', { closeButton: true });
+        this.toastr.success('Confirmation', '¡¡¡ Bienvenido ' + sessionStorage.getItem('username') + ' !!!', { closeButton: true });
         this.signInForm.reset();
         this.router.navigate(['/'])
       })

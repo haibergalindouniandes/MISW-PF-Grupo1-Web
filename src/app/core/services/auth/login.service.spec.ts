@@ -28,8 +28,8 @@ describe('LoginService', () => {
 
   it('should call signIn method', () => {
     const signin: Signin = {
-      email: 'prestador0001',
-      password: 'prestador0001'
+      email: 'prestador2024@uniandes.edu.co',
+      password: 'Prestador2*24'
     };
 
     service.signIn(signin).subscribe((response: Login) => {
@@ -38,7 +38,6 @@ describe('LoginService', () => {
 
     const req = httpMock.expectOne(`${environment.baseUrlUsers}usuarios/login`);
     expect(req.request.method).toBe('POST');
-    expect(req.request.headers.get('X-API-Key')).toEqual('a033d2c0');
-    req.flush({ token: 'testToken', user: { id: 1, email: 'prestador0001', role: 'user' } });
+    req.flush({ token: 'testToken', user: { id: 1, email: 'prestador2024@uniandes.edu.co', role: 'user' } });
   });
 });

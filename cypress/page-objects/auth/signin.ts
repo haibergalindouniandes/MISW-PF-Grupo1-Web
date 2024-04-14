@@ -55,22 +55,4 @@ export class Signin {
     this.validateToastSuccessConfirmation('Bienvenido')
   }
 
-  // shouldNotBeAbleToSubmitWithoutEmailAndPassword() {
-  //   this.clickInButtonLogin();
-  //   this.getInputEmail().should('have.class', 'ng-invalid');
-  //   this.getInputPassword().should('have.class', 'ng-invalid');
-  // }
-
-  // shouldShowInvalidCredentialsMessageWhenWrongCredentialAreUsed() {
-  //   const invalidEmail = "notvalid@gmail.com";
-  //   const wrongPassword = "123456789";
-  //   this.setInputEmail(invalidEmail);
-  //   this.setInputPassword(wrongPassword);
-  //   this.clickInButtonLogin();
-  //   cy.wait(1000);
-  //   this.getToastSuccessConfirmation().contains("Error en las credenciales");
-  // }
-
-
-
 }

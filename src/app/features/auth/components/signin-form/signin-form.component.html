@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col">
       <div class="card">
         <div class="card-header justify-content-center">
           <h5 class="card-title" i18n>Welcome to SportApp</h5>
@@ -8,8 +8,8 @@
         <div class="card-body">
           <form [formGroup]="signInForm">
             <div class="mb-3">
-              <label for="email" class="form-label" i18n>email</label>
-              <input type="email" class="form-control"  id="inpt-email" aria-describedby="emailHelp"
+              <label for="email" class="form-label" i18n>Email</label>
+              <input type="email" class="form-control"  id="email" aria-describedby="emailHelp"
                 placeholder="email@mail.com" formControlName="email"/>
                 <div *ngIf="signInForm.controls['email'].invalid && signInForm.controls['email'].touched || signInForm.controls['email'].dirty">
                   <small *ngIf="signInForm.get('email')!.hasError('required')" class="text-danger">Email es requerido</small>
@@ -19,7 +19,7 @@
             </div>
             <div class="mb-3">
               <label for="password" class="form-label" i18n>Password</label>
-              <input type="password" class="form-control" id="inpt-password" placeholder="***************" 
+              <input type="password" class="form-control" id="password" placeholder="***************"
               formControlName="password"/>
               <div *ngIf="signInForm.controls['password'].invalid && signInForm.controls['password'].touched || signInForm.controls['password'].dirty">
                 <small *ngIf="signInForm.get('password')!.hasError('required')" class="text-danger">Contraseña es requerido</small>

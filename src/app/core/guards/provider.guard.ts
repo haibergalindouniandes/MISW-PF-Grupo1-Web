@@ -10,7 +10,7 @@ export class ProviderGuard implements CanActivate {
   constructor(private toastr: ToastrService, private router: Router) {}
 
   canActivate(): boolean {
-    if (sessionStorage.getItem('rol') === 'PRESTADOR') {
+    if (sessionStorage.getItem('rol') === 'Proveedor') {
       return true;
     } else {
       this.toastr.error('No cuenta con los permisos necesarios para acceder a este recurso', 'No autorizado', { closeButton: true });

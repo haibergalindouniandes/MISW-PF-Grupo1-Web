@@ -14,11 +14,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         let errorMesagge = '';
         let errorType = '';
         if (err instanceof ErrorEvent) {
-          errorType = "Client side error"
+          errorType = "Error del lado del cliente"
           errorMesagge = `${err.error}: ${err.message}`;
           this.toastr.error(errorMesagge, errorType, { closeButton: true });
         } else {
-          errorType = "Server side error"
+          errorType = "Error del lado del servidor"
           errorMesagge = `${err.status}: ${err.error.msg}`;
           this.toastr.error(errorMesagge, errorType, { closeButton: true });
         }

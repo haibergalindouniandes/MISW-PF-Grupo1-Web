@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-headers',
@@ -24,20 +25,34 @@ export class HeadersComponent implements OnInit {
     return false;
   };
 
+  hasPermissionsAsProvider() {
+    if (sessionStorage.getItem('rol') == environment.allowedRoleProvider) {
+      return true;
+    }
+    return false;
+  };
+
+  hasPermissionsAsUser() {
+    if (sessionStorage.getItem('rol') == environment.allowedRoleUser) {
+      return true;
+    }
+    return false;
+  };
+
   logout() {
-    sessionStorage.removeItem('username');
-    sessionStorage.removeItem('user_id');
-    sessionStorage.removeItem('rol');
-    sessionStorage.removeItem('token');
-    this.toastr.success('Confirmation', 'Se cerró sesión correctamente', { closeButton: true });
-    this.router.navigate(['/'])
+    sessionStorage.clear();
+    this.toastr.success('Confirmación', 'Se cerró sesión correctamente', { closeButton: true });
+    /* istanbul ignore next */
+    this.router.navigate(['/auth/signin']).then(() => {
+      window.location.reload();
+    });
   }
 
   /* istanbul ignore next */
   changeLanguage(language: string): void {
     const currentPath = this.router.url;
     if (!currentPath.includes(`/${language}/`)) {
-      const  newPath = `/${language}${currentPath}`;
+      const newPath = `/${language}${currentPath}`;
       window.location.href = newPath
     }
   }

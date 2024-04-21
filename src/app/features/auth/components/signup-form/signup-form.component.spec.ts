@@ -124,4 +124,14 @@ describe('SignupFormComponent', () => {
     expect(component.createUser).toHaveBeenCalled();
   });
 
+  it('should reset checkboxes to true', () => {
+    component.ciclismo = false;
+    component.atletismo = false;
+    component.otros_deportes = false;
+    component.reset_checkboxes(true, true, true);
+    expect(component.ciclismo).toBe(true);
+    expect(component.atletismo).toBe(true);
+    expect(component.otros_deportes).toBe(true);
+  });
+
 });

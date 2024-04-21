@@ -23,7 +23,7 @@ export class RegisterFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public toastr: ToastrService,
-    private RegisterService: RegisterService,
+    private service: RegisterService,
   ) { }
 
   ngOnInit() {
@@ -59,7 +59,7 @@ export class RegisterFormComponent implements OnInit {
         this.rangeHours
       );
       /* istanbul ignore next */
-      this.RegisterService.registerService(registerService)
+      this.service.registerService(registerService)
         .subscribe(registerSucess => {
           this.toastr.success('Confirmation', 'Se registro servicio exitosamente!', { closeButton: true });
           this.serviceRegistrationForm.reset();

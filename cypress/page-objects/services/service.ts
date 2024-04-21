@@ -163,7 +163,7 @@ export class Service {
     this.shouldHaveADropdownServices();
     this.shouldHaveARegisterServiceForm();
     this.fillRegisterServiceForm(name, description, cost, place, date, timeStart, timeEnd, minParticipants, maxParticipants, frequency);
-    cy.wait(1000);
+    cy.wait(4000);
     this.validateToastSuccessConfirmation('Se registro servicio exitosamente')
   }
 

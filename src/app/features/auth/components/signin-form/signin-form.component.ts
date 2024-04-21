@@ -28,6 +28,7 @@ export class SigninFormComponent {
   ) { }
 
   signIn(signIn: Signin) {
+    sessionStorage.clear();
     console.log(new Date() + ": " + this.email);
     console.log(new Date() + ": " + this.password);
     let userLogin = new Signin(signIn.email, signIn.password);
@@ -38,7 +39,7 @@ export class SigninFormComponent {
         sessionStorage.setItem('user_id', signInSuccess.id.toString());
         sessionStorage.setItem('rol', signInSuccess.tipo_usuario);
         sessionStorage.setItem('token', signInSuccess.token);
-        this.toastr.success('Confirmation', '¡¡¡ Bienvenido ' + sessionStorage.getItem('username') + ' !!!', { closeButton: true });
+        this.toastr.success('Confirmación', '¡¡¡ Bienvenido ' + sessionStorage.getItem('username') + ' !!!', { closeButton: true });
         this.signInForm.reset();
         this.router.navigate(['/'])
       })
@@ -51,5 +52,3 @@ export class SigninFormComponent {
     });
   }
 }
-
-

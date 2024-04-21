@@ -1,0 +1,19 @@
+.container {
+  height: 88vh;
+  display: grid;
+  align-items: center;
+}
+
+#scrollable-container {
+  max-height: 88%;
+  overflow-y: scroll;
+}
+
+#scrollable-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+#scrollable-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}

@@ -6,12 +6,24 @@
   <img class="card-img-top" src="assets/images/home/home_ciclysm.jpg" alt="SportApp">
   <hr>
   <div class="card-body">
-    <p i18n>SportApp helps you:</p>
-    <ul>
-      <li i18n>Control your physical activity: cycling, running.</li>
-      <li i18n>Monitor your progress and achieve your health goals.</li>
-      <li i18n>Connect with other athletes and share your passion for sports.</li>
-    </ul>
+
+    <table class="table" class="table table-striped table-bordered">
+      <thead>
+        <tr>
+            <th scope="col" *ngFor="let columna of columnas">
+                {{columna}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let datos of planes">
+          <td *ngFor="let dato of datos">
+              {{dato}}
+          </td>
+      </tr>
+  </tbody>
+    </table>
+
   </div>
   <div class="card-footer">
     <a href="#" class="btn btn-primary" i18n>More information</a>

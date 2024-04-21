@@ -96,4 +96,23 @@ describe('ResultsTableComponent', () => {
     expect(result).toEqual(expectedResult);
   });
 
+  describe('validateIfAllowRegister', () => {
+    it('debería devolver true si feedingPlan y feedingResults tienen los campos requeridos', () => {
+      component.feedingPlan = { plan_alimentacion: { 'lunes': 1500, 'martes': 1600 } };
+      component.feedingResults = { 'calorias_1': 500, 'calorias_2': 600, 'calorias_3': 700, 'ml_agua': 200 };
+      expect(component.validateIfAllowRegister()).toBe(true);
+    });
+
+    it('debería devolver false si feedingPlan o feedingResults no tienen los campos requeridos', () => {
+      component.feedingPlan = { plan_alimentacion: { 'lunes': 1500, 'martes': 1600 } };
+      expect(component.validateIfAllowRegister()).toBe(false);
+      component.feedingPlan = null;
+      component.feedingResults = { 'calorias_1': 500, 'calorias_2': 600, 'calorias_3': 700, 'ml_agua': 200 };
+      expect(component.validateIfAllowRegister()).toBe(false);
+      component.feedingPlan = { plan_alimentacion: { 'lunes': 1500, 'martes': 1600 } };
+      component.feedingResults = null;
+      expect(component.validateIfAllowRegister()).toBe(false);
+    });
+  });
+
 });

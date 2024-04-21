@@ -17,6 +17,11 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'nutrition',
+    loadChildren: () => import('./features/nutrition/nutrition.routing').then(m => m.SERVICES_NUTRITION),
+    canActivate: [AuthGuard]
+  },
+  {
     path: '**',
     component: NotFoundComponent,
     pathMatch: 'full'

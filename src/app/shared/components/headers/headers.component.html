@@ -1,10 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- Left menu -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav logo_margin">
       <a class="navbar-brand ml-3" href="#">
         <img src="../../../../assets/images/home/logo.jpg" class="img-fluid img_logo" alt="SportApp Logo">
       </a>
-      <li class="nav-item dropdown" *ngIf="isLoggedIn()">
+      <!-- Menu Services -->
+      <li class="nav-item dropdown" *ngIf="isLoggedIn() && hasPermissionsAsProvider()">
         <a i18n class="nav-link dropdown-toggle" href="#" id="menuServices"
           role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Services
@@ -14,13 +16,26 @@
           <li><a i18n class="dropdown-item" [routerLink]="['/services', 'register']">Register</a></li>
         </ul>
       </li>
+      <!-- Menu nutrition -->
+      <li class="nav-item dropdown" *ngIf="isLoggedIn() && hasPermissionsAsUser()">
+        <a class="nav-link dropdown-toggle" href="#" id="menuNutrition"
+          role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Nutrición
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuNutrition" id="dropdown-nutrition">
+          <li><a class="dropdown-item" [routerLink]="['/nutrition', 'register-feeding-results']">Registrar Resultados Alimentación</a></li>
+        </ul>
+      </li>
+      <!-- Menu about -->
       <li class="nav-item" *ngIf="isLoggedIn()">
         <a class="nav-link" routerLink="/about" i18n>About</a>
       </li>
     </ul>
   </div>
+  <!-- Rigth menu -->
   <div class="collapse navbar-collapse justify-content-end" id="navbarSettingsContent">
     <ul class="navbar-nav">
+      <!-- Menu internationalization -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="languageMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" i18n>Language  <i class="fas fa-globe"></i></a>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="languageMenu">
@@ -28,6 +43,7 @@
           <li><a class="dropdown-item" (click)="changeLanguage('en-US')" i18n>English - ENG</a></li>
         </ul>
       </li>
+      <!-- Menu session -->
       <li class="nav-item dropdown sesion_margin">
         <a class="nav-link dropdown-toggle" href="#" id="sesionMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="../../../../assets/images/home/user-avatar.png" class="img-fluid img_avatar" alt="User Avatar">

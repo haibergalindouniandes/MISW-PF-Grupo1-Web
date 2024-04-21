@@ -145,10 +145,10 @@ export class SignupFormComponent implements OnInit {
         this.tipo_plan,
         this.tipo_usuario
       );
-      console.log(signupService)
+      /* istanbul ignore next */
       this.SignupService.signUp(signupService)
       .subscribe(createUserSucess => {
-        this.toastr.success('Confirmation', 'Se creo usuario exitosamente!', { closeButton: true });
+        this.toastr.success('Confirmación', 'Se creo usuario exitosamente!', { closeButton: true });
         this.serviceSignUpForm.reset();
         this.reset_checkboxes(false, false, false)
         console.log(createUserSucess);

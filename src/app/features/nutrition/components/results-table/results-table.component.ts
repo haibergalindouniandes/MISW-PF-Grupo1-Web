@@ -51,11 +51,7 @@ export class ResultsTableComponent implements OnInit {
     }
     else {
       /* istanbul ignore next */
-      if (this.feedingResults &&
-        'calorias_1' in this.feedingResults &&
-        'calorias_2' in this.feedingResults &&
-        'calorias_3' in this.feedingResults &&
-        'ml_agua' in this.feedingResults) {
+      if (this.validateIfAllowRegister()) {
         // Registro de resutlados de alimentacion
         let newFeedingResults = new FeedingResults(
           undefined,
@@ -66,7 +62,6 @@ export class ResultsTableComponent implements OnInit {
           sessionStorage.getItem('user_id')!,
           this.feedingResults["ml_agua"].toString()
         );
-        /* istanbul ignore next */
         this.serviceRegisterFeedingResults.registerFeedingResults(newFeedingResults)
           .subscribe(registerSuccess => {
             this.toastr.success('Confirmación', 'Se registraron resultados exitosamente!', { closeButton: true });
@@ -107,6 +102,18 @@ export class ResultsTableComponent implements OnInit {
         })
       )
       .subscribe(() => { });
+  }
+
+  validateIfAllowRegister() {
+    if (this.feedingPlan && 'plan_alimentacion' in this.feedingPlan
+      && this.feedingResults &&
+      'calorias_1' in this.feedingResults &&
+      'calorias_2' in this.feedingResults &&
+      'calorias_3' in this.feedingResults &&
+      'ml_agua' in this.feedingResults) {
+        return true;
+    }
+    return false;
   }
 
   getFormattedDate(): string {

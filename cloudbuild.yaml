@@ -5,7 +5,7 @@ steps:
     args:
       - '-c'
       - |
-        lsb_release -a && cat /etc/os-release
+        cat /etc/os-release
         apt-get update
         apt-get install -y curl gnupg unzip xvfb libxi6 libgconf-2-4 wget bc
         curl -sL https://deb.nodesource.com/setup_18.x | bash -

@@ -62,4 +62,19 @@ describe('RegisterFormComponent', () => {
     expect(component.registerService).toHaveBeenCalled();
   });
 
+  it('should generate range hours with 1 hour interval', () => {
+    component.timeStart = '06:00:00';
+    component.timeEnd = '08:00:00';
+    component.generateRangeHours();
+    expect(component.rangeHours.length).toEqual(3);
+  });
+
+  it('should not generate range hours if end time is before start time', () => {
+    component.timeStart = '08:00:00';
+    component.timeEnd = '07:00:00';
+    component.generateRangeHours();
+    expect(component.rangeHours.length).toBe(0);
+  });
+
+
 });

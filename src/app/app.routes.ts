@@ -21,6 +21,11 @@ export const routes: Routes = [
     loadChildren: () => import('./features/home/home.routing').then(m => m.HOME_ROUTES)
   },
   {
+    path: 'nutrition',
+    loadChildren: () => import('./features/nutrition/nutrition.routing').then(m => m.SERVICES_NUTRITION),
+    canActivate: [AuthGuard]
+  },
+  {
     path: '**',
     component: NotFoundComponent,
     pathMatch: 'full'

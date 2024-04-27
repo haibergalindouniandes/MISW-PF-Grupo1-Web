@@ -23,9 +23,18 @@ describe('HeadersComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Should return true if user is logged in', () => {
+  it('Should return true if user is logged and has user role', () => {
     sessionStorage.setItem('username', 'testUser');
+    sessionStorage.setItem('rol', 'Usuario');
     expect(component.isLoggedIn()).toBeTrue();
+    expect(sessionStorage.getItem('rol')).toEqual('Usuario');
+  });
+
+  it('Should return true if user is logged and has provider role', () => {
+    sessionStorage.setItem('username', 'testUser');
+    sessionStorage.setItem('rol', 'Proveedor');
+    expect(component.isLoggedIn()).toBeTrue();
+    expect(sessionStorage.getItem('rol')).toEqual('Proveedor');
   });
 
   it('Should return false if user is not logged in', () => {

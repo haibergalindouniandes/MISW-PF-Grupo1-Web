@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <div class="container container-right">
+    <div class="col-md-4">
+      <label for="date">Fecha</label>
+      <input type="date" class="form-control" id="date" [(ngModel)]="selectedDate" (ngModelChange)="onDateChange($event)">
+    </div>
+  </div>
+  <div class="container">
+    <table class="table rounded-table">
+      <thead>
+        <tr>
+          <th>Alimento</th>
+          <th>Kcal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Comida 1</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="feedingResults.calorias_1"
+            id="calories_1" name="calories_1" #caloriasInput [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>Comida 2</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="feedingResults.calorias_2"
+              id="calories_2" name="calories_2" [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>Comida 3</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="feedingResults.calorias_3"
+            id="calories_3" name="calories_3" [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>ML de Agua</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="feedingResults.ml_agua"
+            id="ml_water" name="ml_water" [readOnly]="!editMode">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row mt-3">
+      <!-- Buttons-->
+      <div class="col-auto">
+        <button type="button" class="btn btn-primary me-2" id="btn-register" (click)="toggleEdit()">{{ editMode ?
+          'Registrar' : 'Editar' }}</button>
+        <button type="button" class="btn btn-danger" id="btn-cancel" (click)="cancel()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,7 +5,7 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 export const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./features/home/home.routing').then(m => m.HOME_ROUTES)
+    loadChildren: () => import('./features/auth/auth.routing').then(m => m.AUTH_ROUTES)
   },
   {
     path: 'auth',
@@ -15,6 +15,10 @@ export const routes: Routes = [
     path: 'services',
     loadChildren: () => import('./features/services/services.routing').then(m => m.SERVICES_ROUTES),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./features/home/home.routing').then(m => m.HOME_ROUTES)
   },
   {
     path: '**',

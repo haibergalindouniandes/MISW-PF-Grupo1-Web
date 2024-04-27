@@ -45,13 +45,13 @@ export class CardComponent implements OnInit {
         console.log(success.plan_alimentacion);
         console.log(this.datosAlimentacion.id);
         this.planes= [
-          ['Lunes', this.datosEntrenamiento?.lunes,this.datosAlimentacion?.lunes],
-          ['Martes',this.datosEntrenamiento?.martes,this.datosAlimentacion?.martes],
-          ['Miercoles',this.datosEntrenamiento?.miercoles,this.datosAlimentacion?.miercoles],
-          ['Jueves',this.datosEntrenamiento?.jueves,this.datosAlimentacion?.jueves],
-          ['Viernes',this.datosEntrenamiento?.viernes,this.datosAlimentacion?.viernes],
-          ['Sabado',this.datosEntrenamiento?.sabado,this.datosAlimentacion?.sabado],
-          ['Domingo',this.datosEntrenamiento?.domingo,this.datosAlimentacion?.domingo]
+          ['Lunes', this.datosEntrenamiento?.lunes + ' Km',this.datosAlimentacion?.lunes + ' Calorias'],
+          ['Martes',this.datosEntrenamiento?.martes+ ' Km',this.datosAlimentacion?.martes+ ' Calorias'],
+          ['Miercoles',this.datosEntrenamiento?.miercoles+ ' Km',this.datosAlimentacion?.miercoles+ ' Calorias'],
+          ['Jueves',this.datosEntrenamiento?.jueves+ ' Km',this.datosAlimentacion?.jueves+ ' Calorias'],
+          ['Viernes',this.datosEntrenamiento?.viernes+ ' Km',this.datosAlimentacion?.viernes+ ' Calorias'],
+          ['Sabado',this.datosEntrenamiento?.sabado+ ' Km',this.datosAlimentacion?.sabado+ ' Calorias'],
+          ['Domingo',this.datosEntrenamiento?.domingo+ ' Km',this.datosAlimentacion?.domingo+ ' Calorias']
         ]
         
         console.log('plan alimentacion:::::::::::');

@@ -8,9 +8,10 @@ steps:
         apt-get update
         apt-get install -y curl gnupg unzip xvfb libxi6 libgconf-2-4 wget bc
         curl -sL https://deb.nodesource.com/setup_18.x | bash -
+        lsb_release -a && cat /etc/os-release
         apt-get install -y nodejs
-        npm install -g npm@9
         node -v
+        npm install -g npm@9
         npm -v
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
         apt install -y ./google-chrome-stable_current_amd64.deb

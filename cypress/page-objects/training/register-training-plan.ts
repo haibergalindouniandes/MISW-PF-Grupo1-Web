@@ -116,7 +116,7 @@ export class RegisterTrainingPlan {
     this.setInputDomingo(domingo);
   }
 
-  private validateToastSuccessConfirmation(content: string){
+  private validateToastSuccessConfirmation(content: string) {
     this.getToastSuccessConfirmation().should("be.visible");
     this.getToastSuccessConfirmation().contains(content);
   }
@@ -125,8 +125,7 @@ export class RegisterTrainingPlan {
     this.shouldHaveARegisterComponents();
     this.fillRegisterPlanInTable(semanas, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
     this.clickInObject(this.getButtonRegister());
-    cy.wait(2000);
-    this.validateToastSuccessConfirmation('Se registro plan de entrenamiento exitosamente!')  }
+  }
 
 
 

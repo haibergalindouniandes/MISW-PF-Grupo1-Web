@@ -22,7 +22,12 @@ export const routes: Routes = [
   },
   {
     path: 'nutrition',
-    loadChildren: () => import('./features/nutrition/nutrition.routing').then(m => m.SERVICES_NUTRITION),
+    loadChildren: () => import('./features/nutrition/nutrition.routing').then(m => m.NUTRITION_ROUTES),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'training',
+    loadChildren: () => import('./features/training/training.routing').then(m => m.TRAINING_ROUTES),
     canActivate: [AuthGuard]
   },
   {

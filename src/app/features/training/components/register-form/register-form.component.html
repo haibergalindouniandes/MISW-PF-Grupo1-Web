@@ -1,0 +1,88 @@
+<div class="container mt-5">
+  <div class="container container-right">
+    <div class="row">
+      <div class="col-md-2">
+        <label for="inputEntrenamiento" class="form-label">Entrenamiento</label>
+        <select (change)="get_tipo_entrenamiento($event)" [(value)]="tipo_entrenamiento" [disabled]="!editMode" id="inputEntrenamiento" class="form-select">
+          <option selected>Ciclismo</option>
+          <option>Atletismo</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="inputSemanas" class="form-label">Numero de semanas</label>
+        <input type="number" class="form-control input-number-no-border " [(ngModel)]="trainingPlan.numero_semanas"
+        id="numero_semanas" name="#distancia_lunes" [readOnly]="!editMode">
+      </div>
+      <div class="col-md-8"></div>
+    </div>
+  </div>
+  <div class="container">
+    <table class="table rounded-table">
+      <thead>
+        <tr>
+          <th>Dia</th>
+          <th>Distancia (km)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lunes</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="trainingPlan.plan_entrenamiento.lunes"
+            id="distancia_lunes" name="distancia_lunes" [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>Martes</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="trainingPlan.plan_entrenamiento.martes"
+              id="distancia_martes" name="distancia_martes" [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>Miercoles</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="trainingPlan.plan_entrenamiento.miercoles"
+            id="distancia_miercoles" name="distancia_miercoles" [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>Jueves</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="trainingPlan.plan_entrenamiento.jueves"
+            id="distancia_jueves" name="distancia_jueves" [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>Viernes</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="trainingPlan.plan_entrenamiento.viernes"
+            id="distancia_viernes" name="distancia_viernes" [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>Sabado</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="trainingPlan.plan_entrenamiento.sabado"
+            id="distancia_sabado" name="distancia_sabado" [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>Domingo</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="trainingPlan.plan_entrenamiento.domingo"
+            id="distancia_domingo" name="distancia_domingo" [readOnly]="!editMode">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row mt-3">
+      <!-- Buttons-->
+      <div class="col-auto">
+        <button type="button" class="btn btn-primary me-2" id="btn-register" (click)="toggleEdit()">{{ editMode ?
+          'Registrar' : 'Editar' }}</button>
+        <button type="button" class="btn btn-danger" id="btn-cancel" (click)="cancel()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

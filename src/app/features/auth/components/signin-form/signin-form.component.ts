@@ -39,9 +39,15 @@ export class SigninFormComponent {
         sessionStorage.setItem('user_id', signInSuccess.id.toString());
         sessionStorage.setItem('rol', signInSuccess.tipo_usuario);
         sessionStorage.setItem('token', signInSuccess.token);
+        console.log(signInSuccess.tipo_usuario)
         this.toastr.success('Confirmación', '¡¡¡ Bienvenido ' + sessionStorage.getItem('username') + ' !!!', { closeButton: true });
         this.signInForm.reset();
-        this.router.navigate(['/home'])
+        if(signInSuccess.tipo_usuario == 'Usuario'){
+          this.router.navigate(['/home'])
+        }else{
+          this.router.navigate(['/homeproveedores'])
+        }
+        
       })
   }
 

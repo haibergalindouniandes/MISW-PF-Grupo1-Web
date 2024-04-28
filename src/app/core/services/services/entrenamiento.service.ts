@@ -9,7 +9,7 @@ import { Entrenamiento } from '../../models/services/entrenamiento';
 })
 export class ConsultarPlanEntrenamientoService {
 
-  private apiUrl: string = environment.baseUrlGestorPlanEntrenamiento + `/entrenamientos/plan-entrenamiento/usuario/${sessionStorage.getItem('user_id')}`
+  private apiUrl: string = environment.baseUrlTraining + `/entrenamientos/plan-entrenamiento/usuario/${sessionStorage.getItem('user_id')}`
   private headers = new HttpHeaders({ 'Authorization': `Bearer ${sessionStorage.getItem('token')}` });
 
   constructor(private http: HttpClient) { }

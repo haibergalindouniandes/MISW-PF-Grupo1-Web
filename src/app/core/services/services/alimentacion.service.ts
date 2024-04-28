@@ -9,7 +9,7 @@ import { Alimentacion } from '../../models/services/alimentacion';
 })
 export class ConsultarPlanAlimentacionService {
 
-  private apiUrl: string = environment.baseUrlGestorPlanNutricional + `nutricion/plan-nutricional/${sessionStorage.getItem('user_id')}`
+  private apiUrl: string = environment.baseUrlNutrition + `nutricion/plan-nutricional/${sessionStorage.getItem('user_id')}`
   private headers = new HttpHeaders({ 'Authorization': `Bearer ${sessionStorage.getItem('token')}` });
 
   constructor(private http: HttpClient) { }

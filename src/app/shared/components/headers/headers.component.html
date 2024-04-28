@@ -2,7 +2,7 @@
   <!-- Left menu -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav logo_margin">
-      <a class="navbar-brand ml-3" href="#">
+      <a class="navbar-brand ml-3" href="/home">
         <img src="../../../../assets/images/home/logo.jpg" class="img-fluid img_logo" alt="SportApp Logo">
       </a>
       <!-- Menu Services -->
@@ -24,6 +24,16 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuNutrition" id="dropdown-nutrition">
           <li><a class="dropdown-item" [routerLink]="['/nutrition', 'register-feeding-results']">Registrar Resultados Alimentación</a></li>
+        </ul>
+      </li>
+      <!-- Menu training -->
+      <li class="nav-item dropdown" *ngIf="isLoggedIn() && hasPermissionsAsUser()">
+        <a class="nav-link dropdown-toggle" href="#" id="menuTraining"
+          role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Entrenamiento
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuTraining" id="dropdown-training">
+          <li><a class="dropdown-item" [routerLink]="['/training', 'register-training-plan']">Registrar Plan de Entrenamiento</a></li>
         </ul>
       </li>
       <!-- Menu about -->

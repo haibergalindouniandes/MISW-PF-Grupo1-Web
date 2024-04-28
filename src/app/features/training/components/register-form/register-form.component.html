@@ -29,7 +29,7 @@
           <td>Lunes</td>
           <td>
             <input type="number" class="form-control input-number-no-border " [(ngModel)]="trainingPlan.plan_entrenamiento.lunes"
-            id="distancia_lunes" name="distancia_lunes" [readOnly]="!editMode">
+            id="distancia_lunes" name="distancia_lunes" [readOnly]="!editMode" #distanceInput>
           </td>
         </tr>
         <tr>

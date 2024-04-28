@@ -31,7 +31,6 @@ export class RegisterFormComponent implements OnInit {
 
   ngOnInit() {
     this.getTrainingPlanByUser();
-
   }
 
   toggleEdit() {
@@ -63,7 +62,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   getTrainingPlanByUser() {
-    this.trainingPlan = {};
+    this.trainingPlan = {"plan_entrenamiento":{"domingo":"","jueves":"","lunes":"","martes":"","miercoles":"","sabado":"","viernes":""}};
     /* istanbul ignore next */
     this.serviceGetTrainingPlan.getTrainingPlanByUser(sessionStorage.getItem('user_id')!)
       .pipe(
@@ -88,12 +87,12 @@ export class RegisterFormComponent implements OnInit {
       'sabado' in this.trainingPlan.plan_entrenamiento &&
       'domingo' in this.trainingPlan.plan_entrenamiento &&
       'numero_semanas' in this.trainingPlan) {
-        return true;
+      return true;
     }
     return false;
   }
 
-  get_tipo_entrenamiento(event:Event):void {
+  get_tipo_entrenamiento(event: Event): void {
     this.tipo_entrenamiento = (event.target as HTMLInputElement).value
   }
 

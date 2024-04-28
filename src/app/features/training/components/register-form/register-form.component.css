@@ -4,3 +4,59 @@
   margin-right: auto;
   padding-bottom: 15px;
 }
+
+.rounded-table {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+
+  thead {
+    th {
+      text-align: center;
+      font-weight: bold;
+
+      &:first-child {
+        font-weight: bold;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        &:first-child {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  th,
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    width: 50%;
+  }
+
+  thead th {
+    border-top: 1px solid #ddd;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tbody tr:hover {
+    background-color: #ddd;
+  }
+}
+
+.input-number-no-border {
+  border: none;
+  border-radius: 0;
+  outline: none;
+}

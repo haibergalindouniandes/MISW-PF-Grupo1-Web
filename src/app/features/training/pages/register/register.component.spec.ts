@@ -1,9 +1,9 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
 import { RegisterComponent } from './register.component';
+import { ToastrModule } from 'ngx-toastr';
+import { Router, RouterModule } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -11,7 +11,7 @@ describe('RegisterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
+      imports: [ RegisterComponent, HttpClientTestingModule, ToastrModule.forRoot(), RouterModule.forRoot([]) ]
     })
     .compileComponents();
   }));

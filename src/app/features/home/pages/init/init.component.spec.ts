@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { InitComponent } from './init.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('InitComponent', () => {
   let component: InitComponent;
@@ -9,7 +10,7 @@ describe('InitComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InitComponent, ToastrModule.forRoot(), RouterModule.forRoot([])]
+      imports: [InitComponent, HttpClientTestingModule, ToastrModule.forRoot(), RouterModule.forRoot([])]
     })
     .compileComponents();
 

@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ToastrModule } from 'ngx-toastr';
 import { RegisterFormComponent } from './register-form.component';
+import { TrainingPlan } from '../../../../core/models/training/training-plan';
 
 describe('RegisterFormComponent', () => {
   let component: RegisterFormComponent;
@@ -34,6 +35,18 @@ describe('RegisterFormComponent', () => {
     component.toggleEdit();
     expect(component.editMode).toBeTrue();
     expect(component.trainingPlan_original_values).toEqual(component.trainingPlan);
+    let planEntrenamiento = {
+      "domingo": 7,
+      "jueves": 4,
+      "lunes": 1,
+      "martes": 2,
+      "miercoles": 3,
+      "sabado": 6,
+      "viernes": 5
+    };
+    let trainingPlan = new TrainingPlan(
+      'Ciclismo', 'ce357334-bf36-4a4a-a55a-5a01e54d7e8d', 5, planEntrenamiento
+    );
   });
 
   it('should reset table with cancel fuction', () => {

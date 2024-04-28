@@ -21,6 +21,10 @@ export const routes: Routes = [
     loadChildren: () => import('./features/home/home.routing').then(m => m.HOME_ROUTES)
   },
   {
+    path: 'homeproveedores',
+    loadChildren: () => import('./features/homeproveedores/home.routing').then(m => m.HOME_ROUTES_PROVIDERS)
+  },
+  {
     path: 'nutrition',
     loadChildren: () => import('./features/nutrition/nutrition.routing').then(m => m.NUTRITION_ROUTES),
     canActivate: [AuthGuard]

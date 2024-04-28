@@ -1,0 +1,42 @@
+.sport-app-card {
+  max-width: 75%;
+  margin: 20px auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.sport-app-card img {
+  object-fit: cover;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.sport-app-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sport-app-card li {
+  padding: 5px 0;
+}
+
+.sport-app-card a {
+  margin-right: 10px;
+  color: white;
+}
+
+.card-header h6 {
+  margin-right: 14px;
+  color: white;
+}
+
+.sport-app-card h5 {
+  margin-right: 14px;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .sport-app-card img {
+    width: 50%;
+  }
+}

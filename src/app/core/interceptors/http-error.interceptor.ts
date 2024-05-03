@@ -6,7 +6,9 @@ import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
-  constructor(private toastr: ToastrService) { }
+  constructor(
+    private toastr: ToastrService
+  ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     return next.handle(req).pipe(
@@ -21,9 +23,16 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           errorType = "Error del lado del servidor"
           errorMesagge = `${err.status}: ${err.error.msg}`;
           this.toastr.error(errorMesagge, errorType, { closeButton: true });
+          this.redirectToLogin();
         }
         return throwError(() => err);
       })
     );
   }
+
+  redirectToLogin(): void {
+    const newPath = `/auth/signin`;
+    window.location.href = newPath
+  }
+
 }

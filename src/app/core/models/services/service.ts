@@ -1,36 +1,42 @@
 export class Service {
   id: string;
-  rut: string;
-  servicio: string;
-  descripcion: string;
-  licencia: string;
-  experiencia: number;
-  recomendaciones: string;
-  id_usuario: string;
-  fecha_creacion: string;
-  fecha_actualizacion: string;
+  nombre: string;
+  lugar: string;
+  costo: string;
+  descripcion?: string;
+  estado?: string;
+  fecha?: string;
+  frecuencia?: string;
+  horario?: string[];
+  id_usuario?: string;
+  numero_maximo_participantes?: number;
+  numero_minimo_participantes?: number;
 
   constructor(
     id: string,
-    rut: string,
-    servicio: string,
-    descripcion: string,
-    licencia: string,
-    experiencia: number,
-    recomendaciones: string,
-    id_usuario: string,
-    fecha_creacion: string,
-    fecha_actualizacion: string
+    nombre: string,
+    lugar: string,
+    costo: string,
+    descripcion?: string,
+    estado?: string,
+    fecha?: string,
+    frecuencia?: string,
+    horario?: string[],
+    id_usuario?: string,
+    numero_maximo_participantes?: number,
+    numero_minimo_participantes?: number
   ) {
     this.id = id;
-    this.rut = rut;
-    this.servicio = servicio;
+    this.nombre = nombre;
+    this.lugar = lugar;
+    this.costo = costo;
     this.descripcion = descripcion;
-    this.licencia = licencia;
-    this.experiencia = experiencia;
-    this.recomendaciones = recomendaciones;
+    this.estado = estado;
+    this.fecha = fecha;
+    this.frecuencia = frecuencia;
+    this.horario = horario;
     this.id_usuario = id_usuario;
-    this.fecha_creacion = fecha_creacion;
-    this.fecha_actualizacion = fecha_actualizacion;
+    this.numero_maximo_participantes = numero_maximo_participantes;
+    this.numero_minimo_participantes = numero_minimo_participantes;
   }
 }

@@ -17,7 +17,7 @@ export class Signup {
   antiguedad: number;
   tipo_plan: string;
   tipo_usuario: string;
-
+  contactos_emergencia?: Array<string>;
 
   constructor(
     usuario: string,
@@ -37,8 +37,8 @@ export class Signup {
     deportes: Array<string>,
     antiguedad: number,
     tipo_plan: string,
-    tipo_usuario: string
-
+    tipo_usuario: string,
+    contactos_emergencia: Array<string>
   ) {
     this.usuario = usuario;
     this.contrasena = contrasena;
@@ -55,8 +55,9 @@ export class Signup {
     this.pais_residencia = pais_residencia;
     this.ciudad_residencia = ciudad_residencia;
     this.deportes = deportes;
-    this.antiguedad = antiguedad
-    this.tipo_plan = tipo_plan
-    this.tipo_usuario = tipo_usuario
+    this.antiguedad = antiguedad;
+    this.tipo_plan = tipo_plan;
+    this.tipo_usuario = tipo_usuario;
+    this.contactos_emergencia = contactos_emergencia || [];
   }
 }

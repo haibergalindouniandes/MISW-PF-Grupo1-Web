@@ -5,6 +5,7 @@ export const environment = {
   baseUrlGestorPlanNutricional: 'https://misw-pf-grupo1-backend-gestor-plan-nutricional-klme3r4qta-uc.a.run.app/',
   baseUrlGestorPlanEntrenamiento: 'https://misw-pf-grupo1-backend-gestor-entrenamientos-klme3r4qta-uc.a.run.app/',
   baseUrlNutrition: 'https://misw-pf-grupo1-backend-gestor-plan-nutricional-klme3r4qta-uc.a.run.app/',
+  baseUrlConsults: 'https://misw-pf-grupo1-backend-gestor-consultas-klme3r4qta-uc.a.run.app/',
   baseUrlTraining: 'https://misw-pf-grupo1-backend-gestor-entrenamientos-klme3r4qta-uc.a.run.app/',
   allowedRoleProvider: 'Proveedor',
   allowedRoleUser: 'Usuario'

@@ -117,7 +117,8 @@ describe('SignupFormComponent', () => {
       inputEdad: '25',
       inputAltura: '180',
       inputNumDoc: '12345678',
-      inputAntiguedad: '1'
+      inputAntiguedad: '1',
+      inputContactosEmergencia: []
     };
     component.serviceSignUpForm.setValue(formData);
     component.createUser();

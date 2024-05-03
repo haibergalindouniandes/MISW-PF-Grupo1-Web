@@ -9,7 +9,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class DetailService {
 
-  private apiUrl: string = environment.baseUrlConsults + 'consultas/servicios';
+  public apiUrl: string = environment.baseUrlConsults + 'consultas/servicios';
   private headers = new HttpHeaders({ 'Authorization': `Bearer ${sessionStorage.getItem('token')}` });
 
   constructor(private http: HttpClient) { }

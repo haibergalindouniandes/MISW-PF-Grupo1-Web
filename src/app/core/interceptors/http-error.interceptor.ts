@@ -23,7 +23,9 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           errorType = "Error del lado del servidor"
           errorMesagge = `${err.status}: ${err.error.msg}`;
           this.toastr.error(errorMesagge, errorType, { closeButton: true });
-          this.redirectToLogin();
+          if (err.status == 401) {
+            this.redirectToLogin();
+          }
         }
         return throwError(() => err);
       })

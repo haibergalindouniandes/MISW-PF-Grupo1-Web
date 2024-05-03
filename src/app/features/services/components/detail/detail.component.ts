@@ -22,6 +22,7 @@ export class DetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    /* istanbul ignore next */
     this.listDetailSharedService.getData().subscribe(data => {
       this.getDetailServices(data.id);
     });

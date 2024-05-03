@@ -73,7 +73,8 @@ describe('Service: Signup', () => {
       ['Ciclismo', 'Carreras'],
       5,
       'PREMIUM',
-      'USUARIO'
+      'USUARIO',
+      []
     );
     expect(signup).toBeTruthy();
   });

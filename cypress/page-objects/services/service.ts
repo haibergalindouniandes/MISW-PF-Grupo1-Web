@@ -12,6 +12,10 @@ export class Service {
     return cy.get('#dropdown-services .dropdown-item').contains('Registrar');
   }
 
+  private getListServiceDropdown() {
+    return cy.get('#dropdown-services .dropdown-item').contains('Lista de servicios');
+  }
+
   private getInputName() {
     return cy.get('#name');
   }
@@ -62,6 +66,22 @@ export class Service {
 
   private getToastSuccessConfirmation() {
     return cy.get('.toast-title.ng-star-inserted');
+  }
+
+  private getTableListServicesContainer() {
+    return cy.get('#table-container');
+  }
+
+  private getDetailServiceContainer() {
+    return cy.get('#detail-container');
+  }
+
+  private getTableListServices() {
+    return cy.get('#table-list-services');
+  }
+
+  private getTableDetailService() {
+    return cy.get('#table-detail-service');
   }
 
   private getValidationErrorDiv() {
@@ -116,6 +136,18 @@ export class Service {
     object.should('have.length', count);
   }
 
+  private countAndValidateMinRowsInTable(table: any, count: number) {
+    table.find('tr').should('have.length.gt', count);
+  }
+
+  private validateColumnsNamesInTable(table: any, columns: string[]) {
+    table.within(() => {
+      columns.forEach(column => {
+        cy.contains(column);
+      });
+    });
+  }
+
   private validateObjectIsDisbled(object: any) {
     object.should('be.disabled');
   }
@@ -124,6 +156,12 @@ export class Service {
     this.getDropdownServices().should('be.visible');
     this.clickInObject(this.getDropdownServices());
     this.getRegisterServiceDropdown().should('be.visible');
+  }
+
+  private shouldHaveADropdownServicesList() {
+    this.getDropdownServices().should('be.visible');
+    this.clickInObject(this.getDropdownServices());
+    this.getListServiceDropdown().should('be.visible');
   }
 
   private shouldHaveARegisterServiceForm() {
@@ -159,6 +197,20 @@ export class Service {
     this.getToastSuccessConfirmation().contains(content);
   }
 
+  private shouldHaveTableComponents() {
+    this.getTableListServicesContainer().should('be.visible');
+    this.getTableListServices().should('be.visible');
+  }
+
+  private shouldHaveDetailComponents() {
+    this.getDetailServiceContainer().should('be.visible');
+    this.getTableDetailService().should('be.visible');
+  }
+
+  private clickInRowOfTable(table: any, row: number) {
+    table.find('tr').eq(row).click();
+  }
+
   shouldRegisterServiceSuccess(name: string, description: string, cost: string, place: string, date: string, timeStart: string, timeEnd: string,minParticipants: string, maxParticipants: string, frequency: string) {
     this.shouldHaveADropdownServices();
     this.shouldHaveARegisterServiceForm();
@@ -181,5 +233,16 @@ export class Service {
     this.clickInObject(this.getInputName());
     this.validateObjectIsDisbled(this.getButtonRegister());
     this.countAndValidateElementsInObject(this.getValidationErrorDiv(), count);
+  }
+
+  shouldBeAlistOfServicesAndDetails(rowsInTable: number, columns: string[]) {
+    cy.wait(4000);
+    this.shouldHaveADropdownServicesList();
+    this.shouldHaveTableComponents();
+    this.countAndValidateMinRowsInTable(this.getTableListServices(), rowsInTable);
+    this.clickInRowOfTable(this.getTableListServices(), 1);
+    this.shouldHaveDetailComponents();
+    this.countAndValidateMinRowsInTable(this.getTableDetailService(), 5);
+    this.validateColumnsNamesInTable(this.getTableDetailService(), columns);
   }
 }

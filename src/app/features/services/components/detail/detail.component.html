@@ -1,0 +1,46 @@
+<div class="container" *ngIf="selectedService !== undefined">
+  <div class="card">
+    <div class="card-body">
+      <table class="table rounded-table" id="table-detail-service">
+        <tbody>
+          <tr>
+            <td>Nombre:</td>
+            <td>
+              {{ selectedService.nombre }}
+            </td>
+          </tr>
+          <tr>
+            <td>Fecha:</td>
+            <td>
+              {{ splitDate(selectedService.fecha) }}
+            </td>
+          </tr>
+          <tr>
+            <td>Hora:</td>
+            <td>
+              {{ getSchedule(selectedService.horario) }}
+            </td>
+          </tr>
+          <tr>
+            <td>Costo:</td>
+            <td>
+              {{ selectedService.costo }}
+            </td>
+          </tr>
+          <tr>
+            <td>Zona:</td>
+            <td>
+              {{ selectedService.lugar }}
+            </td>
+          </tr>
+          <tr>
+            <td>Descripción:</td>
+            <td>
+              {{ selectedService.descripcion }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

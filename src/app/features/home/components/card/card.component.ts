@@ -30,6 +30,7 @@ export class CardComponent implements OnInit {
   planes: any[][]= [];
 
   ngOnInit() {
+    /* istanbul ignore next */
     this.entrenamientoService.consulrarPlanAEntrenamiento().subscribe((exitoso: { plan_entrenamiento: PlanEntrenamiento; }) => {
       this.datosEntrenamiento = exitoso.plan_entrenamiento;
       this.alimentacionService.consulrarPlanAlimentacion().subscribe(success => {

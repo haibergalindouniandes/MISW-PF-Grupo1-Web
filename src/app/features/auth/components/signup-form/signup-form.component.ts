@@ -46,7 +46,8 @@ export class SignupFormComponent implements OnInit {
       inputEdad: ['', [Validators.required, Validators.min(18), Validators.max(90), Validators.pattern('^([0-9]+)$')]],
       inputAltura: ['', [Validators.required, Validators.min(130), Validators.max(230), Validators.pattern('^(?=.*?[0-9])[0-9]*[.]?[0-9]*$')]],
       inputNumDoc: ['', [Validators.required, Validators.pattern('^([0-9]{8})$')]],
-      inputAntiguedad: ['', [Validators.required, Validators.min(1), Validators.max(900), Validators.pattern('^([0-9]+)$')]]
+      inputAntiguedad: ['', [Validators.required, Validators.min(1), Validators.max(900), Validators.pattern('^([0-9]+)$')]],
+      inputContactosEmergencia: ['', [Validators.min(10), Validators.max(900), Validators.pattern(/^(([^,]+@[a-zA-Z0-9]+(\.[a-zA-Z]{2,})+)(\s*,)*){1,}$/)]]
     });
 
   }
@@ -97,6 +98,15 @@ export class SignupFormComponent implements OnInit {
     }
   }
 
+  enableEmergencyContacts():boolean {
+    if (this.tipo_plan=='Premium'){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   get_tipo_usuario(event:Event):void {
     this.tipo_usuario = (event.target as HTMLInputElement).value
     if (this.tipo_usuario=='Proveedor'){
@@ -121,8 +131,16 @@ export class SignupFormComponent implements OnInit {
     return this.deportes
   }
 
+  convertStringToArray(string: string): string[] {
+    if (!string || string.trim() === '') {
+      return [];
+    }
+    return string.split(',');
+  }
+
   createUser() {
     if (this.serviceSignUpForm.valid) {
+      console.log(this.serviceSignUpForm);
       let data = this.serviceSignUpForm.value;
       let deportes = this.get_deportes()
       let signupService = new Signup(
@@ -143,8 +161,11 @@ export class SignupFormComponent implements OnInit {
         deportes,
         parseInt(data.inputAntiguedad),
         this.tipo_plan,
-        this.tipo_usuario
+        this.tipo_usuario,
+        this.convertStringToArray(data.inputContactosEmergencia)
       );
+
+      console.log(signupService);
       /* istanbul ignore next */
       this.SignupService.signUp(signupService)
       .subscribe(createUserSucess => {

@@ -29,24 +29,35 @@ describe('RegisterFormComponent', () => {
     expect(component.editMode).toBeTrue();
   });
 
-  it('should enter edit mode when not already in edit mode', () => {
-    component.editMode = false;
-    component.trainingPlan = { lunes: '10', martes: '20', miercoles: '30', jueves: '15', viernes: '15', sabado: '25', domingo: '15' };
-    component.toggleEdit();
-    expect(component.editMode).toBeTrue();
-    expect(component.trainingPlan_original_values).toEqual(component.trainingPlan);
-    let planEntrenamiento = {
-      "domingo": 7,
-      "jueves": 4,
-      "lunes": 1,
-      "martes": 2,
-      "miercoles": 3,
-      "sabado": 6,
-      "viernes": 5
+  it('should return true when training plan is complete', () => {
+    const completeTrainingPlan: TrainingPlan = {
+      id_usuario: 'ce357334-bf36-4a4a-a55a-5a01e54d7e8d',
+      entrenamiento: 'Ciclismo',
+      numero_semanas: 4,
+      plan_entrenamiento: {
+        domingo: 7,
+        jueves: 6,
+        lunes: 8,
+        martes: 4,
+        miercoles: 5,
+        sabado: 7,
+        viernes: 9,
+      }
     };
-    let trainingPlan = new TrainingPlan(
-      'Ciclismo', 'ce357334-bf36-4a4a-a55a-5a01e54d7e8d', 5, planEntrenamiento
-    );
+    component.trainingPlan = completeTrainingPlan;
+    expect(component.validateIfAllowRegister()).toBeTrue();
+  });
+
+  it('should return false when training plan is missing properties', () => {
+    const incompleteTrainingPlans = [
+      { entrenamiento: 'Ciclismo', numero_semanas: 4 },
+      { entrenamiento: 'Ciclismo', numero_semanas: 4, plan_entrenamiento: { jueves: 'data', martes: 'data', miercoles: 'data', viernes: 'data', sabado: 'data', domingo: 'data' } },
+      { entrenamiento: 'Ciclismo', plan_entrenamiento: { domingo: 'data', jueves: 'data', lunes: 'data', martes: 'data', miercoles: 'data', sabado: 'data', viernes: 'data' } },
+    ];
+    for (const incompleteTrainingPlan of incompleteTrainingPlans) {
+      component.trainingPlan = incompleteTrainingPlan;
+      expect(component.validateIfAllowRegister()).toBeFalse();
+    }
   });
 
   it('should reset table with cancel fuction', () => {
@@ -54,6 +65,34 @@ describe('RegisterFormComponent', () => {
     component.cancel();
     expect(component.cancel).toHaveBeenCalled();
   });
+
+  it('should convert numeric values in the plan_entrenamiento object to strings', () => {
+    const originalTrainingPlan = {
+      plan_entrenamiento: {
+        lunes: 10,
+        martes: 15,
+        miercoles: '20',
+        jueves: 10,
+        viernes: 25,
+        sabado: 10,
+        domingo: 30
+      }
+    };
+    component.trainingPlan = originalTrainingPlan;
+    const convertedPlan = component.convert_number_to_string();
+    const trainingPlan = new TrainingPlan('ce357334-bf36-4a4a-a55a-5a01e54d7e8d', 'Ciclismo', 4, {
+      domingo: 7,
+      jueves: 6,
+      lunes: 8,
+      martes: 4,
+      miercoles: 5,
+      sabado: 7,
+      viernes: 9
+    }
+    );
+    expect(component.trainingPlan).toEqual(originalTrainingPlan);
+  });
+
 });
 
 

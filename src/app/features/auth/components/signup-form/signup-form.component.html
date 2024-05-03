@@ -161,6 +161,15 @@
             <option>Proveedor</option>
           </select>
         </div>
+
+        <div class="col-12" *ngIf="enableEmergencyContacts()">
+          <label for="inputContactosEmergencia" class="form-label">Contactos de Emergencia</label>
+          <input type="text" class="form-control" id="inputContactosEmergencia" formControlName="inputContactosEmergencia" tabindex="9" placeholder="contacto1@gmail.com,contacto2@gmail.com,contacto3@gmail.com ...">
+          <div *ngIf="serviceSignUpForm.controls['inputContactosEmergencia'].invalid && (serviceSignUpForm.controls['inputContactosEmergencia'].dirty || serviceSignUpForm.controls['inputContactosEmergencia'].touched)" class="text-danger">
+            <small *ngIf="serviceSignUpForm.get('inputContactosEmergencia')!.hasError('pattern')" class="text-danger">Los correos electrónicos ingresados no son válidos.</small>
+          </div>
+        </div>
+
         <div class="col-12">
           <button type="submit" class="btn btn-primary me-2" (click)="createUser()" [disabled]="!serviceSignUpForm.valid || (ciclismo==false && atletismo==false && otros_deportes==false)" tabindex="21">Guardar</button>
           <button type="button" class="btn btn-danger" (click)="cancel();reset_checkboxes(false,false,false)" tabindex="22">Cancel</button>

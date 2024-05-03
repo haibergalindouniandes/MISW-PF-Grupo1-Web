@@ -99,7 +99,6 @@ export class RegisterFormComponent implements OnInit {
   convert_number_to_string(): any {
     let plan_entrenamientoString = '';
     plan_entrenamientoString = JSON.stringify(this.trainingPlan.plan_entrenamiento, (key, value) => {
-      // Convertir el valor a string si no es una cadena
       if (typeof value === 'number') {
         return value.toString();
       }

@@ -5,6 +5,7 @@ import { ListService } from '../../../../core/services/services/list.service';
 import { switchMap } from 'rxjs';
 import { Service } from '../../../../core/models/services/service';
 import { ListDetailSharedService } from '../../../../core/services/services/list-detail-shared.service';
+import { EmitterService } from '../../../../core/emitters/service-emitter';
 
 @Component({
   selector: 'app-list',
@@ -21,7 +22,8 @@ export class ListComponent implements OnInit {
   constructor(
     public toastr: ToastrService,
     private listService: ListService,
-    private listDetailSharedService: ListDetailSharedService
+    private listDetailSharedService: ListDetailSharedService,
+    private emitterService: EmitterService
   ) { }
 
   ngOnInit() {
@@ -59,11 +61,12 @@ export class ListComponent implements OnInit {
 
   onSelectedService(service: Service): void {
     this.selectedService = service;
+    console.log(this.selectedService)
     this.sendDataSharedService(service);
+    this.emitterService.setService(this.selectedService);
   }
 
   sendDataSharedService(service: Service) {
     this.listDetailSharedService.setData(service);
   }
-
 }

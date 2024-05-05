@@ -37,6 +37,7 @@ export class SigninFormComponent {
       .subscribe(signInSuccess => {
         sessionStorage.setItem('username', signInSuccess.nombres);
         sessionStorage.setItem('user_id', signInSuccess.id.toString());
+        sessionStorage.setItem('email', userLogin.email);
         sessionStorage.setItem('rol', signInSuccess.tipo_usuario);
         sessionStorage.setItem('token', signInSuccess.token);
         console.log(signInSuccess.tipo_usuario)

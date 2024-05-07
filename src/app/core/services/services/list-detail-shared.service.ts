@@ -1,21 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { Service } from '../../models/services/service';
+import { Notification } from '../../models/services/notification';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListDetailSharedService {
 
-  private data = new Subject<any>();
+  private dataService = new Subject<Service>();
+  private dataNotification = new Subject<Notification>();
+
 
   constructor() { }
 
-  getData(): Observable<any> {
-    return this.data.asObservable();
+  getDataService(): Observable<Service> {
+    return this.dataService.asObservable();
   }
 
-  setData(newData: any) {
-    this.data.next(newData);
+  setDataService(dataService: Service) {
+    this.dataService.next(dataService);
+  }
+
+  getDataNotification(): Observable<Notification> {
+    return this.dataNotification.asObservable();
+  }
+
+  setDataNotification(dataNotification: Notification) {
+    this.dataNotification.next(dataNotification);
   }
 
 }

@@ -88,6 +88,14 @@ export class Service {
     return cy.get('div.text-danger small');
   }
 
+  private getTextareaMessage() {
+    return cy.get('#message');
+  }
+
+  private getButtonSendNotification() {
+    return cy.get(`button[id='btn-send-notification']`);
+  }
+
   private setInputName(name: string) {
     this.getInputName().clear().type(name);
   }
@@ -130,6 +138,10 @@ export class Service {
 
   private clickInObject(object: any) {
     object.click();
+  }
+
+  private setValueInputElement(object: any, value: string) {
+    object.clear().type(value);
   }
 
   private countAndValidateElementsInObject(object: any, count: number) {
@@ -178,7 +190,7 @@ export class Service {
     this.getButtonCancel().should('be.visible');
   }
 
-  private fillRegisterServiceForm(name: string, description: string, cost: string, place: string, date: string, timeStart: string, timeEnd: string,minParticipants: string, maxParticipants: string, frequency: string) {
+  private fillRegisterServiceForm(name: string, description: string, cost: string, place: string, date: string, timeStart: string, timeEnd: string, minParticipants: string, maxParticipants: string, frequency: string) {
     this.setInputName(name);
     this.setInputDescription(description);
     this.setInputCost(cost);
@@ -192,26 +204,34 @@ export class Service {
     this.clickInObject(this.getButtonRegister());
   }
 
-  private validateToastSuccessConfirmation(content: string){
+  private validateToastSuccessConfirmation(content: string) {
     this.getToastSuccessConfirmation().should("be.visible");
     this.getToastSuccessConfirmation().contains(content);
   }
 
   private shouldHaveTableComponents() {
     this.getTableListServicesContainer().should('be.visible');
-    this.getTableListServices().should('be.visible');
   }
 
-  private shouldHaveDetailComponents() {
+  private shouldHaveDetailCardComponents() {
     this.getDetailServiceContainer().should('be.visible');
     this.getTableDetailService().should('be.visible');
+  }
+
+  private shouldHaveNotificationComponents() {
+    this.getTextareaMessage().should('be.visible');
+    this.getButtonSendNotification().should('be.visible');
+  }
+
+  private fillSendNotificationForm(message: string) {
+    this.setValueInputElement(this.getTextareaMessage(), message);
   }
 
   private clickInRowOfTable(table: any, row: number) {
     table.find('tr').eq(row).click();
   }
 
-  shouldRegisterServiceSuccess(name: string, description: string, cost: string, place: string, date: string, timeStart: string, timeEnd: string,minParticipants: string, maxParticipants: string, frequency: string) {
+  shouldRegisterServiceSuccess(name: string, description: string, cost: string, place: string, date: string, timeStart: string, timeEnd: string, minParticipants: string, maxParticipants: string, frequency: string) {
     this.shouldHaveADropdownServices();
     this.shouldHaveARegisterServiceForm();
     this.fillRegisterServiceForm(name, description, cost, place, date, timeStart, timeEnd, minParticipants, maxParticipants, frequency);
@@ -241,8 +261,25 @@ export class Service {
     this.shouldHaveTableComponents();
     this.countAndValidateMinRowsInTable(this.getTableListServices(), rowsInTable);
     this.clickInRowOfTable(this.getTableListServices(), 1);
-    this.shouldHaveDetailComponents();
-    this.countAndValidateMinRowsInTable(this.getTableDetailService(), 5);
+    this.shouldHaveDetailCardComponents();
+    this.countAndValidateMinRowsInTable(this.getTableDetailService(), 2);
     this.validateColumnsNamesInTable(this.getTableDetailService(), columns);
+  }
+
+  shouldBeAlistOfScheduledUserServicesAndDetails(rowsInTable: number, columns: string[]) {
+    cy.wait(4000);
+    this.shouldHaveADropdownServicesList();
+    this.shouldHaveTableComponents();
+    this.countAndValidateMinRowsInTable(this.getTableListServices(), rowsInTable);
+    this.clickInRowOfTable(this.getTableListServices(), 1);
+    this.shouldHaveDetailCardComponents();
+    this.countAndValidateMinRowsInTable(this.getTableDetailService(), 1);
+    this.validateColumnsNamesInTable(this.getTableDetailService(), columns);
+  }
+
+  shouldSendMasiveNotification(message: string) {
+    this.fillSendNotificationForm(message);
+    this.shouldHaveNotificationComponents();
+    this.clickInObject(this.getButtonSendNotification());
   }
 }

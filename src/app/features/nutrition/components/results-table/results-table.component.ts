@@ -133,14 +133,12 @@ export class ResultsTableComponent implements OnInit {
   /* istanbul ignore next */
   sendDataDonutChart() {
     let data = { data: [this.getCaloriesByDayOfWeek(), this.getTotalCalories()], labels: ['Meta Kcal', 'Kcal restantes'] };
-    console.log(`Enviando  ${data} a Donut Chart ...`);
     this.serviceDonutChart.setData(data);
   }
 
   getDayOfWeek() {
     const date = new Date(this.selectedDate);
     const days = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
-    console.log(date.getDay())
     return days[date.getDay()];
   }
 

@@ -1,37 +1,37 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ListDetailSharedService } from '../../../../core/services/services/list-detail-shared.service';
 import { ToastrService } from 'ngx-toastr';
-import { ListService } from '../../../../core/services/services/list.service';
+import { ListScheduledServicesService } from '../../../../core/services/services/list-scheduled-services.service';
 import { switchMap } from 'rxjs';
 import { Service } from '../../../../core/models/services/service';
-import { ListDetailSharedService } from '../../../../core/services/services/list-detail-shared.service';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-list-scheduled-services-table',
   standalone: true,
-  imports: [CommonModule, ListComponent],
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  imports: [CommonModule, ListScheduledServicesTableComponent],
+  templateUrl: './list-scheduled-services-table.component.html',
+  styleUrls: ['./list-scheduled-services-table.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListScheduledServicesTableComponent implements OnInit {
 
   servicesList: Array<Service> = [];
   selectedService: Service | undefined;
 
   constructor(
     public toastr: ToastrService,
-    private listService: ListService,
+    private listService: ListScheduledServicesService,
     private listDetailSharedService: ListDetailSharedService
   ) { }
 
   ngOnInit() {
-    this.getServices();
+    this.getScheduledServicesByUser();
   }
 
-  getServices() {
+  getScheduledServicesByUser() {
     this.servicesList = [];
     /* istanbul ignore next */
-    this.listService.getServices()
+    this.listService.getScheduledServicesByUser()
       .pipe(
         switchMap(listServicesSuccess => {
           this.servicesList = listServicesSuccess;
@@ -63,7 +63,7 @@ export class ListComponent implements OnInit {
   }
 
   sendDataSharedService(service: Service) {
-    this.listDetailSharedService.setData(service);
+    this.listDetailSharedService.setDataService(service);
   }
 
 }

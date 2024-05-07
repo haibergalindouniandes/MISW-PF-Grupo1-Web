@@ -7,7 +7,6 @@ import { switchMap } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { TrainingPlan } from '../../../../core/models/training/training-plan';
 
-
 @Component({
   selector: 'app-register-form',
   standalone: true,
@@ -49,7 +48,6 @@ export class RegisterFormComponent implements OnInit {
           this.trainingPlan.numero_semanas,
           this.convert_number_to_string()
         );
-        // console.log(newTrainingPlan)
         this.serviceRegisterTrainingPlan.registerTrainingPlan(newTrainingPlan)
           .subscribe(registerSuccess => {
             this.toastr.success('Confirmación', 'Se registro plan de entrenamiento exitosamente!', { closeButton: true });

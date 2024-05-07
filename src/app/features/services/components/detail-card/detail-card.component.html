@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-8">
                   <strong>Hora: </strong>
-                  <p> {{ getSchedule(selectedService.horario) }}</p>
+                  <p>{{ selectedService.horario ? getSchedule(selectedService.horario) : selectedService.hora }}</p>
                 </div>
               </div>
             </td>
@@ -24,7 +24,7 @@
           <tr>
             <td>
               <strong>Organizador: </strong>
-              <p>{{ selectedService.nombre_usuario }}</p>
+              <p>{{ selectedService.nombre_usuario ? selectedService.nombre_usuario : selectedService.nombre_proveedor }}</p>
             </td>
             <td>
               <div class="row">

@@ -8,8 +8,10 @@ export class Service {
   fecha?: string;
   frecuencia?: string;
   horario?: string[];
+  hora?: string;
   id_usuario?: string;
   nombre_usuario?: string;
+  nombre_proveedor?: string;
   numero_maximo_participantes?: number;
   numero_minimo_participantes?: number;
 
@@ -23,8 +25,10 @@ export class Service {
     fecha?: string,
     frecuencia?: string,
     horario?: string[],
+    hora?: string,
     id_usuario?: string,
     nombre_usuario?: string,
+    nombre_proveedor?: string,
     numero_maximo_participantes?: number,
     numero_minimo_participantes?: number
   ) {
@@ -37,8 +41,10 @@ export class Service {
     this.fecha = fecha;
     this.frecuencia = frecuencia;
     this.horario = horario;
+    this.hora = hora;
     this.id_usuario = id_usuario;
     this.nombre_usuario = nombre_usuario;
+    this.nombre_proveedor = nombre_proveedor;
     this.numero_maximo_participantes = numero_maximo_participantes;
     this.numero_minimo_participantes = numero_minimo_participantes;
   }

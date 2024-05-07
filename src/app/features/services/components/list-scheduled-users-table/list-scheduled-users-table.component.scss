@@ -1,3 +1,11 @@
+#table-container {
+  overflow-y: auto;
+}
+
+#table-container::-webkit-scrollbar {
+  width: 12px;
+}
+
 .rounded-table {
   border-radius: 10px;
   border: 1px solid #ddd;
@@ -18,11 +26,10 @@
     tr {
       td {
         &:first-child {
-          font-weight: bold;
-          width: 30%;
+          width: 50%;
         }
         &:nth-child(2) {
-          width: 70%;
+          width: 50%;
         }
       }
     }
@@ -30,9 +37,8 @@
 
   th,
   td {
-    padding: 10px;
+    padding: 2px;
     border-bottom: 1px solid #ddd;
-    width: 50%;
     border: none;
   }
 

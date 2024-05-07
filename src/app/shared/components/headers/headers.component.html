@@ -12,7 +12,8 @@
           Services
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuServices" id="dropdown-services">
-          <li><a class="dropdown-item" [routerLink]="['/services', 'list']" *ngIf="hasPermissionsAsUser()">Lista de servicios</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/services', 'list-detail-user']" *ngIf="hasPermissionsAsUser()">Lista de servicios</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/services', 'list-detail-provider']" *ngIf="hasPermissionsAsProvider()">Lista de servicios</a></li>
           <li><a i18n class="dropdown-item" [routerLink]="['/services', 'register']" *ngIf="hasPermissionsAsProvider()">Register</a></li>
         </ul>
       </li>

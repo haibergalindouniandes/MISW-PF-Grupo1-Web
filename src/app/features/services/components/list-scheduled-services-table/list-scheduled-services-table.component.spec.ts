@@ -1,33 +1,31 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DetailComponent } from './detail.component';
+import { ListScheduledServicesTableComponent } from './list-scheduled-services-table.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { ListDetailSharedService } from '../../../../core/services/services/list-detail-shared.service';
-import { of } from 'rxjs';
+import { ListService } from '../../../../core/services/services/list.service';
 import { Service } from '../../../../core/models/services/service';
-import { DetailService } from '../../../../core/services/services/detail.service';
 
-describe('DetailComponent', () => {
-  let component: DetailComponent;
-  let fixture: ComponentFixture<DetailComponent>;
+describe('ListScheduledServicesTableComponent', () => {
+  let component: ListScheduledServicesTableComponent;
+  let fixture: ComponentFixture<ListScheduledServicesTableComponent>;
+  let listService: ListService;
   let listDetailSharedService: ListDetailSharedService;
-  let detailService: DetailService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DetailComponent, HttpClientTestingModule, ToastrModule.forRoot(), RouterModule.forRoot([])],
-      providers: [ListDetailSharedService]
+      imports: [ListScheduledServicesTableComponent, HttpClientTestingModule, ToastrModule.forRoot()],
+      providers: [ListService, ListDetailSharedService]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DetailComponent);
+    fixture = TestBed.createComponent(ListScheduledServicesTableComponent);
     component = fixture.componentInstance;
+    listService = TestBed.inject(ListService);
     listDetailSharedService = TestBed.inject(ListDetailSharedService);
-    detailService = TestBed.inject(DetailService);
     fixture.detectChanges();
   });
 
@@ -47,19 +45,18 @@ describe('DetailComponent', () => {
     expect(result).toEqual('10:00');
   });
 
-  it('should return range of schedules', () => {
-    const schedule = ['10:00', '11:00', '12:00'];
+  it('should return multiples schedules', () => {
+    const schedule = ['10:00', '11:00'];
     const result = component.getSchedule(schedule);
-    expect(result).toEqual('10:00 - 12:00');
+    expect(result).toEqual('10:00 - 11:00');
   });
 
-  it('should set selectedService when service is retrieved successfully', () => {
+  it('should set selectedService and call sendDataSharedService', () => {
     const mockService: Service = { id: '1', nombre: 'Test Service', lugar: 'Bogotá - El Salitre', costo: '25000 COP' };
-    const serviceId = '1';
-    spyOn(listDetailSharedService, 'getData').and.returnValue(of({ id: serviceId }));
-    spyOn(detailService, 'getServiceById').and.returnValue(of(mockService));
-    component.getDetailServices(serviceId);
+    spyOn(listDetailSharedService, 'setDataService');
+    component.onSelectedService(mockService);
     expect(component.selectedService).toEqual(mockService);
+    expect(listDetailSharedService.setDataService).toHaveBeenCalledWith(mockService);
   });
 
 });

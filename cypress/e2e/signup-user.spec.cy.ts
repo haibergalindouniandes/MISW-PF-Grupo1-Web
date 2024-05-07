@@ -1,8 +1,5 @@
 import { Signup } from "../page-objects/auth/signup";
-import { Signin } from "../page-objects/auth/signin";
 import { faker } from "@faker-js/faker";
-import { addDays, format } from 'date-fns';
-import { min } from "cypress/types/lodash";
 
 describe('Signup user e2e test', () => {
   it('Should validate the form fields so that they are not left empty', () => {

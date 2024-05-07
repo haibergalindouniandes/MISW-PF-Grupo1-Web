@@ -1,0 +1,12 @@
+<div class="container table-container">
+  <table class="table" class="table rounded-table" id="table-list-services">
+    <tbody>
+      <tr *ngFor="let service of servicesList" (click)="onSelectedService(service)">
+        <td  [class.selected]="selectedService === service" >
+          <p><strong>{{ service.nombre }}</strong></p>
+          {{ splitDate(service.fecha) }} {{ getSchedule(service.horario) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

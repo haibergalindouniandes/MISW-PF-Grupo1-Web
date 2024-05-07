@@ -63,7 +63,6 @@ export class RegisterFormComponent implements OnInit {
         .subscribe(registerSucess => {
           this.toastr.success('Confirmation', 'Se registro servicio exitosamente!', { closeButton: true });
           this.serviceRegistrationForm.reset();
-          console.log(registerSucess);
         })
     }
   }

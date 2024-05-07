@@ -1,23 +1,23 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ListDetailComponent } from './list-detail.component';
+import { ListDetailUserComponent } from './list-detail-user.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 
-describe('ListDetailComponent', () => {
-  let component: ListDetailComponent;
-  let fixture: ComponentFixture<ListDetailComponent>;
+describe('ListDetailUserComponent', () => {
+  let component: ListDetailUserComponent;
+  let fixture: ComponentFixture<ListDetailUserComponent>;
 
   beforeEach(async() => {
     await TestBed.configureTestingModule({
-      imports: [ ListDetailComponent, HttpClientTestingModule, ToastrModule.forRoot(), RouterModule.forRoot([]) ]
+      imports: [ ListDetailUserComponent, HttpClientTestingModule, ToastrModule.forRoot(), RouterModule.forRoot([]) ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListDetailComponent);
+    fixture = TestBed.createComponent(ListDetailUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -140,7 +140,6 @@ export class SignupFormComponent implements OnInit {
 
   createUser() {
     if (this.serviceSignUpForm.valid) {
-      console.log(this.serviceSignUpForm);
       let data = this.serviceSignUpForm.value;
       let deportes = this.get_deportes()
       let signupService = new Signup(
@@ -164,15 +163,12 @@ export class SignupFormComponent implements OnInit {
         this.tipo_usuario,
         this.convertStringToArray(data.inputContactosEmergencia)
       );
-
-      console.log(signupService);
       /* istanbul ignore next */
       this.SignupService.signUp(signupService)
       .subscribe(createUserSucess => {
         this.toastr.success('Confirmación', 'Se creo usuario exitosamente!', { closeButton: true });
         this.serviceSignUpForm.reset();
         this.reset_checkboxes(false, false, false)
-        console.log(createUserSucess);
       })
     }
   }

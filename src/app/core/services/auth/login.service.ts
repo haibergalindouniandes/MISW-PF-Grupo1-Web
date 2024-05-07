@@ -16,11 +16,6 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   signIn(credentials: Signin): Observable<Login> {
-    console.log(new Date() + "::::::::: " + "llamado servicio Login");
-    console.log(new Date() + ": " + credentials);
-    console.log(new Date() + ": " + credentials.email);
-    console.log(new Date() + ": " + credentials.password);
-    console.log(new Date() + ": " + this.apiUrl);
     return this.http.post<Login>(this.apiUrl, credentials, { headers: this.headers });
   }
 }

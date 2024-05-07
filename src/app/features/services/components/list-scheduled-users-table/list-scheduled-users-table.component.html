@@ -1,0 +1,25 @@
+<div class="container table-container" *ngIf="listScheduledUserList && listScheduledUserList.length > 0">
+  <div class="card">
+    <div class="card-body">
+      <table class="table rounded-table" id="table-list-scheduled-users">
+        <thead>
+          <tr>
+            <th scope="col" *ngFor="let column of columns">
+              {{ column }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of listScheduledUserList">
+            <td>
+              {{ user.nombre_usuario }}
+            </td>
+            <td>
+              {{ user.email }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

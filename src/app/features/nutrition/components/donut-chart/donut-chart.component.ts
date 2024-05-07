@@ -24,7 +24,6 @@ export class DonutChartComponent implements OnInit {
   ngOnInit(): void {
     this.serviceDonutChart.getData().subscribe(data => {
       this.data = data;
-      console.log(`Rebiendo ${this.data} from Result table ...`);
       this.createChart()
     });
   }

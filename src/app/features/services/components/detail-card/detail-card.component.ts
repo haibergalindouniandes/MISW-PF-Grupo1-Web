@@ -6,13 +6,13 @@ import { DetailService } from '../../../../core/services/services/detail.service
 import { switchMap } from 'rxjs';
 
 @Component({
-  selector: 'app-detail',
+  selector: 'app-detail-card',
   standalone: true,
-  imports: [CommonModule, DetailComponent],
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss']
+  imports: [CommonModule, DetailCardComponent],
+  templateUrl: './detail-card.component.html',
+  styleUrls: ['./detail-card.component.scss']
 })
-export class DetailComponent implements OnInit {
+export class DetailCardComponent implements OnInit {
 
   selectedService: Service | undefined;
 
@@ -22,10 +22,10 @@ export class DetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    /* istanbul ignore next */
-    this.listDetailSharedService.getData().subscribe(data => {
-      this.getDetailServices(data.id);
+    this.listDetailSharedService.getDataService().subscribe(data => {
+      this.selectedService = data;
     });
+
   }
 
   splitDate(date: any): string {

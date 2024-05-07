@@ -4,7 +4,7 @@
       <tr *ngFor="let service of servicesList" (click)="onSelectedService(service)">
         <td  [class.selected]="selectedService === service" >
           <p><strong>{{ service.nombre }}</strong></p>
-          {{ splitDate(service.fecha) }} {{ getSchedule(service.horario) }}
+          {{ splitDate(service.fecha) }} {{ service.hora }}
         </td>
       </tr>
     </tbody>

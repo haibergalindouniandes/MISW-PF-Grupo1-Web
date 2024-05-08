@@ -1,0 +1,27 @@
+<div class="container" *ngIf="selectedService !== undefined && selectedService.id_servicio !== undefined">
+  <div class="card">
+    <div class="card-body">
+      <div>
+        <form [formGroup]="notificationForm">
+          <div class="notification-form">
+            <textarea formControlName="message" id="message" class="form-control notification-input"
+              placeholder="Mensaje de notificación a los usuarios"></textarea>
+            <button type="submit" class="btn btn-primary" id="btn-send-notification" [disabled]="notificationForm.invalid" (click)="sendNotification()">Enviar notificación</button>
+          </div>
+          <div
+            *ngIf="notificationForm.controls['message'].invalid && (notificationForm.controls['message'].dirty || notificationForm.controls['message'].touched)"
+            class="text-danger">
+            <small *ngIf="notificationForm.controls['message'].errors?.['minlength']">
+              Valor ingresado
+              {{ notificationForm.controls['message'].errors?.['minlength'].actualLength }} caracteres, pero debe
+              ingresar
+              {{ notificationForm.controls['message'].errors?.['minlength'].requiredLength}} caracteres.
+            </small>
+            <small *ngIf="notificationForm.controls['message']?.errors?.['required']">El campo mensaje es
+              requerido!</small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

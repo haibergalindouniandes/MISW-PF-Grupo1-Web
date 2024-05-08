@@ -9,6 +9,7 @@ export class Service {
   frecuencia?: string;
   horario?: string[];
   id_usuario?: string;
+  nombre_usuario?: string;
   numero_maximo_participantes?: number;
   numero_minimo_participantes?: number;
 
@@ -23,6 +24,7 @@ export class Service {
     frecuencia?: string,
     horario?: string[],
     id_usuario?: string,
+    nombre_usuario?: string,
     numero_maximo_participantes?: number,
     numero_minimo_participantes?: number
   ) {
@@ -36,6 +38,7 @@ export class Service {
     this.frecuencia = frecuencia;
     this.horario = horario;
     this.id_usuario = id_usuario;
+    this.nombre_usuario = nombre_usuario;
     this.numero_maximo_participantes = numero_maximo_participantes;
     this.numero_minimo_participantes = numero_minimo_participantes;
   }

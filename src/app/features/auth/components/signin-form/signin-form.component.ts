@@ -29,8 +29,6 @@ export class SigninFormComponent {
 
   signIn(signIn: Signin) {
     sessionStorage.clear();
-    console.log(new Date() + ": " + this.email);
-    console.log(new Date() + ": " + this.password);
     let userLogin = new Signin(signIn.email, signIn.password);
     /* istanbul ignore next */
     this.signingService.signIn(userLogin)
@@ -40,7 +38,6 @@ export class SigninFormComponent {
         sessionStorage.setItem('email', userLogin.email);
         sessionStorage.setItem('rol', signInSuccess.tipo_usuario);
         sessionStorage.setItem('token', signInSuccess.token);
-        console.log(signInSuccess.tipo_usuario)
         this.toastr.success('Confirmación', '¡¡¡ Bienvenido ' + sessionStorage.getItem('username') + ' !!!', { closeButton: true });
         this.signInForm.reset();
         if(signInSuccess.tipo_usuario == 'Usuario'){
@@ -48,7 +45,7 @@ export class SigninFormComponent {
         }else{
           this.router.navigate(['/homeproveedores'])
         }
-        
+
       })
   }
 

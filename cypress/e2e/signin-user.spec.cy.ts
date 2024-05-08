@@ -1,4 +1,4 @@
-import { Signin } from "../page-objects/auth/signin";
+import { signinUser } from "./e2e-utils.spec";
 
 describe('Signin user e2e test', () => {
   it('Should allow to signin a user', () => {
@@ -6,8 +6,6 @@ describe('Signin user e2e test', () => {
     let email = 'prestador2024@uniandes.edu.co'
     let password = 'Prestador2*24'
     // Ejecución de prueba
-    const poSignin = new Signin();
-    poSignin.visit('/auth/signin')
-    poSignin.shouldSigninSuccess(email, password);
+    signinUser(email, password);
   })
 });

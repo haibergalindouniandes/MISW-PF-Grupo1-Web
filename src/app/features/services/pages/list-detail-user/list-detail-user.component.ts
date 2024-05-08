@@ -1,40 +1,40 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { ListComponent } from '../../components/list/list.component';
 import { HeadersComponent } from '../../../../shared/components/headers/headers.component';
 import { FooterComponent } from '../../../../shared/components/footer/footer.component';
-import { DetailComponent } from '../../components/detail/detail.component';
-import { Scheduler } from '../../../../core/models/services/scheduler';
+import { DetailCardComponent } from '../../components/detail-card/detail-card.component';
+import { ListScheduledServicesTableComponent } from '../../components/list-scheduled-services-table/list-scheduled-services-table.component';
 import { SchedulerService } from '../../../../core/services/services/scheduler/scheduler.service';
-import { Service } from '../../../../core/models/services/service';
 import { EmitterService } from '../../../../core/emitters/service-emitter';
+import { Service } from '../../../../core/models/services/service';
+import { Scheduler } from '../../../../core/models/services/scheduler';
 
 @Component({
-  selector: 'app-list-detail',
+  selector: 'app-list-services-table-detail',
   standalone: true,
-  imports: [CommonModule, HeadersComponent, FooterComponent, ListDetailComponent, ListComponent, DetailComponent],
-  templateUrl: './list-detail.component.html',
-  styleUrls: ['./list-detail.component.scss']
+  imports: [CommonModule, HeadersComponent, FooterComponent, ListDetailUserComponent, ListScheduledServicesTableComponent, DetailCardComponent],
+  templateUrl: './list-detail-user.component.html',
+  styleUrls: ['./list-detail-user.component.scss']
 })
-export class ListDetailComponent implements OnInit {
+export class ListDetailUserComponent implements OnInit {
+
   selectedService: Service | undefined;
-  listComponents: ListComponent | undefined;
+  toastr: any;
+
 
   constructor(    
-    public toastr: ToastrService,
     private schedulerService: SchedulerService,
     private emitterService: EmitterService
     ) { }
-  
-  ngOnInit(): void { 
+
+  ngOnInit() {
     this.emitterService.serviceEmitter.subscribe(
       data => {
         this.selectedService = data;
       }
     );
-   }
-    
+  }
+
   addSchedulerService() {    
     console.log(':::::::::::addScheduleSevice:::::::::');
     console.log(this.selectedService);
@@ -61,5 +61,4 @@ export class ListDetailComponent implements OnInit {
     }
 
   }
-
 }

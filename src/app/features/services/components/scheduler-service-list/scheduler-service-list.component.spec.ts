@@ -1,18 +1,12 @@
-/* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ListServicesComponent } from './list-services-table.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
-import { ListDetailSharedService } from '../../../../core/services/services/list-detail-shared.service';
-import { ListService } from '../../../../core/services/services/list.service';
-import { Service } from '../../../../core/models/services/service';
-import { SchedulerServiceListComponent } from '../scheduler-service-list/scheduler-service-list.component';
 
-describe('SchedulerServiceListComponent', () => {
-  let component: SchedulerServiceListComponent;
-  let fixture: ComponentFixture<SchedulerServiceListComponent>;
+describe('ListServicesComponent', () => {
+  let component: ListServicesComponent;
+  let fixture: ComponentFixture<ListServicesComponent>;
   let listService: ListService;
+  let listDetailSharedService: ListDetailSharedService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,7 +17,10 @@ describe('SchedulerServiceListComponent', () => {
   });
 
   beforeEach(() => {
+    fixture = TestBed.createComponent(ListServicesComponent);
+    component = fixture.componentInstance;
     listService = TestBed.inject(ListService);
+    listDetailSharedService = TestBed.inject(ListDetailSharedService);
     fixture.detectChanges();
   });
 
@@ -51,8 +48,10 @@ describe('SchedulerServiceListComponent', () => {
 
   it('should set selectedService and call sendDataSharedService', () => {
     const mockService: Service = { id: '1', nombre: 'Test Service', lugar: 'Bogotá - El Salitre', costo: '25000 COP' };
+    spyOn(listDetailSharedService, 'setDataService');
     component.onSelectedService(mockService);
     expect(component.selectedService).toEqual(mockService);
+    expect(listDetailSharedService.setDataService).toHaveBeenCalledWith(mockService);
   });
 
 });

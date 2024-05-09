@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Service } from '../../../../core/models/services/service';
@@ -10,7 +10,7 @@ import { switchMap } from 'rxjs';
 @Component({
   selector: 'app-scheduler-service-list',
   standalone: true,
-  imports: [CommonModule, SchedulerServiceListComponent, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, SchedulerServiceListComponent],//, ReactiveFormsModule, FormsModule],
   templateUrl: './scheduler-service-list.component.html',
   styleUrl: './scheduler-service-list.component.scss'
 })
@@ -43,8 +43,11 @@ export class SchedulerServiceListComponent implements OnInit {
   }
 
   splitDate(date: any): string {
-    const dateObj = new Date(date);
+    console.log(date)
+    const dateObj = new Date();
+    console.log(dateObj)
     const formattedDate = dateObj.toISOString().split('T')[0];
+    console.log(formattedDate)
     return formattedDate;
   }
 
@@ -62,7 +65,7 @@ export class SchedulerServiceListComponent implements OnInit {
     this.selectedService = service;
     console.log(this.selectedService)
     //this.sendDataSharedService(service);
-    this.emitterService.setService(this.selectedService);
+    this.emitterService.setService(service);
   }
 
   /*sendDataSharedService(service: Service) {

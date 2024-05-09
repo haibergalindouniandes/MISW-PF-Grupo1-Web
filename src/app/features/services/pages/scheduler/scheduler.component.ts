@@ -7,13 +7,14 @@ import { EmitterService } from '../../../../core/emitters/service-emitter';
 import { Scheduler } from '../../../../core/models/services/scheduler';
 import { ToastrService } from 'ngx-toastr';
 import { SchedulerServiceListComponent } from '../../components/scheduler-service-list/scheduler-service-list.component';
+import { SchedulerDetailCardComponent } from "../../components/scheduler-detail-card/scheduler-detail-card.component";
 
 @Component({
-  selector: 'app-scheduler',
-  standalone: true,
-  imports: [HeadersComponent, FooterComponent, SchedulerServiceListComponent],
-  templateUrl: './scheduler.component.html',
-  styleUrl: './scheduler.component.scss'
+    selector: 'app-scheduler',
+    standalone: true,
+    templateUrl: './scheduler.component.html',
+    styleUrl: './scheduler.component.scss',
+    imports: [HeadersComponent, FooterComponent, SchedulerServiceListComponent,  SchedulerDetailCardComponent]
 })
 export class SchedulerComponent implements OnInit {
 

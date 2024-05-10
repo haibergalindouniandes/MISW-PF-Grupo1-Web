@@ -8,6 +8,8 @@ import { Scheduler } from '../../../../core/models/services/scheduler';
 import { ToastrService } from 'ngx-toastr';
 import { SchedulerServiceListComponent } from '../../components/scheduler-service-list/scheduler-service-list.component';
 import { SchedulerDetailCardComponent } from "../../components/scheduler-detail-card/scheduler-detail-card.component";
+import { DetailService } from '../../../../core/services/services/detail.service';
+import { switchMap } from 'rxjs';
 
 @Component({
     selector: 'app-scheduler',
@@ -24,13 +26,15 @@ export class SchedulerComponent implements OnInit {
   constructor(    
     public toastr: ToastrService,
     private schedulerService: SchedulerService,
-    private emitterService: EmitterService
+    private emitterService: EmitterService,
+    private detailService: DetailService
     ) { }
 
   ngOnInit() {
     this.emitterService.serviceEmitter.subscribe(
       data => {
         this.selectedService = data;
+        this.getDetailServices(this.selectedService.id)
       }
     );
   }
@@ -45,7 +49,7 @@ export class SchedulerComponent implements OnInit {
         sessionStorage.getItem('user_id')!,
         this.selectedService.id,
         sessionStorage.getItem('email')!,
-        this.selectedService.fecha!,
+        this.splitDate(this.selectedService.fecha!),
         '12:04:04'
       );
       console.log('secheduleService=======');
@@ -60,5 +64,27 @@ export class SchedulerComponent implements OnInit {
       this.toastr.warning('Confirmation', 'No se ha seleccionado servicio!', { closeButton: true });
     }
 
+  }  
+  
+  splitDate(date: any): string {
+    console.log('SPLIT DATE')
+    console.log(date)
+    const dateObj = new Date(date);
+    const formattedDate = dateObj.toISOString().split('T')[0];
+    return formattedDate;
   }
+
+  getDetailServices(serviceId: string) {
+    this.detailService.getServiceById(serviceId)
+      .pipe(
+        switchMap(servicesSuccess => {
+          console.log(':::::::::get Detail service ::::::::')
+          console.log(servicesSuccess)
+          this.selectedService = servicesSuccess;          
+          return [];
+        })
+      )
+      .subscribe(() => { });
+  }
+
 }

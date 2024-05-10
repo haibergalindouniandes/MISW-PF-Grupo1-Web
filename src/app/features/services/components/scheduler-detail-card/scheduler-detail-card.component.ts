@@ -15,6 +15,9 @@ import { EmitterService } from '../../../../core/emitters/service-emitter';
 export class SchedulerDetailCardComponent implements OnInit {
 
   selectedService: Service | undefined;
+  horarioSeleccionado: String | undefined;
+  horario: string[] | undefined = [];
+
 
   constructor(
     private emitterService: EmitterService,
@@ -27,11 +30,19 @@ export class SchedulerDetailCardComponent implements OnInit {
       console.log(data)
       this.selectedService = data;
       console.log(this.selectedService)
+      this.getDetailServices(this.selectedService.id);
+      console.log(':::::::::Scheduler card detail service::::::::::::::');
+      console.log(this.selectedService);
+      this.horario = this.selectedService.horario!;
+      console.log(':::::Horarios');
+      console.log(this.horario);
     });
 
   }
 
   splitDate(date: any): string {
+    console.log('SPLIT DATE')
+    console.log(date)
     const dateObj = new Date(date);
     const formattedDate = dateObj.toISOString().split('T')[0];
     return formattedDate;
@@ -53,11 +64,15 @@ export class SchedulerDetailCardComponent implements OnInit {
         switchMap(servicesSuccess => {
           console.log(':::::::::get Detail service ::::::::')
           console.log(servicesSuccess)
-          this.selectedService = servicesSuccess;
+          this.selectedService = servicesSuccess;          
           return [];
         })
       )
       .subscribe(() => { });
+  }
+
+  setHourSelected(hour:string){
+    this.horarioSeleccionado=hour;
   }
 
 }

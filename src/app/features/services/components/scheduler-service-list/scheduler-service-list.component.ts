@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Service } from '../../../../core/models/services/service';
 import { EmitterService } from '../../../../core/emitters/service-emitter';
 import { ListService } from '../../../../core/services/services/list.service';
@@ -63,6 +62,7 @@ export class SchedulerServiceListComponent implements OnInit {
 
   onSelectedService(service: Service): void {
     this.selectedService = service;
+    console.log('::::::: on Selected Service :::::::')
     console.log(this.selectedService)
     //this.sendDataSharedService(service);
     this.emitterService.setService(service);

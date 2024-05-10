@@ -13,10 +13,12 @@
                 <div class="col-md-4">
                   <strong>Fecha: </strong>
                   <p>{{ splitDate(selectedService.fecha) }}</p>
+                  
                 </div>
                 <div class="col-md-8">
                   <strong>Hora: </strong>
                   <p> {{ getSchedule(selectedService.horario) }}</p>
+                  
                 </div>
               </div>
             </td>
@@ -47,6 +49,15 @@
           </tr>
         </tbody>
       </table>
+    <div>
+
+      <select class="form-control" id="selectHours" formControlName="Seleccione horario" (change) = "setHourSelected(t.value)" #t>
+        <option *ngFor="let hora of this.horario;" [value]="hora">
+          {{hora}}
+        </option>
+      </select>
+
+    </div>
     </div>
   </div>
 </div>

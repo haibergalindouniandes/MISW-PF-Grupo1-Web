@@ -5,9 +5,9 @@ export class FeedingPlan {
   id_usuario: string;
   numero_semanas: number;
   plan_alimentacion: {
-    alimentacion: string;
+    alimentacion?: string;
     domingo: number;
-    id: string;
+    id?: string;
     jueves: number;
     lunes: number;
     martes: number;
@@ -20,9 +20,9 @@ export class FeedingPlan {
     id_usuario: string,
     numero_semanas: number,
     plan_alimentacion: {
-      alimentacion: string;
+      alimentacion?: string;
       domingo: number;
-      id: string;
+      id?: string;
       jueves: number;
       lunes: number;
       martes: number;

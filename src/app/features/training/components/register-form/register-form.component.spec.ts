@@ -71,7 +71,7 @@ describe('RegisterFormComponent', () => {
       plan_entrenamiento: {
         lunes: 10,
         martes: 15,
-        miercoles: '20',
+        miercoles: 20,
         jueves: 10,
         viernes: 25,
         sabado: 10,
@@ -80,17 +80,18 @@ describe('RegisterFormComponent', () => {
     };
     component.trainingPlan = originalTrainingPlan;
     const convertedPlan = component.convert_number_to_string();
-    const trainingPlan = new TrainingPlan('ce357334-bf36-4a4a-a55a-5a01e54d7e8d', 'Ciclismo', 4, {
-      domingo: 7,
-      jueves: 6,
-      lunes: 8,
-      martes: 4,
-      miercoles: 5,
-      sabado: 7,
-      viernes: 9
-    }
-    );
-    expect(component.trainingPlan).toEqual(originalTrainingPlan);
+    const TrainingPlan_number_as_string = {
+      plan_entrenamiento: {
+        lunes: '10',
+        martes: '15',
+        miercoles: '20',
+        jueves: '10',
+        viernes: '25',
+        sabado: '10',
+        domingo: '30'
+      }
+    };
+    expect(convertedPlan).toEqual(TrainingPlan_number_as_string.plan_entrenamiento);
   });
 
 });

@@ -43,7 +43,7 @@ export class SchedulerServiceListComponent implements OnInit {
 
   splitDate(date: any): string {
     console.log(date)
-    const dateObj = new Date();
+    const dateObj = new Date(date);
     console.log(dateObj)
     const formattedDate = dateObj.toISOString().split('T')[0];
     console.log(formattedDate)

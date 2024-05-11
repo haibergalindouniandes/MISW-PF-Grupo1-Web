@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DetailCardComponent } from './scheduler-detail-card.component';
+import { SchedulerDetailCardComponent } from './scheduler-detail-card.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
@@ -10,21 +10,21 @@ import { Service } from '../../../../core/models/services/service';
 import { DetailService } from '../../../../core/services/services/detail.service';
 
 describe('DetailCardComponent', () => {
-  let component: DetailCardComponent;
-  let fixture: ComponentFixture<DetailCardComponent>;
+  let component: SchedulerDetailCardComponent;
+  let fixture: ComponentFixture<SchedulerDetailCardComponent>;
   let listDetailSharedService: ListDetailSharedService;
   let detailService: DetailService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DetailCardComponent, HttpClientTestingModule, ToastrModule.forRoot(), RouterModule.forRoot([])],
+      imports: [SchedulerDetailCardComponent, HttpClientTestingModule, ToastrModule.forRoot(), RouterModule.forRoot([])],
       providers: [ListDetailSharedService]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DetailCardComponent);
+    fixture = TestBed.createComponent(SchedulerDetailCardComponent);
     component = fixture.componentInstance;
     listDetailSharedService = TestBed.inject(ListDetailSharedService);
     detailService = TestBed.inject(DetailService);

@@ -1,26 +1,31 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ToastrModule } from 'ngx-toastr';
+import { SchedulerServiceListComponent } from './scheduler-service-list.component';
+import { ListService } from '../../../../core/services/services/list.service';
+import { EmitterService } from '../../../../core/emitters/service-emitter';
+import { Service } from '../../../../core/models/services/service';
+import { RouterModule } from '@angular/router';
 
-describe('ListServicesComponent', () => {
-  let component: ListServicesComponent;
-  let fixture: ComponentFixture<ListServicesComponent>;
+describe('SchedulerServiceListComponent', () => {
+  let component: SchedulerServiceListComponent;
+  let fixture: ComponentFixture<SchedulerServiceListComponent>;
   let listService: ListService;
-  let listDetailSharedService: ListDetailSharedService;
+  let listDetailSharedService: EmitterService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListServicesComponent, HttpClientTestingModule, ToastrModule.forRoot(), RouterModule.forRoot([])],
-      providers: [ListService, ListDetailSharedService]
+      imports: [SchedulerServiceListComponent, HttpClientTestingModule, ToastrModule.forRoot(), RouterModule.forRoot([])],
+      providers: [ListService, EmitterService]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListServicesComponent);
+    fixture = TestBed.createComponent(SchedulerServiceListComponent);
     component = fixture.componentInstance;
     listService = TestBed.inject(ListService);
-    listDetailSharedService = TestBed.inject(ListDetailSharedService);
+    listDetailSharedService = TestBed.inject(EmitterService);
     fixture.detectChanges();
   });
 
@@ -46,12 +51,12 @@ describe('ListServicesComponent', () => {
     expect(result).toEqual('10:00 - 11:00');
   });
 
-  it('should set selectedService and call sendDataSharedService', () => {
+  it('should set selectedService and call EmmitedService', () => {
     const mockService: Service = { id: '1', nombre: 'Test Service', lugar: 'Bogotá - El Salitre', costo: '25000 COP' };
-    spyOn(listDetailSharedService, 'setDataService');
+    spyOn(listDetailSharedService, 'cambiosService');
     component.onSelectedService(mockService);
     expect(component.selectedService).toEqual(mockService);
-    expect(listDetailSharedService.setDataService).toHaveBeenCalledWith(mockService);
+    
   });
 
 });

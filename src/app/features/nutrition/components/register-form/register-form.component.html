@@ -1,0 +1,81 @@
+<div class="container mt-5">
+  <div class="container container-right">
+    <div class="row">
+      <div class="col-md-2">
+        <label for="inputSemanas" class="form-label">Numero de semanas</label>
+        <input type="number" class="form-control input-number-no-border " [(ngModel)]="feedingPlan.numero_semanas"
+        id="numero_semanas" name="numero_semanas" [readOnly]="!editMode">
+      </div>
+      <div class="col-md-10"></div>
+    </div>
+  </div>
+  <div class="container">
+    <table class="table rounded-table">
+      <thead>
+        <tr>
+          <th>Dia</th>
+          <th>Calorias (kcal)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lunes</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="feedingPlan.plan_alimentacion.lunes"
+            id="calorias_lunes" name="calorias_lunes" [readOnly]="!editMode" #caloriesInput>
+          </td>
+        </tr>
+        <tr>
+          <td>Martes</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="feedingPlan.plan_alimentacion.martes"
+              id="calorias_martes" name="calorias_martes" [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>Miercoles</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="feedingPlan.plan_alimentacion.miercoles"
+            id="calorias_miercoles" name="calorias_miercoles" [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>Jueves</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="feedingPlan.plan_alimentacion.jueves"
+            id="calorias_jueves" name="calorias_jueves" [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>Viernes</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="feedingPlan.plan_alimentacion.viernes"
+            id="calorias_viernes" name="calorias_viernes" [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>Sabado</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="feedingPlan.plan_alimentacion.sabado"
+            id="calorias_sabado" name="calorias_sabado" [readOnly]="!editMode">
+          </td>
+        </tr>
+        <tr>
+          <td>Domingo</td>
+          <td>
+            <input type="number" class="form-control input-number-no-border " [(ngModel)]="feedingPlan.plan_alimentacion.domingo"
+            id="calorias_domingo" name="calorias_domingo" [readOnly]="!editMode">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row mt-3">
+      <!-- Buttons-->
+      <div class="col-auto">
+        <button type="button" class="btn btn-primary me-2" id="btn-register" (click)="toggleEdit()">{{ editMode ?
+          'Registrar' : 'Editar' }}</button>
+        <button type="button" class="btn btn-danger" id="btn-cancel" (click)="cancel()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

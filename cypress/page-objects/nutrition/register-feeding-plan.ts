@@ -1,12 +1,8 @@
-export class RegisterTrainingPlan {
+export class RegisterFeedingPlan {
 
   visit(page: string) {
     cy.visit(page);
     cy.wait(1000);
-  }
-
-  private getDropdownEntrenamiento() {
-    return cy.get(`#inputEntrenamiento`);
   }
 
   private getInputSemanas() {
@@ -14,31 +10,31 @@ export class RegisterTrainingPlan {
   }
 
   private getInputLunes() {
-    return cy.get(`#distancia_lunes`);
+    return cy.get(`#calorias_lunes`);
   }
 
   private getInputMartes() {
-    return cy.get(`#distancia_martes`);
+    return cy.get(`#calorias_martes`);
   }
 
   private getInputMiercoles() {
-    return cy.get(`#distancia_miercoles`);
+    return cy.get(`#calorias_miercoles`);
   }
 
   private getInputJueves() {
-    return cy.get(`#distancia_jueves`);
+    return cy.get(`#calorias_jueves`);
   }
 
   private getInputViernes() {
-    return cy.get('#distancia_viernes');
+    return cy.get('#calorias_viernes');
   }
 
   private getInputSabado() {
-    return cy.get('#distancia_sabado');
+    return cy.get('#calorias_sabado');
   }
 
   private getInputDomingo() {
-    return cy.get('#distancia_domingo');
+    return cy.get('#calorias_domingo');
   }
 
   private getButtonRegister() {
@@ -57,32 +53,32 @@ export class RegisterTrainingPlan {
     this.getInputSemanas().clear().type(numero);
   }
 
-  private setInputLunes(distancia: string) {
-    this.getInputLunes().clear().type(distancia);
+  private setInputLunes(calorias: string) {
+    this.getInputLunes().clear().type(calorias);
   }
 
-  private setInputMartes(distancia: string) {
-    this.getInputMartes().clear().type(distancia);
+  private setInputMartes(calorias: string) {
+    this.getInputMartes().clear().type(calorias);
   }
 
-  private setInputMiercoles(distancia: string) {
-    this.getInputMiercoles().clear().type(distancia);
+  private setInputMiercoles(calorias: string) {
+    this.getInputMiercoles().clear().type(calorias);
   }
 
-  private setInputJueves(distancia: string) {
-    this.getInputJueves().clear().type(distancia);
+  private setInputJueves(calorias: string) {
+    this.getInputJueves().clear().type(calorias);
   }
 
-  private setInputViernes(distancia: string) {
-    this.getInputViernes().clear().type(distancia);
+  private setInputViernes(calorias: string) {
+    this.getInputViernes().clear().type(calorias);
   }
 
-  private setInputSabado(distancia: string) {
-    this.getInputSabado().clear().type(distancia);
+  private setInputSabado(calorias: string) {
+    this.getInputSabado().clear().type(calorias);
   }
 
-  private setInputDomingo(distancia: string) {
-    this.getInputDomingo().clear().type(distancia);
+  private setInputDomingo(calorias: string) {
+    this.getInputDomingo().clear().type(calorias);
   }
 
   private clickInObject(object: any) {
@@ -90,7 +86,6 @@ export class RegisterTrainingPlan {
   }
 
   private shouldHaveARegisterComponents() {
-    this.getDropdownEntrenamiento().should('be.visible');
     this.getInputSemanas().should('be.visible');
     this.getInputLunes().should('be.visible');
     this.getInputMartes().should('be.visible');
@@ -126,7 +121,7 @@ export class RegisterTrainingPlan {
     this.fillRegisterPlanInTable(semanas, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
     this.clickInObject(this.getButtonRegister());
     cy.wait(2000);
-    this.validateToastSuccessConfirmation('Se registro plan de entrenamiento exitosamente!');
+    this.validateToastSuccessConfirmation('Se registro plan de alimentacion exitosamente!');
   }
 
 

@@ -3,6 +3,7 @@ import { faker } from "@faker-js/faker";
 import { addDays, format } from 'date-fns';
 import { Signin } from "../page-objects/auth/signin";
 import { RegisterTrainingPlan } from "../page-objects/training/register-training-plan";
+import { RegisterFeedingPlan } from "../page-objects/nutrition/register-feeding-plan";
 
 export const signinUser = (email: string, password: string) => {
   // Ejecución de Login
@@ -49,4 +50,20 @@ export const registerTrainingPlan = () => {
   let poRegisterTrainingPlan = new RegisterTrainingPlan();
   poRegisterTrainingPlan.visit('/training/register-training-plan');
   poRegisterTrainingPlan.shouldRegisterServiceSuccess(semanas, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
+};
+
+export const registerFeedingPlan = () => {
+  // Asignacion de valores para el plan de alimentacion
+  let semanas = faker.number.int({ min: 1, max: 50 }).toString();
+  let lunes = faker.number.int({ min: 1000, max: 3000 }).toString();
+  let martes = faker.number.int({ min: 1000, max: 3000 }).toString();
+  let miercoles = faker.number.int({ min: 1000, max: 3000 }).toString();
+  let jueves = faker.number.int({ min: 1000, max: 3000 }).toString();
+  let viernes = faker.number.int({ min: 1000, max: 3000 }).toString();
+  let sabado = faker.number.int({ min: 1000, max: 3000 }).toString();
+  let domingo = faker.number.int({ min: 1000, max: 3000 }).toString();
+  // Ejecución del registro
+  let poRegisterFeedingPlan = new RegisterFeedingPlan();
+  poRegisterFeedingPlan.visit('/nutrition/register-feeding-plan');
+  poRegisterFeedingPlan.shouldRegisterServiceSuccess(semanas, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
 };

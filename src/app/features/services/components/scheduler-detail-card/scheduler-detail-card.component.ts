@@ -4,6 +4,7 @@ import { Service } from '../../../../core/models/services/service';
 import { DetailService } from '../../../../core/services/services/detail.service';
 import { switchMap } from 'rxjs';
 import { EmitterService } from '../../../../core/emitters/service-emitter';
+import { EmitterHour } from '../../../../core/emitters/hour-emitter';
 
 @Component({
   selector: 'app-scheduler-detail-card',
@@ -15,13 +16,14 @@ import { EmitterService } from '../../../../core/emitters/service-emitter';
 export class SchedulerDetailCardComponent implements OnInit {
 
   selectedService: Service | undefined;
-  horarioSeleccionado: String | undefined;
+  horarioSeleccionado: string | undefined;
   horario: string[] | undefined = [];
 
 
   constructor(
     private emitterService: EmitterService,
-    private detailService: DetailService
+    private detailService: DetailService,
+    private emitterhorario: EmitterHour,
   ) { }
 
   ngOnInit() {
@@ -33,9 +35,6 @@ export class SchedulerDetailCardComponent implements OnInit {
       this.getDetailServices(this.selectedService.id);
       console.log(':::::::::Scheduler card detail service::::::::::::::');
       console.log(this.selectedService);
-      this.horario = this.selectedService.horario!;
-      console.log(':::::Horarios');
-      console.log(this.horario);
     });
 
   }
@@ -64,15 +63,21 @@ export class SchedulerDetailCardComponent implements OnInit {
         switchMap(servicesSuccess => {
           console.log(':::::::::get Detail service ::::::::')
           console.log(servicesSuccess)
-          this.selectedService = servicesSuccess;          
+          this.selectedService = servicesSuccess;  
+          console.log(':::::Horarios');
+          console.log(this.horario);
+          this.horario=this.selectedService.horario        
           return [];
         })
       )
       .subscribe(() => { });
   }
 
-  setHourSelected(hour:string){
+  setHourSelected(hour:string){    
     this.horarioSeleccionado=hour;
+    console.log(':::::Horario seleccionado');
+    console.log(this.horarioSeleccionado);
+    this.emitterhorario.setHour(this.horarioSeleccionado);
   }
 
 }

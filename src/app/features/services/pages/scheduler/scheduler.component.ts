@@ -10,6 +10,7 @@ import { SchedulerServiceListComponent } from '../../components/scheduler-servic
 import { SchedulerDetailCardComponent } from "../../components/scheduler-detail-card/scheduler-detail-card.component";
 import { DetailService } from '../../../../core/services/services/detail.service';
 import { switchMap } from 'rxjs';
+import { EmitterHour } from '../../../../core/emitters/hour-emitter';
 
 @Component({
     selector: 'app-scheduler',
@@ -21,13 +22,15 @@ import { switchMap } from 'rxjs';
 export class SchedulerComponent implements OnInit {
 
   selectedService: Service | undefined;
+  horarioSeleccionado: string | undefined;
 
 
   constructor(    
     public toastr: ToastrService,
     private schedulerService: SchedulerService,
     private emitterService: EmitterService,
-    private detailService: DetailService
+    private detailService: DetailService,
+    private emitterhorario: EmitterHour
     ) { }
 
   ngOnInit() {
@@ -35,6 +38,11 @@ export class SchedulerComponent implements OnInit {
       data => {
         this.selectedService = data;
         this.getDetailServices(this.selectedService.id)
+      }
+    );
+    this.emitterhorario.hourEmitter.subscribe(
+      data => {
+        this.horarioSeleccionado = data;
       }
     );
   }
@@ -50,7 +58,7 @@ export class SchedulerComponent implements OnInit {
         this.selectedService.id,
         sessionStorage.getItem('email')!,
         this.splitDate(this.selectedService.fecha!),
-        '12:04:04'
+        this.extractHour(this.horarioSeleccionado)
       );
       console.log('secheduleService=======');
       console.log(scheduleService);
@@ -74,13 +82,27 @@ export class SchedulerComponent implements OnInit {
     return formattedDate;
   }
 
+  extractHour(hour: any): string {
+    console.log('extractHour')
+    console.log(hour)
+    let hora : string = '';
+    if (hour.split(':')[0].length==1){
+      hora='0'+hour.split(':')[0]
+    }else{
+      hora=hour.split(':')[0]
+    }
+    const formattedHour = hora+':'+hour.split(':')[1]+':00';
+    console.log(formattedHour)
+    return formattedHour;
+  }
+
   getDetailServices(serviceId: string) {
     this.detailService.getServiceById(serviceId)
       .pipe(
         switchMap(servicesSuccess => {
           console.log(':::::::::get Detail service ::::::::')
           console.log(servicesSuccess)
-          this.selectedService = servicesSuccess;          
+          this.selectedService = servicesSuccess;       
           return [];
         })
       )

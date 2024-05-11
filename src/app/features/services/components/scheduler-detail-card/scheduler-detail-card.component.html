@@ -1,0 +1,63 @@
+<div class="container" *ngIf="selectedService !== undefined">
+  <div class="card">
+    <div class="card-body">
+      <table class="table rounded-table" id="table-detail-service">
+        <tbody>
+          <tr>
+            <td>
+              <strong>Nombre: </strong>
+              <p>{{ selectedService.nombre }}</p>
+            </td>
+            <td>
+              <div class="row">
+                <div class="col-md-4">
+                  <strong>Fecha: </strong>
+                  <p>{{ splitDate(selectedService.fecha) }}</p>
+                  
+                </div>
+                <div class="col-md-8">
+                  <strong>Hora: </strong>
+                  <p> {{ getSchedule(selectedService.horario) }}</p>
+                  
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Organizador: </strong>
+              <p>{{ selectedService.nombre_usuario }}</p>
+            </td>
+            <td>
+              <div class="row">
+                <div class="col-md-4">
+                  <strong>Costo: </strong>
+                  <p>{{ selectedService.costo }}</p>
+                </div>
+                <div class="col-md-8">
+                  <strong>Zona: </strong>
+                  <p>{{ selectedService.lugar }}</p>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <strong>Descripción: </strong>
+              <p>{{ selectedService.descripcion }}</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <div>
+
+      <select class="form-control" id="selectHours" formControlName="Seleccione horario" (change) = "setHourSelected(t.value)" #t>
+        <option *ngFor="let hora of this.horario;" [value]="hora">
+          {{hora}}
+        </option>
+      </select>
+
+    </div>
+    </div>
+  </div>
+</div>

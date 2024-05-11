@@ -15,6 +15,7 @@
           <li><a class="dropdown-item" [routerLink]="['/services', 'list-detail-user']" *ngIf="hasPermissionsAsUser()">Lista de servicios</a></li>
           <li><a class="dropdown-item" [routerLink]="['/services', 'list-detail-provider']" *ngIf="hasPermissionsAsProvider()">Lista de servicios</a></li>
           <li><a i18n class="dropdown-item" [routerLink]="['/services', 'register']" *ngIf="hasPermissionsAsProvider()">Register</a></li>
+          <li><a i18n class="dropdown-item" [routerLink]="['/services', 'scheduler']" *ngIf="hasPermissionsAsUser()">Agendar</a></li>
         </ul>
       </li>
       <!-- Menu nutrition -->

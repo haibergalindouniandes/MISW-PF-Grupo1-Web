@@ -5,6 +5,7 @@ import { FooterComponent } from '../../../../shared/components/footer/footer.com
 import { DetailCardComponent } from '../../components/detail-card/detail-card.component';
 import { ListScheduledServicesTableComponent } from '../../components/list-scheduled-services-table/list-scheduled-services-table.component';
 
+
 @Component({
   selector: 'app-list-services-table-detail',
   standalone: true,
@@ -14,9 +15,16 @@ import { ListScheduledServicesTableComponent } from '../../components/list-sched
 })
 export class ListDetailUserComponent implements OnInit {
 
-  constructor() { }
+
+
+
+  constructor(    
+
+    ) { }
 
   ngOnInit() {
+    
   }
+
 
 }

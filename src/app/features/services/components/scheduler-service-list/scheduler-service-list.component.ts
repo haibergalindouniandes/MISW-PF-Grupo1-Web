@@ -1,21 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { switchMap } from 'rxjs';
 import { Service } from '../../../../core/models/services/service';
-import { Notification } from '../../../../core/models/services/notification';
-import { ListDetailSharedService } from '../../../../core/services/services/list-detail-shared.service';
 import { EmitterService } from '../../../../core/emitters/service-emitter';
-import { ListServicesUserService } from '../../../../core/services/services/list-services-user.service';
+import { ListService } from '../../../../core/services/services/list.service';
+import { switchMap } from 'rxjs';
 
 @Component({
-  selector: 'app-list-services-table',
+  selector: 'app-scheduler-service-list',
   standalone: true,
-  imports: [CommonModule, ListServicesComponent],
-  templateUrl: './list-services-table.component.html',
-  styleUrls: ['./list-services-table.component.scss']
+  imports: [CommonModule, SchedulerServiceListComponent],//, ReactiveFormsModule, FormsModule],
+  templateUrl: './scheduler-service-list.component.html',
+  styleUrl: './scheduler-service-list.component.scss'
 })
-export class ListServicesComponent implements OnInit {
+export class SchedulerServiceListComponent implements OnInit {
 
   servicesList: Array<Service> = [];
   selectedService: Service | undefined;
@@ -23,8 +21,7 @@ export class ListServicesComponent implements OnInit {
   constructor(
     public toastr: ToastrService,
     private emitterService: EmitterService,
-    private listService: ListServicesUserService,
-    private listDetailSharedService: ListDetailSharedService
+    private listService: ListService
   ) { }
 
   ngOnInit() {
@@ -34,7 +31,7 @@ export class ListServicesComponent implements OnInit {
   getServices() {
     this.servicesList = [];
     /* istanbul ignore next */
-    this.listService.getServicesByUser()
+    this.listService.getServices()
       .pipe(
         switchMap(listServicesSuccess => {
           this.servicesList = listServicesSuccess;
@@ -45,8 +42,11 @@ export class ListServicesComponent implements OnInit {
   }
 
   splitDate(date: any): string {
+    console.log(date)
     const dateObj = new Date(date);
+    console.log(dateObj)
     const formattedDate = dateObj.toISOString().split('T')[0];
+    console.log(formattedDate)
     return formattedDate;
   }
 
@@ -62,12 +62,14 @@ export class ListServicesComponent implements OnInit {
 
   onSelectedService(service: Service): void {
     this.selectedService = service;
+    console.log('::::::: on Selected Service :::::::')
     console.log(this.selectedService)
-    this.sendDataSharedService(service);
-    this.emitterService.setService(this.selectedService);
+    //this.sendDataSharedService(service);
+    this.emitterService.setService(service);
   }
 
-  sendDataSharedService(service: Service) {
+  /*sendDataSharedService(service: Service) {
     this.listDetailSharedService.setDataService(service);
-  }
+  }*/
+
 }

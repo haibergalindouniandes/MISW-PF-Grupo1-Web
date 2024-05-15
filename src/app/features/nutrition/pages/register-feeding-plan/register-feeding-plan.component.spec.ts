@@ -1,20 +1,20 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RegisterFeedingPlanComponent } from './register-feeding-plan.component';
+import { ToastrModule } from 'ngx-toastr';
+import { RouterModule } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('RegisterFeedingPlanComponent', () => {
   let component: RegisterFeedingPlanComponent;
   let fixture: ComponentFixture<RegisterFeedingPlanComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterFeedingPlanComponent ]
+      imports: [ RegisterFeedingPlanComponent, HttpClientTestingModule, ToastrModule.forRoot(), RouterModule.forRoot([]) ]
     })
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RegisterFeedingPlanComponent);

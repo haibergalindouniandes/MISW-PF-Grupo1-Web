@@ -5,20 +5,19 @@
         <form [formGroup]="notificationForm">
           <div class="notification-form">
             <textarea formControlName="message" id="message" class="form-control notification-input"
-              placeholder="Mensaje de notificación a los usuarios"></textarea>
-            <button type="submit" class="btn btn-primary" id="btn-send-notification" [disabled]="notificationForm.invalid" (click)="sendNotification()">Enviar notificación</button>
+              placeholder="Notification message to registered users" i18n-placeholder="@@messagePlaceholder"></textarea>
+            <button type="submit" class="btn btn-primary" id="btn-send-notification" [disabled]="notificationForm.invalid" (click)="sendNotification()" i18n>Send notification</button>
           </div>
           <div
             *ngIf="notificationForm.controls['message'].invalid && (notificationForm.controls['message'].dirty || notificationForm.controls['message'].touched)"
             class="text-danger">
-            <small *ngIf="notificationForm.controls['message'].errors?.['minlength']">
-              Valor ingresado
-              {{ notificationForm.controls['message'].errors?.['minlength'].actualLength }} caracteres, pero debe
+            <small *ngIf="notificationForm.controls['message'].errors?.['minlength']" i18n>
+              Value you entered is
+              {{ notificationForm.controls['message'].errors?.['minlength'].actualLength }} characters, but you must enter
               ingresar
-              {{ notificationForm.controls['message'].errors?.['minlength'].requiredLength}} caracteres.
+              {{ notificationForm.controls['message'].errors?.['minlength'].requiredLength}} characters.
             </small>
-            <small *ngIf="notificationForm.controls['message']?.errors?.['required']">El campo mensaje es
-              requerido!</small>
+            <small *ngIf="notificationForm.controls['message']?.errors?.['required']">Message is required!</small>
           </div>
         </form>
       </div>

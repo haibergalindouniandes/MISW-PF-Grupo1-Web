@@ -17,7 +17,7 @@
               ingresar
               {{ notificationForm.controls['message'].errors?.['minlength'].requiredLength}} characters.
             </small>
-            <small *ngIf="notificationForm.controls['message']?.errors?.['required']">Message is required!</small>
+            <small *ngIf="notificationForm.controls['message']?.errors?.['required']" i18n>Message is required!</small>
           </div>
         </form>
       </div>

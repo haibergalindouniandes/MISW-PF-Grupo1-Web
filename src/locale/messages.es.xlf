@@ -209,6 +209,14 @@
           <context context-type="linenumber">14,19</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="3327454236995340548" datatype="html">
+        <source>Message is required!</source>
+        <target>El mensaje es requerido!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/services/components/notification-form/notification-form.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="1212430153703386520" datatype="html">
         <source>Register a new Service</source>
         <target>Registre un nuevo Servicio</target>
@@ -423,7 +431,7 @@
       </trans-unit>
       <trans-unit id="8776520036839841399" datatype="html">
         <source>© <x id="INTERPOLATION" equiv-text="{{ year }}"/> SportApp. All rights reserved.</source>
-        <target>© <x id="INTERPOLATION" equiv-text="{{ year }}"/> portApp. Todos los derechos reservados.</target>
+        <target>© <x id="INTERPOLATION" equiv-text="{{ year }}"/> SportApp. Todos los derechos reservados.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/footer/footer.component.html</context>
           <context context-type="linenumber">3</context>

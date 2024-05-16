@@ -85,7 +85,7 @@ export class Service {
   }
 
   private getValidationErrorDiv() {
-    return cy.get('div.text-danger small');
+    return cy.get('div small');
   }
 
   private getTextareaMessage() {
@@ -260,7 +260,7 @@ export class Service {
     this.shouldHaveADropdownServicesList();
     this.shouldHaveTableComponents();
     this.countAndValidateMinRowsInTable(this.getTableListServices(), rowsInTable);
-    this.clickInRowOfTable(this.getTableListServices(), 1);
+    this.clickInRowOfTable(this.getTableListServices(), 0);
     this.shouldHaveDetailCardComponents();
     this.countAndValidateMinRowsInTable(this.getTableDetailService(), 2);
     this.validateColumnsNamesInTable(this.getTableDetailService(), columns);
@@ -271,7 +271,7 @@ export class Service {
     this.shouldHaveADropdownServicesList();
     this.shouldHaveTableComponents();
     this.countAndValidateMinRowsInTable(this.getTableListServices(), rowsInTable);
-    this.clickInRowOfTable(this.getTableListServices(), 1);
+    this.clickInRowOfTable(this.getTableListServices(), 0);
     this.shouldHaveDetailCardComponents();
     this.countAndValidateMinRowsInTable(this.getTableDetailService(), 1);
     this.validateColumnsNamesInTable(this.getTableDetailService(), columns);

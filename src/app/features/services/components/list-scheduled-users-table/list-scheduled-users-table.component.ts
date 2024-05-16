@@ -16,7 +16,6 @@ import { ScheduledUsers } from '../../../../core/models/services/scheduled-users
 export class ListScheduledUsersTableComponent implements OnInit {
 
   listScheduledUserList: Array<ScheduledUsers> = [];
-  columns: string[] = ['Usuario registrado', 'Correo electronico'];
 
   constructor(
     private listScheduledUserService: ListScheduledUsersService,

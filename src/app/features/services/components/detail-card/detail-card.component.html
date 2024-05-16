@@ -5,17 +5,17 @@
         <tbody>
           <tr>
             <td>
-              <strong>Nombre: </strong>
+              <strong i18n>Name: </strong>
               <p>{{ selectedService.nombre }}</p>
             </td>
             <td>
               <div class="row">
                 <div class="col-md-4">
-                  <strong>Fecha: </strong>
+                  <strong i18n>Date: </strong>
                   <p>{{ splitDate(selectedService.fecha) }}</p>
                 </div>
                 <div class="col-md-8">
-                  <strong>Hora: </strong>
+                  <strong i18n>Time: </strong>
                   <p>{{ selectedService.horario ? getSchedule(selectedService.horario) : selectedService.hora }}</p>
                 </div>
               </div>
@@ -23,17 +23,17 @@
           </tr>
           <tr>
             <td>
-              <strong>Organizador: </strong>
+              <strong i18n>Organizador: </strong>
               <p>{{ selectedService.nombre_usuario ? selectedService.nombre_usuario : selectedService.nombre_proveedor }}</p>
             </td>
             <td>
               <div class="row">
                 <div class="col-md-4">
-                  <strong>Costo: </strong>
+                  <strong i18n>Cost: </strong>
                   <p>{{ selectedService.costo }}</p>
                 </div>
                 <div class="col-md-8">
-                  <strong>Zona: </strong>
+                  <strong i18n>Place: </strong>
                   <p>{{ selectedService.lugar }}</p>
                 </div>
               </div>
@@ -41,7 +41,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <strong>Descripción: </strong>
+              <strong i18n>Description: </strong>
               <p>{{ selectedService.descripcion }}</p>
             </td>
           </tr>

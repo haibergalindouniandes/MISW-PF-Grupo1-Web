@@ -34,6 +34,20 @@
       </div>
       <hr />
       <div class="card-body">Proximos Eventos Aqui</div>
+      <div class="container table-container" style="align-content: center;" >
+        <table class="table" class="table rounded-table" id="table-list-services">
+          <tbody>
+            <tr *ngFor="let service of servicesList" >
+              <td   >
+                <p><strong>{{ service.nombre }}</strong></p>
+                <!--{{ splitDate(service.fecha) }} {{ getSchedule(service.horario) }}-->
+                {{ service.fecha }} {{ service.horario }}
+              </td>
+            </tr>
+        
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

@@ -45,7 +45,7 @@ export class SignupFormComponent implements OnInit {
       inputApellidos: ['', [Validators.required, Validators.pattern('^[a-zA-Z]{4}([( )a-zA-Z]){0,26}$')]],
       inputEdad: ['', [Validators.required, Validators.min(18), Validators.max(90), Validators.pattern('^([0-9]+)$')]],
       inputAltura: ['', [Validators.required, Validators.min(130), Validators.max(230), Validators.pattern('^(?=.*?[0-9])[0-9]*[.]?[0-9]*$')]],
-      inputNumDoc: ['', [Validators.required, Validators.pattern('^([0-9]{8})$')]],
+      inputNumDoc: ['', [Validators.required, Validators.pattern('^([0-9]{8,16})$')]],
       inputAntiguedad: ['', [Validators.required, Validators.min(1), Validators.max(900), Validators.pattern('^([0-9]+)$')]],
       inputContactosEmergencia: ['', [Validators.min(10), Validators.max(900), Validators.pattern(/^(([^,]+@[a-zA-Z0-9]+(\.[a-zA-Z]{2,})+)(\s*,)*){1,}$/)]]
     });

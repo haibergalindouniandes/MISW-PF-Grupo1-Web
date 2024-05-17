@@ -517,6 +517,366 @@
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="7527361902408274851" datatype="html">
+        <source>SportApp User Registration</source>
+        <target>Registro de Usuario SportApp</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2392488717875840729" datatype="html">
+        <source>User</source>
+        <target>Usuario</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="751124305869330542" datatype="html">
+        <source>This field is required!</source>
+        <target>Este campo es requerido!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">142</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2188964099045864575" datatype="html">
+        <source>This field must have a valid email format</source>
+        <target>Este campo debe tener formato de email valido</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">168</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4499167573952748411" datatype="html">
+        <source>Password </source>
+        <target>Contraseña</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6917967246213957812" datatype="html">
+        <source>This field must be between 8 and 64 characters (no spaces, at least one lowercase, uppercase, digit and one special character)</source>
+        <target>Este campo debe tener entre 8 y 64 caracteres (no espacios, al menos una minuscula, mayuscula, digito y un caracter especial)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8953033926734869941" datatype="html">
+        <source>Name</source>
+        <target>Nombres</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6697040598159859085" datatype="html">
+        <source>This field requires between 4 and 30 alphabetic characters</source>
+        <target>Este campo requiere entre 4 y 30 caracteres alfabeticos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5848348023107769657" datatype="html">
+        <source>Weight</source>
+        <target>Peso</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6744349430523081153" datatype="html">
+        <source>This field is numeric (use point as decimal separator). </source>
+        <target>Este campo es numerico (usar punto como separador decimal).</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8584003097536297753" datatype="html">
+        <source>The minimum value of this field is 40 kilograms</source>
+        <target>El valor minimo de este campo es 40 kilogramos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7861139298378569916" datatype="html">
+        <source>The maximum value of this field is 500 kilograms</source>
+        <target>El valor maximo de este campo es 500 kilogramos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4407559560004943843" datatype="html">
+        <source>Last Name</source>
+        <target>Apellidos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1130652265542107236" datatype="html">
+        <source>Age</source>
+        <target>Edad</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1850724144103284055" datatype="html">
+        <source>This field is numeric (integer)</source>
+        <target>Este campo es numerico (entero)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">143</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4497786385973374654" datatype="html">
+        <source>The minimum value of this field is 18 years</source>
+        <target>El valor minimo de este campo es 18 años</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1240181931601581002" datatype="html">
+        <source>The maximum value of this field is 90 years</source>
+        <target>El valor maximo de este campo es 90 años</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3264001515130844663" datatype="html">
+        <source>Document Type</source>
+        <target>Tipo de Documento</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3033623772164647792" datatype="html">
+        <source>Height</source>
+        <target>Altura</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="293754492140169697" datatype="html">
+        <source>The minimum value of this field is 130 centimeters</source>
+        <target>El valor minimo de este campo es 130 centimetros</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5969979491985519216" datatype="html">
+        <source>The maximum value of this field is 230 centimeters</source>
+        <target>El valor maximo de este campo es 230 centimetros</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2654321004320617517" datatype="html">
+        <source>Document Number</source>
+        <target>Numero de Documento</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="997145948634110403" datatype="html">
+        <source>This field must have minimum 8 and maximum 16 numeric characters</source>
+        <target>Este campo debe tener mínimo 8 y máximo 16 caracteres numéricos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8502004726170564413" datatype="html">
+        <source>Country of Birth</source>
+        <target>Pais de Nacimiento</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5670747409838528885" datatype="html">
+        <source>City of Birth</source>
+        <target>Ciudad de Nacimiento</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3948439187870398089" datatype="html">
+        <source>Gender</source>
+        <target>Genero</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5050732370102091598" datatype="html">
+        <source>Country of Residence</source>
+        <target>Pais de Residencia</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">107</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="198077702673055035" datatype="html">
+        <source>City of Residence</source>
+        <target>Ciudad de Residencia</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="513843037780139436" datatype="html">
+        <source>Sports</source>
+        <target>Deportes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1807083509632262038" datatype="html">
+        <source>Cycling</source>
+        <target>Ciclismo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">127</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7919898239872556948" datatype="html">
+        <source>Athletics</source>
+        <target>Atletismo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">131</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7040288612202036661" datatype="html">
+        <source>Others</source>
+        <target>Otros</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6603086117338697815" datatype="html">
+        <source>Seniority</source>
+        <target>Antiguedad</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">139</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2022381104595780080" datatype="html">
+        <source>The minimum value of this field is 1 month</source>
+        <target>El valor minimo de este campo es 1 mes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">144</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5483825962590810290" datatype="html">
+        <source>The maximum value of this field is 900 months</source>
+        <target>El valor maximo de este campo es 900 meses</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">145</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6497282585987631811" datatype="html">
+        <source>Plan Type</source>
+        <target>Tipo de Plan</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">149</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4201082782140762320" datatype="html">
+        <source>Type of User</source>
+        <target>Tipo de Usuario</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">158</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2433386379021539852" datatype="html">
+        <source>Emergency Contacts</source>
+        <target>Contactos de Emergencia</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">165</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3768927257183755959" datatype="html">
+        <source>Save</source>
+        <target>Guardar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/auth/components/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">172</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>

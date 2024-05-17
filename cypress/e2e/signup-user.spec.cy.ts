@@ -3,6 +3,7 @@ import { faker } from "@faker-js/faker";
 
 describe('Signup user e2e test', () => {
   it('Should validate the form fields so that they are not left empty', () => {
+    cy.viewport(1920, 1080)
     // Ejecución de la prueba de validación de errores del formulario del registro de usuario
     let validationErrors = 9;
     let poSignup = new Signup();
@@ -11,6 +12,7 @@ describe('Signup user e2e test', () => {
   })
 
   it('Should allow you to register a service successfully', () => {
+    cy.viewport(1920, 1080)
     // Asignacion de valores del formulario de registro de usuario
     let randomUsuario = faker.internet.email();
     let randomContrasena = faker.string.fromCharacters('@Aa8', {min: 8, max:64})

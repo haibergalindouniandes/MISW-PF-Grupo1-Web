@@ -108,6 +108,10 @@ export class Service {
     return cy.get(`select[id='selectHours']`).select(1);
   }
 
+  private getSelectCity() {
+    return cy.get(`select[id='place']`).select(1);
+  }
+
   private setInputName(name: string) {
     this.getInputName().clear().type(name);
   }
@@ -120,9 +124,9 @@ export class Service {
     this.getInputCost().clear().type(cost);
   }
 
-  private setInputPlace(place: string) {
+  /*private setInputPlace(place: string) {
     this.getInputPlace().clear().type(place);
-  }
+  }*/
 
   private setInputDate(date: string) {
     this.getInputDate().clear().type(date);
@@ -268,7 +272,7 @@ export class Service {
     this.clickInObject(this.getInputName());
     this.clickInObject(this.getInputDescription());
     this.clickInObject(this.getInputCost());
-    //this.clickInObject(this.getInputPlace());
+    this.getSelectCity();//this.clickInObject(this.getInputPlace());
     this.clickInObject(this.getInputMinimumNumberParticipants());
     this.clickInObject(this.getInputMaximumNumberParticipants());
     this.clickInObject(this.getInputFrequency());

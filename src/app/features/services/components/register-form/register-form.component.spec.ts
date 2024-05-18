@@ -28,7 +28,6 @@ describe('RegisterFormComponent', () => {
     expect(document.querySelector('input#name')).toBeTruthy();
     expect(document.querySelector('input#description')).toBeTruthy();
     expect(document.querySelector('input#cost')).toBeTruthy();
-    expect(document.querySelector('input#place')).toBeTruthy();
     expect(document.querySelector('input#date')).toBeTruthy();
     expect(document.querySelector('input#timeStart')).toBeTruthy();
     expect(document.querySelector('input#timeEnd')).toBeTruthy();
@@ -47,7 +46,7 @@ describe('RegisterFormComponent', () => {
       cost: 'Service Cost',
       minimum_number_participants: '1',
       maximum_number_participants: '10',
-      place: 'Service Place',
+      place: 'Bogota',
       date: '2024-04-20',
       timeStart: '06:00:00',
       timeEnd: '09:00:00'
@@ -57,6 +56,8 @@ describe('RegisterFormComponent', () => {
     expect(component.cancel).toHaveBeenCalled();
     spyOn(component, 'registerService').and.callThrough();
     sessionStorage.setItem('user_id', '0cbadc52-f8df-11ee-929e-a51c06b18a33');
+    component.city='Bogota';
+    component.serviceRegistrationForm.setValue(formData);    
     component.serviceRegistrationForm.setValue(formData);
     component.registerService();
     expect(component.registerService).toHaveBeenCalled();

@@ -9,7 +9,7 @@ describe('Registration service e2e test', () => {
     // Ejecución de Login
     signinUser(email, password);
     // Ejecución de la prueba de validación de errores del formulario del registro de servicio
-    let validationErrors = 7;
+    let validationErrors = 6;
     let poRegisterService = new Service();
     poRegisterService.visit('/services/register');
     poRegisterService.shouldValidateMessagesErrorInForm(validationErrors);

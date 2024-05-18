@@ -52,7 +52,7 @@ describe('ListScheduledServicesTableComponent', () => {
   });
 
   it('should set selectedService and call sendDataSharedService', () => {
-    const mockService: Service = { id: '1', nombre: 'Test Service', lugar: 'Bogotá - El Salitre', costo: '25000 COP' };
+    const mockService: Service = { id: '1', nombre: 'Test Service', lugar: 'Bogotá', costo: '25000 COP' };
     spyOn(listDetailSharedService, 'setDataService');
     component.onSelectedService(mockService);
     expect(component.selectedService).toEqual(mockService);

@@ -41,14 +41,21 @@
         </div>
         <!-- Place input-->
         <label for="place" i18n>Place</label>
-        <input type="text" id="place" class="form-control" formControlName="place" placeholder="Ej: Bogotá - Salitre ">
-        <div *ngIf="serviceRegistrationForm.controls['place'].invalid && (serviceRegistrationForm.controls['place'].dirty || serviceRegistrationForm.controls['place'].touched)">
+        <!--  <input type="text" id="place" class="form-control" formControlName="place">
+        <div *ngIf="serviceRegistrationForm.controls['place'].invalid && (serviceRegistrationForm.controls['place'].dirty || serviceRegistrationForm.controls['place'].touched)" class="text-danger">
           <small *ngIf="serviceRegistrationForm.controls['place'].errors?.['minlength']" i18n>
             Value you entered is
                 {{ serviceRegistrationForm.controls['place'].errors?.['minlength'].actualLength }} characters, but you must enter
                 {{ serviceRegistrationForm.controls['place'].errors?.['minlength'].requiredLength}} characters.
           </small>
           <small *ngIf="serviceRegistrationForm.controls['place']?.errors?.['required']" i18n>Place is required!</small>
+        </div>-->
+        <div >
+        <select class="form-control" id="place" formControlName="place" (change) = "setCitySelected(t.value)" #t>
+          <option *ngFor="let city of this.citys;" [value]="city">
+            {{city}}
+          </option>
+        </select>
         </div>
       </div>
       <div class="col">

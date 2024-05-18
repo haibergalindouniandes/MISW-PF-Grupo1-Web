@@ -16,6 +16,10 @@ export class Service {
     return cy.get('#dropdown-services .dropdown-item').contains('Lista de servicios');
   }
 
+  private getScheduleDropdown() {
+    return cy.get('#dropdown-services .dropdown-item').contains('Agendar');
+  }
+
   private getInputName() {
     return cy.get('#name');
   }
@@ -96,6 +100,18 @@ export class Service {
     return cy.get(`button[id='btn-send-notification']`);
   }
 
+  private getButtonSchedule() {
+    return cy.get(`button[id='btn-scheduler']`);
+  }
+
+  private getSelectHours() {
+    return cy.get(`select[id='selectHours']`).select(1);
+  }
+
+  private getSelectCity() {
+    return cy.get(`select[id='place']`).select(1);
+  }
+
   private setInputName(name: string) {
     this.getInputName().clear().type(name);
   }
@@ -108,9 +124,9 @@ export class Service {
     this.getInputCost().clear().type(cost);
   }
 
-  private setInputPlace(place: string) {
+  /*private setInputPlace(place: string) {
     this.getInputPlace().clear().type(place);
-  }
+  }*/
 
   private setInputDate(date: string) {
     this.getInputDate().clear().type(date);
@@ -176,11 +192,17 @@ export class Service {
     this.getListServiceDropdown().should('be.visible');
   }
 
+  private shouldHaveADropdownServicesListToschedule() {
+    this.getDropdownServices().should('be.visible');
+    this.clickInObject(this.getDropdownServices());
+    this.getScheduleDropdown().should('be.visible');
+  }
+
   private shouldHaveARegisterServiceForm() {
     this.getInputName().should('be.visible');
     this.getInputDescription().should('be.visible');
     this.getInputCost().should('be.visible');
-    this.getInputPlace().should('be.visible');
+    //this.getInputPlace().should('be.visible');
     this.getInputDate().should('be.visible');
     this.getInputTimeStart().should('be.visible');
     this.getInputTimeEnd().should('be.visible');
@@ -194,7 +216,7 @@ export class Service {
     this.setInputName(name);
     this.setInputDescription(description);
     this.setInputCost(cost);
-    this.setInputPlace(place);
+    //this.setInputPlace(place);
     this.setInputDate(date),
     this.setInputTimeStart(timeStart);
     this.setInputTimeEnd(timeEnd);
@@ -231,6 +253,10 @@ export class Service {
     table.find('tr').eq(row).click();
   }
 
+  private clickInRowOfSelect(select: any, row: number) {
+    select.find('option').select(row);
+  }
+
   shouldRegisterServiceSuccess(name: string, description: string, cost: string, place: string, date: string, timeStart: string, timeEnd: string, minParticipants: string, maxParticipants: string, frequency: string) {
     this.shouldHaveADropdownServices();
     this.shouldHaveARegisterServiceForm();
@@ -246,7 +272,7 @@ export class Service {
     this.clickInObject(this.getInputName());
     this.clickInObject(this.getInputDescription());
     this.clickInObject(this.getInputCost());
-    this.clickInObject(this.getInputPlace());
+    this.getSelectCity();//this.clickInObject(this.getInputPlace());
     this.clickInObject(this.getInputMinimumNumberParticipants());
     this.clickInObject(this.getInputMaximumNumberParticipants());
     this.clickInObject(this.getInputFrequency());
@@ -281,5 +307,21 @@ export class Service {
     this.fillSendNotificationForm(message);
     this.shouldHaveNotificationComponents();
     this.clickInObject(this.getButtonSendNotification());
+  }
+
+  shouldBeAlistOfScheduledUserServicesAndDetailsToSchedule(rowsInTable: number, columns: string[]) {
+    cy.wait(4000);
+    this.shouldHaveADropdownServicesListToschedule();
+    this.shouldHaveTableComponents();
+    this.countAndValidateMinRowsInTable(this.getTableListServices(), rowsInTable);
+    this.clickInRowOfTable(this.getTableListServices(), 1);
+    this.shouldHaveDetailCardComponents();
+    this.countAndValidateMinRowsInTable(this.getTableDetailService(), 1);
+    this.validateColumnsNamesInTable(this.getTableDetailService(), columns);
+    cy.wait(4000);
+    this.getSelectHours();
+    this.clickInObject(this.getButtonSchedule());
+    cy.wait(4000);
+    this.validateToastSuccessConfirmation('Se agendo servicio exitosamente!');
   }
 }

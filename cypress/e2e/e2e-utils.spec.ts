@@ -20,7 +20,7 @@ export const registerService = () => {
   let randomFrecuencyIndex = Math.floor(Math.random() * frequency.length);
   let currentDate = new Date();
   let futureDate = addDays(currentDate, 2);
-  let servicePlace = faker.address.streetAddress();
+  let servicePlace = faker.location.city();
   let serviceName = `Carrera ${faker.name.fullName()}`;
   let serviceDescription = `Carrera benefica a favor de los niños de cancer, se iniciara en ${servicePlace} atravesando diversas calles ...`;
   let serviceCost = `${randomValueCost.toFixed(2)} COP`;

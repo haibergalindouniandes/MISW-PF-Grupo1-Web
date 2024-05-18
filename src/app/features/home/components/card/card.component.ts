@@ -6,6 +6,9 @@ import { ConsultarPlanEntrenamientoService } from '../../../../core/services/ser
 import { Validators } from '@angular/forms';
 import { Alimentacion, PlanAlimentacion } from '../../../../core/models/services/alimentacion';
 import { PlanEntrenamiento } from '../../../../core/models/services/entrenamiento';
+import { Service } from '../../../../core/models/services/service';
+import { ListService } from '../../../../core/services/services/list.service';
+import { switchMap } from 'rxjs';
 
 
 @Component({
@@ -21,13 +24,15 @@ export class CardComponent implements OnInit {
 
   constructor(
     private entrenamientoService: ConsultarPlanEntrenamientoService,
-    private alimentacionService: ConsultarPlanAlimentacionService
+    private alimentacionService: ConsultarPlanAlimentacionService,
+    private listService: ListService
   ) { }
 
   columnas: string[] = ['Día','Entrenamiento','Alimentación'];
   objectKeys = Object.keys;
   dia:any[]=[];
   planes: any[][]= [];
+  servicesList: Array<Service> = [];
 
   ngOnInit() {
     /* istanbul ignore next */
@@ -46,5 +51,21 @@ export class CardComponent implements OnInit {
         ]
       });
     });
+
+    this.getServices();
   }
+
+  getServices() {
+    this.servicesList = [];
+    /* istanbul ignore next */
+    this.listService.getServices()
+      .pipe(
+        switchMap(listServicesSuccess => {
+          this.servicesList = listServicesSuccess;
+          return [];
+        })
+      )
+      .subscribe(() => { });
+  }
+
 }

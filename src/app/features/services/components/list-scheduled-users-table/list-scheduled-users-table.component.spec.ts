@@ -45,7 +45,7 @@ describe('ListScheduledUsersTableComponent', () => {
   });
 
   it('should initialize list of scheduled users when ngOnInit is called', () => {
-    const servieData: Service = new Service('id_servicio', 'test', 'Bogotá - El Salitre', '25000 COP');
+    const servieData: Service = new Service('id_servicio', 'test', 'Bogotá', '25000 COP');
     const scheduledUsersData: ScheduledUsers[] = [
       new ScheduledUsers('Bogota', 'test12234@gmail.com', '2024-08-09', '08:00:00', '12345678-e396-412b-a4ca-0c0cab729c27', 'test', 'Colombia'),
       new ScheduledUsers('Bogota', 'pepito545@gmail.com', '2024-08-09', '10:00:00', '44445555-e396-412b-a4ca-0c0cab729c27', 'pepito', 'Colombia')

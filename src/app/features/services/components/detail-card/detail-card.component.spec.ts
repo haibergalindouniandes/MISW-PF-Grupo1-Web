@@ -54,7 +54,7 @@ describe('DetailCardComponent', () => {
   });
 
   it('should set selectedService when service is retrieved successfully', () => {
-    const mockService: Service = new Service('e67859da-0832-11ef-8a25-251c34276102', 'Carrera los Andes Test', 'Bogotá - El Salitre', '25000 COP');
+    const mockService: Service = new Service('e67859da-0832-11ef-8a25-251c34276102', 'Carrera los Andes Test', 'Bogotá', '25000 COP');
     const serviceId = '1';
     spyOn(listDetailSharedService, 'getDataService').and.returnValue(of(mockService));
     spyOn(detailService, 'getServiceById').and.returnValue(of(mockService));

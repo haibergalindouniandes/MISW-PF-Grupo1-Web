@@ -2,41 +2,50 @@
   <!-- Left menu -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav logo_margin">
-      <a class="navbar-brand ml-3" href="/home">
-        <img src="../../../../assets/images/home/logo.jpg" class="img-fluid img_logo" alt="SportApp Logo">
-      </a>
+      <li>
+        <a class="navbar-brand ml-3" href="/home">
+          <img src="../../../../assets/images/home/logo.jpg" class="img-fluid img_logo" alt="SportApp Logo">
+        </a>
+      </li>
       <!-- Menu Services -->
       <li class="nav-item dropdown" *ngIf="isLoggedIn()">
-        <a i18n class="nav-link dropdown-toggle" href="#" id="menuServices"
-          role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a i18n class="nav-link dropdown-toggle" href="#" id="menuServices" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
           Services
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuServices" id="dropdown-services">
-          <li><a class="dropdown-item" [routerLink]="['/services', 'list-detail-user']" *ngIf="hasPermissionsAsUser()">Lista de servicios</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/services', 'list-detail-provider']" *ngIf="hasPermissionsAsProvider()">Lista de servicios</a></li>
-          <li><a i18n class="dropdown-item" [routerLink]="['/services', 'register']" *ngIf="hasPermissionsAsProvider()">Register</a></li>
-          <li><a i18n class="dropdown-item" [routerLink]="['/services', 'scheduler']" *ngIf="hasPermissionsAsUser()">Agendar</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/services', 'list-detail-user']"
+              *ngIf="hasPermissionsAsUser()">Lista de servicios</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/services', 'list-detail-provider']"
+              *ngIf="hasPermissionsAsProvider()">Lista de servicios</a></li>
+          <li><a i18n class="dropdown-item" [routerLink]="['/services', 'register']"
+              *ngIf="hasPermissionsAsProvider()">Register</a></li>
+          <li><a i18n class="dropdown-item" [routerLink]="['/services', 'scheduler']"
+              *ngIf="hasPermissionsAsUser()">Schedule</a></li>
         </ul>
       </li>
       <!-- Menu nutrition -->
       <li class="nav-item dropdown" *ngIf="isLoggedIn() && hasPermissionsAsUser()">
-        <a class="nav-link dropdown-toggle" href="#" id="menuNutrition"
-          role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="menuNutrition" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
           Nutrición
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuNutrition" id="dropdown-nutrition">
-          <li><a class="dropdown-item" [routerLink]="['/nutrition', 'register-feeding-plan']">Registrar Plan de Alimentación</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/nutrition', 'register-feeding-results']">Registrar Resultados Alimentación</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/nutrition', 'register-feeding-plan']">Registrar Plan de
+              Alimentación</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/nutrition', 'register-feeding-results']">Registrar Resultados
+              Alimentación</a></li>
         </ul>
       </li>
       <!-- Menu training -->
       <li class="nav-item dropdown" *ngIf="isLoggedIn() && hasPermissionsAsUser()">
-        <a class="nav-link dropdown-toggle" href="#" id="menuTraining"
-          role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="menuTraining" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
           Entrenamiento
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuTraining" id="dropdown-training">
-          <li><a class="dropdown-item" [routerLink]="['/training', 'register-training-plan']">Registrar Plan de Entrenamiento</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/training', 'register-training-plan']">Registrar Plan de
+              Entrenamiento</a></li>
         </ul>
       </li>
       <!-- Menu about -->
@@ -50,7 +59,8 @@
     <ul class="navbar-nav">
       <!-- Menu internationalization -->
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="languageMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" i18n>Language  <i class="fas fa-globe"></i></a>
+        <a class="nav-link dropdown-toggle" href="#" id="languageMenu" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false" i18n>Language <i class="fas fa-globe"></i></a>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="languageMenu">
           <li><a class="dropdown-item" (click)="changeLanguage('es')" i18n>Spanish - ESP</a></li>
           <li><a class="dropdown-item" (click)="changeLanguage('en-US')" i18n>English - ENG</a></li>
@@ -58,7 +68,8 @@
       </li>
       <!-- Menu session -->
       <li class="nav-item dropdown sesion_margin">
-        <a class="nav-link dropdown-toggle" href="#" id="sesionMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="sesionMenu" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
           <img src="../../../../assets/images/home/user-avatar.png" class="img-fluid img_avatar" alt="User Avatar">
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="languageMenu">

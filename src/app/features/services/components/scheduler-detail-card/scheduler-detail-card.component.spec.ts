@@ -8,11 +8,13 @@ import { ListDetailSharedService } from '../../../../core/services/services/list
 import { of } from 'rxjs';
 import { Service } from '../../../../core/models/services/service';
 import { DetailService } from '../../../../core/services/services/detail.service';
+import { EmitterHour } from '../../../../core/emitters/hour-emitter';
 
 describe('DetailCardComponent', () => {
   let component: SchedulerDetailCardComponent;
   let fixture: ComponentFixture<SchedulerDetailCardComponent>;
   let listDetailSharedService: ListDetailSharedService;
+  let emitterHour: EmitterHour;
   let detailService: DetailService;
 
   beforeEach(async () => {
@@ -27,6 +29,7 @@ describe('DetailCardComponent', () => {
     fixture = TestBed.createComponent(SchedulerDetailCardComponent);
     component = fixture.componentInstance;
     listDetailSharedService = TestBed.inject(ListDetailSharedService);
+    emitterHour = TestBed.inject(EmitterHour);
     detailService = TestBed.inject(DetailService);
     fixture.detectChanges();
   });
@@ -60,6 +63,17 @@ describe('DetailCardComponent', () => {
     spyOn(detailService, 'getServiceById').and.returnValue(of(mockService));
     component.getDetailServices(serviceId);
     expect(component.selectedService).toEqual(mockService);
+  });
+
+  it('should set horario and emit hour correctly', (done) => {
+    const testHour = '10:00 AM';
+    emitterHour.hourEmitter.subscribe((emittedHour: string) => {
+      expect(emittedHour).toBe(testHour);
+      done();
+    });
+
+    emitterHour.setHour(testHour);
+    expect(emitterHour.horario).toBe(testHour);
   });
 
 });

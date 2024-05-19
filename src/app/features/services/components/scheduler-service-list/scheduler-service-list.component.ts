@@ -42,11 +42,8 @@ export class SchedulerServiceListComponent implements OnInit {
   }
 
   splitDate(date: any): string {
-    console.log(date)
     const dateObj = new Date(date);
-    console.log(dateObj)
     const formattedDate = dateObj.toISOString().split('T')[0];
-    console.log(formattedDate)
     return formattedDate;
   }
 
@@ -62,14 +59,7 @@ export class SchedulerServiceListComponent implements OnInit {
 
   onSelectedService(service: Service): void {
     this.selectedService = service;
-    console.log('::::::: on Selected Service :::::::')
-    console.log(this.selectedService)
-    //this.sendDataSharedService(service);
     this.emitterService.setService(service);
   }
-
-  /*sendDataSharedService(service: Service) {
-    this.listDetailSharedService.setDataService(service);
-  }*/
 
 }

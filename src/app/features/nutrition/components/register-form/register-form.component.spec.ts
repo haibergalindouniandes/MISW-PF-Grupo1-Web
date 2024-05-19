@@ -57,6 +57,16 @@ describe('RegisterFormComponent', () => {
       component.feedingPlan = incompleteFeedingPlan;
       expect(component.validateIfAllowRegister()).toBeFalse();
     }
+
+    let feedingPlan = new FeedingPlan('e357334-bf36-4a4a-a55a-5a01e54d7e8d', 4, {
+      domingo: 1000,
+      jueves: 1500,
+      lunes: 1200,
+      martes: 2500,
+      miercoles: 1800,
+      sabado: 1000,
+      viernes: 1200,
+    });
   });
 
   it('should reset table with cancel fuction', () => {

@@ -28,20 +28,13 @@ export class SchedulerDetailCardComponent implements OnInit {
 
   ngOnInit() {
     this.emitterService.serviceEmitter.subscribe(data => {
-      console.log(':::::::::Scheduler card detail::::::::::::::')
-      console.log(data)
       this.selectedService = data;
-      console.log(this.selectedService)
       this.getDetailServices(this.selectedService.id);
-      console.log(':::::::::Scheduler card detail service::::::::::::::');
-      console.log(this.selectedService);
     });
 
   }
 
   splitDate(date: any): string {
-    console.log('SPLIT DATE')
-    console.log(date)
     const dateObj = new Date(date);
     const formattedDate = dateObj.toISOString().split('T')[0];
     return formattedDate;
@@ -61,22 +54,16 @@ export class SchedulerDetailCardComponent implements OnInit {
     this.detailService.getServiceById(serviceId)
       .pipe(
         switchMap(servicesSuccess => {
-          console.log(':::::::::get Detail service ::::::::')
-          console.log(servicesSuccess)
-          this.selectedService = servicesSuccess;  
-          console.log(':::::Horarios');
-          console.log(this.horario);
-          this.horario=this.selectedService.horario        
+          this.selectedService = servicesSuccess;
+          this.horario=this.selectedService.horario
           return [];
         })
       )
       .subscribe(() => { });
   }
 
-  setHourSelected(hour:string){    
+  setHourSelected(hour:string){
     this.horarioSeleccionado=hour;
-    console.log(':::::Horario seleccionado');
-    console.log(this.horarioSeleccionado);
     this.emitterhorario.setHour(this.horarioSeleccionado);
   }
 

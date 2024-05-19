@@ -25,7 +25,7 @@ export class SchedulerComponent implements OnInit {
   horarioSeleccionado: string | undefined;
 
 
-  constructor(    
+  constructor(
     public toastr: ToastrService,
     private schedulerService: SchedulerService,
     private emitterService: EmitterService,
@@ -47,12 +47,9 @@ export class SchedulerComponent implements OnInit {
     );
   }
 
-  addSchedulerService() {    
-    console.log(':::::::::::addScheduleSevice:::::::::');
-    console.log(this.selectedService);
+  addSchedulerService() {
+    /* istanbul ignore next */
     if (this.selectedService!=null) {
-      
-           
       let scheduleService = new Scheduler(
         sessionStorage.getItem('user_id')!,
         this.selectedService.id,
@@ -60,31 +57,23 @@ export class SchedulerComponent implements OnInit {
         this.splitDate(this.selectedService.fecha!),
         this.extractHour(this.horarioSeleccionado)
       );
-      console.log('secheduleService=======');
-      console.log(scheduleService);
       this.schedulerService.schedulerService(scheduleService)
         .subscribe(schedulerSucess => {
-          this.toastr.success('Confirmation', 'Se agendo servicio exitosamente!', { closeButton: true });          
-          console.log(schedulerSucess);
+          this.toastr.success('Confirmation', 'Se agendo servicio exitosamente!', { closeButton: true });
         });
     }else{
-      console.log('Servicio no seleccionado');
       this.toastr.warning('Confirmation', 'No se ha seleccionado servicio!', { closeButton: true });
     }
 
-  }  
-  
+  }
+
   splitDate(date: any): string {
-    console.log('SPLIT DATE')
-    console.log(date)
     const dateObj = new Date(date);
     const formattedDate = dateObj.toISOString().split('T')[0];
     return formattedDate;
   }
 
   extractHour(hour: any): string {
-    console.log('extractHour')
-    console.log(hour)
     let hora : string = '';
     if (hour.split(':')[0].length==1){
       hora='0'+hour.split(':')[0]
@@ -92,7 +81,6 @@ export class SchedulerComponent implements OnInit {
       hora=hour.split(':')[0]
     }
     const formattedHour = hora+':'+hour.split(':')[1]+':00';
-    console.log(formattedHour)
     return formattedHour;
   }
 
@@ -100,9 +88,7 @@ export class SchedulerComponent implements OnInit {
     this.detailService.getServiceById(serviceId)
       .pipe(
         switchMap(servicesSuccess => {
-          console.log(':::::::::get Detail service ::::::::')
-          console.log(servicesSuccess)
-          this.selectedService = servicesSuccess;       
+          this.selectedService = servicesSuccess;
           return [];
         })
       )

@@ -20,7 +20,7 @@ export const registerService = () => {
   let randomFrecuencyIndex = Math.floor(Math.random() * frequency.length);
   let currentDate = new Date();
   let futureDate = addDays(currentDate, 2);
-  let servicePlace = faker.location.city();
+  let servicePlace = 'Bogota';
   let serviceName = `Carrera ${faker.name.fullName()}`;
   let serviceDescription = `Carrera benefica a favor de los niños de cancer, se iniciara en ${servicePlace} atravesando diversas calles ...`;
   let serviceCost = `${randomValueCost.toFixed(2)} COP`;
@@ -66,4 +66,14 @@ export const registerFeedingPlan = () => {
   let poRegisterFeedingPlan = new RegisterFeedingPlan();
   poRegisterFeedingPlan.visit('/nutrition/register-feeding-plan');
   poRegisterFeedingPlan.shouldRegisterServiceSuccess(semanas, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
+};
+
+export const scheduledUserService = () => {
+  // Asignacion de valores para el plan de alimentacion
+  let columns = ["Nombre:", "Fecha:", "Hora:", "Costo:", "Zona:", "Descripción:"];
+  let countServices = 0;
+  // Ejecución del agendamiento
+  let poRegisterService = new Service();
+  poRegisterService.visit('/services/scheduler');
+  poRegisterService.shouldBeAlistOfScheduledUserServicesAndDetailsToSchedule(countServices, columns);
 };

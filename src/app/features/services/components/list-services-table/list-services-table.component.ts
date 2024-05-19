@@ -62,7 +62,6 @@ export class ListServicesComponent implements OnInit {
 
   onSelectedService(service: Service): void {
     this.selectedService = service;
-    console.log(this.selectedService)
     this.sendDataSharedService(service);
     this.emitterService.setService(this.selectedService);
   }

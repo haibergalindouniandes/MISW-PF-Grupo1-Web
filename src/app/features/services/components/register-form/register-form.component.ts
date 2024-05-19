@@ -19,7 +19,7 @@ export class RegisterFormComponent implements OnInit {
   timeStart: string = '06:00:00';
   timeEnd: string = '06:00:00';
   rangeHours: string[] = [];
-  citys: string[] = ['Bogota','Cali','Medellin','Barranquilla'];
+  citys: string[] = ['Bogota', 'Cali', 'Medellin', 'Barranquilla'];
   city: string | undefined;
 
   constructor(
@@ -36,7 +36,6 @@ export class RegisterFormComponent implements OnInit {
       cost: ['', [Validators.required, Validators.minLength(8)]],
       minimum_number_participants: ['', [Validators.required, Validators.minLength(1)]],
       maximum_number_participants: ['', [Validators.required, Validators.minLength(1)]],
-      //place: ['', [Validators.required, Validators.minLength(6)]],
       date: ['', [Validators.required, this.dateValidator]],
       timeStart: ['', [Validators.required]],
       timeEnd: ['', [Validators.required, this.timeValidation]],
@@ -55,12 +54,11 @@ export class RegisterFormComponent implements OnInit {
         data.cost,
         parseInt(data.minimum_number_participants),
         parseInt(data.maximum_number_participants),
-        this.city+'',
+        this.city + '',
         data.date,
         sessionStorage.getItem('user_id')!,
         this.rangeHours
       );
-      console.log('registerObjetct:::::'+registerService);
       /* istanbul ignore next */
       this.service.registerService(registerService)
         .subscribe(registerSucess => {
@@ -126,9 +124,8 @@ export class RegisterFormComponent implements OnInit {
     }
   }
 
-  setCitySelected(city:string){    
-    this.city=city;
-    console.log('City::::'+this.city);
+  setCitySelected(city: string) {
+    this.city = city;
   }
 
 }

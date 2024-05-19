@@ -1,5 +1,5 @@
-import { signinUser } from "./e2e-utils.spec";
 import { Service } from "../page-objects/services/service";
+import { signinUser } from "./e2e-utils.spec";
 
 describe('Registration feeding results e2e test', () => {
   it('Should allow you to register the feeding results successfully', () => {

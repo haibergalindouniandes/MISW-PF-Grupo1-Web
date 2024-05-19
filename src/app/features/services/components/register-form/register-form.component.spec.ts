@@ -12,7 +12,7 @@ describe('RegisterFormComponent', () => {
     await TestBed.configureTestingModule({
       imports: [RegisterFormComponent, HttpClientTestingModule, ToastrModule.forRoot(), BrowserAnimationsModule],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(RegisterFormComponent);
     component = fixture.componentInstance;
@@ -46,7 +46,6 @@ describe('RegisterFormComponent', () => {
       cost: 'Service Cost',
       minimum_number_participants: '1',
       maximum_number_participants: '10',
-      place: 'Bogota',
       date: '2024-04-20',
       timeStart: '06:00:00',
       timeEnd: '09:00:00'
@@ -56,8 +55,8 @@ describe('RegisterFormComponent', () => {
     expect(component.cancel).toHaveBeenCalled();
     spyOn(component, 'registerService').and.callThrough();
     sessionStorage.setItem('user_id', '0cbadc52-f8df-11ee-929e-a51c06b18a33');
-    component.city='Bogota';
-    component.serviceRegistrationForm.setValue(formData);    
+    component.city = 'Bogota';
+    component.serviceRegistrationForm.setValue(formData);
     component.serviceRegistrationForm.setValue(formData);
     component.registerService();
     expect(component.registerService).toHaveBeenCalled();
@@ -76,6 +75,5 @@ describe('RegisterFormComponent', () => {
     component.generateRangeHours();
     expect(component.rangeHours.length).toBe(0);
   });
-
 
 });

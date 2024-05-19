@@ -58,6 +58,16 @@ describe('RegisterFormComponent', () => {
       component.trainingPlan = incompleteTrainingPlan;
       expect(component.validateIfAllowRegister()).toBeFalse();
     }
+
+    let trainingPlan = new TrainingPlan('Ciclismo', 'ce357334-bf36-4a4a-a55a-5a01e54d7e8d', 4, {
+      lunes: 10,
+      martes: 15,
+      miercoles: 20,
+      jueves: 10,
+      viernes: 25,
+      sabado: 10,
+      domingo: 30
+    });
   });
 
   it('should reset table with cancel fuction', () => {

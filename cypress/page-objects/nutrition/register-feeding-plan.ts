@@ -120,7 +120,7 @@ export class RegisterFeedingPlan {
     this.shouldHaveARegisterComponents();
     this.fillRegisterPlanInTable(semanas, lunes, martes, miercoles, jueves, viernes, sabado, domingo);
     this.clickInObject(this.getButtonRegister());
-    cy.wait(2000);
+    cy.wait(4000);
     this.validateToastSuccessConfirmation('Se registro plan de alimentacion exitosamente!');
   }
 

@@ -47,7 +47,6 @@ export class RegisterFormComponent implements OnInit {
           this.feedingPlan.numero_semanas,
           this.convert_number_to_string()
         );
-        console.log(newFeedingPlan)
         this.serviceRegisterFeedingPlan.registerFeedingPlan(newFeedingPlan)
           .subscribe(registerSuccess => {
             this.toastr.success('Confirmación', 'Se registro plan de alimentacion exitosamente!', { closeButton: true });

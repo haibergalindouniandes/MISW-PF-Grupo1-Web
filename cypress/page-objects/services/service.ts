@@ -36,6 +36,10 @@ export class Service {
     return cy.get('#place');
   }
 
+  private getSelectPlace() {
+    return cy.get('#place');
+  }
+
   private getInputDate() {
     return cy.get('#date');
   }
@@ -216,7 +220,8 @@ export class Service {
     this.setInputName(name);
     this.setInputDescription(description);
     this.setInputCost(cost);
-    //this.setInputPlace(place);
+    this.clickInRowOfSelect(this.getSelectPlace(), 'Cali');
+    this.clickInRowOfSelect(this.getSelectPlace(), place);
     this.setInputDate(date),
     this.setInputTimeStart(timeStart);
     this.setInputTimeEnd(timeEnd);
@@ -253,8 +258,8 @@ export class Service {
     table.find('tr').eq(row).click();
   }
 
-  private clickInRowOfSelect(select: any, row: number) {
-    select.find('option').select(row);
+  private clickInRowOfSelect(object: any, row: string) {
+    object.select(row);
   }
 
   shouldRegisterServiceSuccess(name: string, description: string, cost: string, place: string, date: string, timeStart: string, timeEnd: string, minParticipants: string, maxParticipants: string, frequency: string) {
@@ -314,7 +319,7 @@ export class Service {
     this.shouldHaveADropdownServicesListToschedule();
     this.shouldHaveTableComponents();
     this.countAndValidateMinRowsInTable(this.getTableListServices(), rowsInTable);
-    this.clickInRowOfTable(this.getTableListServices(), 1);
+    this.clickInRowOfTable(this.getTableListServices(), rowsInTable);
     this.shouldHaveDetailCardComponents();
     this.countAndValidateMinRowsInTable(this.getTableDetailService(), 1);
     this.validateColumnsNamesInTable(this.getTableDetailService(), columns);
